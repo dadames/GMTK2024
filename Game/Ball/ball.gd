@@ -1,11 +1,13 @@
-extends RigidBody2D
+extends CharacterBody2D
 
+const SPEED = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	velocity = Vector2.DOWN * SPEED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var CollisionInfo := move_and_collide(velocity * delta)
+	if CollisionInfo:
+		velocity = velocity.bounce(CollisionInfo.getnormal())

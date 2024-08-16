@@ -1,16 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cik3us1ca1grp"]
 
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_gvk1q"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q5btn"]
-friction = 0.0
-bounce = 1.0
+[ext_resource type="Script" path="res://Game/Ball/ball.gd" id="1_jjx47"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yh17"]
 radius = 16.0
 
-[node name="ball" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_q5btn")
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_jjx47")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

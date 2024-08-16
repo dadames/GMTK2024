@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjx5beibty7lr"]
+[gd_scene load_steps=6 format=3 uid="uid://bjx5beibty7lr"]
 
 [ext_resource type="Script" path="res://Game/Paddle/paddle.gd" id="1_fdgyd"]
 
@@ -8,6 +8,10 @@
 width = 160
 height = 32
 noise = SubResource("FastNoiseLite_1cblr")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5cggl"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tft1"]
 size = Vector2(160, 32)
@@ -20,6 +24,8 @@ script = ExtResource("1_fdgyd")
 texture = SubResource("NoiseTexture2D_jnx1s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_5cggl")
+constant_angular_velocity = 1.74533
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_7tft1")

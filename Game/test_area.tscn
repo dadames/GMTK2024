@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmuayt7np4lt1"]
+[gd_scene load_steps=4 format=3 uid="uid://cmuayt7np4lt1"]
 
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="1_3oi57"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="1_p3k5k"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wnjhu"]
+friction = 0.0
+bounce = 1.0
 
 [node name="test area" type="Node2D"]
 
@@ -12,6 +16,7 @@ position = Vector2(640, 312)
 position = Vector2(640, 608)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_wnjhu")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 712, 1280, 712, 1280, -8, 24, 0, 24, -32, 1328, -40, 1304, 736, -32, 736, -32, -48, 0, 0)
