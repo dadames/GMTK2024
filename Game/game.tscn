@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dapf23v7r06pk"]
+
+[ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
+[ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="2_0hxx3"]
+[ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="3_31cgl"]
+[ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
+
+[node name="Level 1" parent="." instance=ExtResource("2_0hxx3")]
+
+[node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
+position = Vector2(0, 12)
+scale = Vector2(0.063, 0.063)
+
+[node name="Ball" parent="." instance=ExtResource("4_nyhvm")]
+position = Vector2(0, 4)
+scale = Vector2(0.063, 0.063)

@@ -10,7 +10,7 @@ scale = 1
 [node name="Brick" parent="." instance=ExtResource("1_ut3aw")]
 position = Vector2(8, 0)
 scale = Vector2(-1, 1)
-color = Color(1, 0, 0, 1)
+color = Color(0.946401, 4.52429e-06, 0.581088, 1)
 mirrored = true
 
 [node name="Brick2" parent="." instance=ExtResource("1_ut3aw")]

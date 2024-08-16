@@ -32,7 +32,7 @@ func _ready() -> void:
 		initialize()
 
 func _process(delta: float) -> void:
-	if falling && !Engine.is_editor_hint():
+	if isFalling && !Engine.is_editor_hint():
 		position.y += delta * fallSpeed
 
 func initialize() -> void:
@@ -67,6 +67,7 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 
 func start_falling() -> void:
 	isFalling = true
+	print("A")
 
 func stop_falling() -> void:
 	isFalling = false
