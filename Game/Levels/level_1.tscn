@@ -13,7 +13,7 @@ zoom = Vector2(25, 25)
 [node name="Brick" parent="." instance=ExtResource("1_ut3aw")]
 position = Vector2(8, 0)
 scale = Vector2(-1, 1)
-color = Color(0, 0.196078, 0.733333, 1)
+color = Color(1, 0, 0, 1)
 mirrored = true
 
 [node name="Brick2" parent="." instance=ExtResource("1_ut3aw")]
@@ -68,5 +68,5 @@ mirrored = true
 [node name="Brick9" parent="." instance=ExtResource("1_ut3aw")]
 position = Vector2(-12, 0)
 scale = Vector2(-1, 1)
-color = Color(1, 0.866667, 0, 1)
+color = Color(1, 0.352941, 0, 1)
 mirrored = true

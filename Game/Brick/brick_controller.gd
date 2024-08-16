@@ -21,7 +21,6 @@ extends Node2D
 		elif !value && scale.x < 0:
 			scale.x *= -1
 		_ready()
-
 var brickScale := 10
 var fallSpeed := 10
 var isFalling := false
@@ -29,16 +28,20 @@ signal falling()
 
 
 func _ready() -> void:
-	brickScale = get_tree().get_nodes_in_group("Level").front().scale
-	var shape := BrickShape.new()
-	shape.shape = shapeType
-	initialize(shape)
+	if Engine.is_editor_hint():
+		initialize()
 
 func _process(delta: float) -> void:
 	if falling && !Engine.is_editor_hint():
 		position.y += delta * fallSpeed
 
-func initialize(shape: BrickShape) -> void:
+func initialize() -> void:
+	brickScale = get_tree().get_nodes_in_group("Level").front().scale
+	var shape := BrickShape.new()
+	shape.shape = shapeType
+	set_shape(shape)
+
+func set_shape(shape: BrickShape) -> void:
 	Utilities.clear_children(self)
 	var positions := shape.get_node_orientations()
 	for quadrantPosition: Vector2i in positions:
