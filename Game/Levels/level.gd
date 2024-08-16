@@ -1,3 +1,3 @@
 extends Node
 
-@export var scale: int = 1
+@export var scale: int = 5

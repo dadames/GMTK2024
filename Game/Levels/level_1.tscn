@@ -5,6 +5,7 @@
 
 [node name="Level 1" type="Node" groups=["Level"]]
 script = ExtResource("1_0av25")
+scale = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(25, 25)
