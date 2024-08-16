@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmuayt7np4lt1"]
+
+[ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="1_3oi57"]
+
+[node name="test area" type="Node2D"]
+
+[node name="Paddle" parent="." instance=ExtResource("1_3oi57")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 712, 1280, 712, 1280, -8, 24, 0, 24, -32, 1328, -40, 1304, 736, -32, 736, -32, -48, 0, 0)
