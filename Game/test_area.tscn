@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmuayt7np4lt1"]
+[gd_scene load_steps=3 format=3 uid="uid://cmuayt7np4lt1"]
 
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="1_3oi57"]
+[ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="1_p3k5k"]
 
 [node name="test area" type="Node2D"]
 
+[node name="ball" parent="." instance=ExtResource("1_p3k5k")]
+position = Vector2(640, 312)
+
 [node name="Paddle" parent="." instance=ExtResource("1_3oi57")]
+position = Vector2(640, 608)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
