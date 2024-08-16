@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://bjxmpt84gkaov"]
+[gd_scene load_steps=2 format=3 uid="uid://bjxmpt84gkaov"]
+
+[ext_resource type="PackedScene" uid="uid://c3i5efug856wq" path="res://Game/Brick/brick.tscn" id="1_ut3aw"]
 
 [node name="Level 1" type="Node"]
+
+[node name="Brick" parent="." instance=ExtResource("1_ut3aw")]
+position = Vector2(453, 314)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(469, 320)
+zoom = Vector2(25, 25)
