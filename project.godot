@@ -15,10 +15,6 @@ run/main_scene="res://Game/Levels/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-EventBus="*res://Game/event_bus.gd"
-
 [debug]
 
 gdscript/warnings/untyped_declaration=2

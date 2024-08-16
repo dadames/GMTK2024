@@ -19,7 +19,7 @@ script = ExtResource("1_fdgyd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("NoiseTexture2D_jnx1s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7tft1")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_7tft1")
