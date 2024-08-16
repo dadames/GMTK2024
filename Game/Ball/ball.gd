@@ -6,7 +6,7 @@ extends CharacterBody2D
 func _ready() -> void:
 	#Find angle within a 60 degree downward cone
 	#then use our angle to determine the direction ball starts
-	var angle:float = deg_to_rad(randf_range(60,120))
+	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
