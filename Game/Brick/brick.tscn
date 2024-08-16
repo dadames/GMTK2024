@@ -6,3 +6,4 @@
 [node name="Brick" type="Node2D"]
 script = ExtResource("1_uxt67")
 semiBrickPrefab = ExtResource("2_3ssye")
+shapeType = 1

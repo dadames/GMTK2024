@@ -14,6 +14,8 @@ func initialize(brickIn: Brick) -> void:
 func collided() -> void:
 	if !hasFallen:
 		brick.start_falling()
+	else:
+		brick.stop_falling()
 
 func is_falling() -> void:
 	hasFallen = true

@@ -29,6 +29,7 @@ signal falling()
 
 
 func _ready() -> void:
+	brickScale = get_tree().get_nodes_in_group("Level").front().scale
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	initialize(shape)
@@ -63,3 +64,6 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 
 func start_falling() -> void:
 	isFalling = true
+
+func stop_falling() -> void:
+	isFalling = false

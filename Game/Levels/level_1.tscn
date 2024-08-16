@@ -1,21 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjxmpt84gkaov"]
+[gd_scene load_steps=3 format=3 uid="uid://bjxmpt84gkaov"]
 
+[ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_0av25"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="1_ut3aw"]
 
-[node name="Level 1" type="Node"]
+[node name="Level 1" type="Node" groups=["Level"]]
+script = ExtResource("1_0av25")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(25, 25)
 
 [node name="Brick" parent="." instance=ExtResource("1_ut3aw")]
 position = Vector2(-6, 8)
-color = Color(0.617144, 0.377077, 0.955929, 1)
-shapeType = 1
+scale = Vector2(-1, 1)
+mirrored = true
 
 [node name="Brick2" parent="." instance=ExtResource("1_ut3aw")]
 position = Vector2(4, -2)
 color = Color(0, 0.625875, 0.507805, 1)
-shapeType = 1
 
 [node name="Brick3" parent="." instance=ExtResource("1_ut3aw")]
 position = Vector2(49, -13)
