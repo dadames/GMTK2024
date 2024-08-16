@@ -13,8 +13,9 @@ script = ExtResource("1_4q7xf")
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("1_r13ow")
 
-[node name="RigidBody2D" type="StaticBody2D" parent="."]
-collision_mask = 0
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_viega")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]

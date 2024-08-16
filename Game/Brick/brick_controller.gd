@@ -9,20 +9,29 @@ extends Node2D
 	set(value):
 		color = value
 		_ready()
-
 @export var shapeType: BrickShape.ShapeType:
 	set(value):
 		shapeType = value
 		_ready()
+@export var mirrored := false:
+	set(value):
+		mirrored = value
+		
+		_ready()
 
-var brickScale := 1
-var initialized := false
+var brickScale := 5
+var fallSpeed := 10
+var falling := false
 
 func _ready() -> void:
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	initialize(shape)
+	falling = true
 
+func _process(delta: float) -> void:
+	if falling && !Engine.is_editor_hint():
+		position.y += delta * fallSpeed
 
 func initialize(shape: BrickShape) -> void:
 	Utilities.clear_children(self)
@@ -47,3 +56,6 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 	add_child(semibrick)
 	semibrick.position = quadrantPosition
 	semibrick.initialize(self)
+
+func start_falling() -> void:
+	falling = true
