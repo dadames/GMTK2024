@@ -24,7 +24,9 @@ extends Node2D
 
 var brickScale := 10
 var fallSpeed := 10
-var falling := false
+var isFalling := false
+signal falling()
+
 
 func _ready() -> void:
 	var shape := BrickShape.new()
@@ -60,4 +62,4 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 	semibrick.initialize(self)
 
 func start_falling() -> void:
-	falling = true
+	isFalling = true
