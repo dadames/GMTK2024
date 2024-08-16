@@ -5,16 +5,27 @@ extends Node2D
 
 
 @export var semiBrickPrefab: PackedScene
+@export var color: Color:
+	set(value):
+		color = value
+		_ready()
+
+@export var shapeType: BrickShape.ShapeType:
+	set(value):
+		shapeType = value
+		_ready()
+
 var brickScale := 1
 var initialized := false
 
 func _ready() -> void:
 	var shape := BrickShape.new()
-	shape.shape = BrickShape.L
+	shape.shape = shapeType
 	initialize(shape)
 
 
 func initialize(shape: BrickShape) -> void:
+	Utilities.clear_children(self)
 	var positions := shape.get_node_orientations()
 	for quadrantPosition: Vector2i in positions:
 		quadrantPosition *= brickScale

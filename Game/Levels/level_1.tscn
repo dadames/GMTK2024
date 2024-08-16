@@ -8,10 +8,5 @@
 zoom = Vector2(25, 25)
 
 [node name="Brick" parent="." instance=ExtResource("1_ut3aw")]
-position = Vector2(-5, -1)
-
-[node name="Brick2" parent="." instance=ExtResource("1_ut3aw")]
-position = Vector2(8, -6)
-
-[node name="Brick3" parent="." instance=ExtResource("1_ut3aw")]
-position = Vector2(3, -1)
+color = Color(0.987215, 0, 0.300232, 1)
+shapeType = 2
