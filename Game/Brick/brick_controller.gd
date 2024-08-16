@@ -16,10 +16,13 @@ extends Node2D
 @export var mirrored := false:
 	set(value):
 		mirrored = value
-		
+		if value && scale.x > 0:
+			scale.x *= -1
+		elif !value && scale.x < 0:
+			scale.x *= -1
 		_ready()
 
-var brickScale := 5
+var brickScale := 10
 var fallSpeed := 10
 var falling := false
 
@@ -27,7 +30,6 @@ func _ready() -> void:
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	initialize(shape)
-	falling = true
 
 func _process(delta: float) -> void:
 	if falling && !Engine.is_editor_hint():
