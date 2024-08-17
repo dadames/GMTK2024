@@ -13,6 +13,7 @@ bounce = 1.0
 
 [node name="Paddle" parent="." instance=ExtResource("1_3oi57")]
 position = Vector2(645, 608)
+initial_speed = 20000.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_wnjhu")

@@ -22,6 +22,7 @@ collision_mask = 2
 motion_mode = 1
 platform_floor_layers = 4294967040
 script = ExtResource("1_fdgyd")
+initial_speed = 20000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7tft1")

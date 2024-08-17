@@ -2,9 +2,8 @@
 
 extends CharacterBody2D
 
-const INITIAL_SPEED = 15000.0
-
-var speed: float = INITIAL_SPEED
+@export var initial_speed: float = 30000.0
+var speed: float = initial_speed
 
 @export var width: int = 5:
 	set(value):

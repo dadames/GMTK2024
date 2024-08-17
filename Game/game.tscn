@@ -84,6 +84,7 @@ position = Vector2(3, 238)
 [node name="Ball" parent="." instance=ExtResource("4_nyhvm")]
 position = Vector2(0, 159)
 collision_mask = 14
+baseSpeed = 500.0
 
 [node name="Level1" parent="." instance=ExtResource("7_5liut")]
 unique_name_in_owner = true
