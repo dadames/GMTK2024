@@ -59,6 +59,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
+			EventBus.score_change.emit("Catch", brick.position, position)
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				#brick_sprite.position += offset
 				brick_sprite.reparent(self)

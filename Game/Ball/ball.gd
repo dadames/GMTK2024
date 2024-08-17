@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		var collider := collisionInfo.get_collider()
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
-			#EventBus.score_change.emit("Hit")
+			EventBus.score_change.emit("Hit", Vector2(0,0), Vector2(0,0))
 			collider.collided()
 		elif collider.is_class("CharacterBody2D"):
 			var paddle := collider as CharacterBody2D

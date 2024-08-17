@@ -8,9 +8,10 @@ extends Node2D
 @onready var camera: Camera2D = %Camera2D
 @onready var level: Level = %Level1
 
+var Distance := 0
 var Score:int = 0
-@export var ScoreHit:int = 1
-@export var ScoreCatch:int = 1
+@export var ScoreHit:int = 100
+@export var ScoreCatch:int = 100
 
 func _ready() -> void:
 	EventBus.score_change.connect(score_change)
@@ -35,12 +36,13 @@ func set_boundaries() -> void:
 	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
 
 #score keeping
-func score_change(HitType: String) -> void:
+func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
 	if HitType == "Hit":
 		Score += ScoreHit
 		#print("Block Hit! New score:",Score)
 	elif HitType == "Catch":
-		Score += ScoreCatch
+		Distance = PaddlePosition.distance_to(HitPosition)
+		Score += ((ScoreCatch * (Distance/10)) / 4)
 		#print("Block Caught! New score:",Score)
 
 func on_level_completed() -> void:
