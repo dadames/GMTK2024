@@ -17,6 +17,7 @@ speed = 500.0
 
 [node name="Paddle" parent="." instance=ExtResource("1_3oi57")]
 position = Vector2(645, 608)
+scale = Vector2(0.03125, 0.03125)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_wnjhu")
@@ -26,7 +27,6 @@ polygon = PackedVector2Array(0, 712, 1280, 712, 1280, -8, 24, 0, 24, -32, 1328, 
 
 [node name="Level" type="Node" parent="." groups=["Level"]]
 script = ExtResource("1_akrbi")
-scale = 10
 
 [node name="Brick" parent="Level" instance=ExtResource("4_03qye")]
 position = Vector2(545, 350)

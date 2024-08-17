@@ -17,7 +17,6 @@ unique_name_in_owner = true
 [node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
 position = Vector2(-9.53674e-07, 11)
 scale = Vector2(0.063, 0.063)
-collision_layer = 2
 
 [node name="Ball" parent="." instance=ExtResource("4_nyhvm")]
 position = Vector2(0, 4)
