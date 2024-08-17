@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		position.y += delta * fallSpeed
 
 func initialize() -> void:
-	scale = scale.normalized() * 2 ** get_tree().get_nodes_in_group("Level").front().levelScale
+	scale = scale.sign() * 2 ** get_tree().get_nodes_in_group("Level").front().levelScale
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	set_shape(shape)
