@@ -43,9 +43,13 @@ func score_change(HitType: String) -> void:
 
 func on_level_completed() -> void:
 	print("Level Completed")
-	var nextLevel := level.nextLevel.instantiate()
+	if !level.nextLevel:
+		print("Winner")
+		return
+	var nextLevel := level.nextLevel
 	level.queue_free()
-	level = nextLevel
+	level = nextLevel.instantiate()
+	Globals.LEVEL_SCALE = level.levelScale
 	add_child(level)
 
 #Handle resetting the game 

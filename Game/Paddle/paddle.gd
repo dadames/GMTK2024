@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 func consume_brick(brick: Brick, shift: Vector2) -> void:
 	if brick in _consumed_bricks_this_frame:
 		return
-	print_debug(brick, shift)
+	#print_debug(brick, shift)
 	_consumed_bricks_this_frame.append(brick)
 
 	# align the brick to the grid along shift

@@ -19,4 +19,3 @@ func on_brick_removed_from_level(brick: Brick) -> void:
 	bricks.erase(brick)
 	if bricks.is_empty():
 		EventBus.level_completed.emit()
-		print("Level Done")

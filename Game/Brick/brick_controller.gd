@@ -43,7 +43,13 @@ func _process(delta: float) -> void:
 			queue_free()
 
 func initialize() -> void:
-	scale = scale.sign() * get_tree().get_nodes_in_group("Level").front().levelScale * Globals.SCALE_MODIFIER
+	var levelScale: int
+	if !Engine.is_editor_hint():
+		levelScale = Globals.LEVEL_SCALE
+		print(levelScale)
+	else:
+		levelScale = get_tree().get_nodes_in_group("Level").front().levelScale
+	scale = scale.sign() * levelScale * Globals.SCALE_MODIFIER
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	set_shape(shape)
