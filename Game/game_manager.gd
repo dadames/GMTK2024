@@ -8,11 +8,14 @@ extends Node2D
 @onready var camera: Camera2D = %Camera2D
 @export var startingLevel: PackedScene
 var level: Level
+@export var ballPrefab: PackedScene
 
 var Distance := 0
 var Score:int = 0
 @export var ScoreHit:int = 100
 @export var ScoreCatch:int = 100
+var activeBalls: int = 0
+var ballSpawnable := true
 
 func _ready() -> void:
 	EventBus.score_change.connect(score_change)
@@ -20,7 +23,10 @@ func _ready() -> void:
 	EventBus.zoom_finished.connect(on_zoom_finished)
 	EventBus.reset_game.connect(reset_game)
 	EventBus.debug_complete_level.connect(on_debug_complete_level)
+	EventBus.added_active_ball.connect(on_added_active_ball)
+	EventBus.removed_active_ball.connect(on_removed_active_ball)
 	start_level.call_deferred(startingLevel)
+	set_boundaries.call_deferred()
 
 #score keeping
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
@@ -57,6 +63,7 @@ func disable_boundaries() -> void:
 
 func on_zoom_finished() -> void:
 	set_boundaries()
+	spawn_ball()
 
 func set_boundaries() -> void:
 	var cameraPosition: Vector2 = camera.get_screen_center_position()
@@ -84,3 +91,24 @@ func on_ball_fall() -> void:
 func _on_bottom_boundary_body_entered(body: Node2D) -> void:
 	if body is Ball || body.find_parent("Ball"):
 		on_ball_fall()
+
+func spawn_ball() -> void:
+	var newBall := ballPrefab.instantiate()
+	add_child(newBall)
+	ballSpawnable = false
+
+func on_added_active_ball() -> void:
+	activeBalls += 1
+
+func on_removed_active_ball() -> void:
+	activeBalls -= 1
+	if activeBalls <= 0:
+		show_ball_spawnable()
+
+func show_ball_spawnable() -> void:
+	ballSpawnable = true
+	EventBus.ball_spawnable.emit()
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("spawn_ball") && ballSpawnable:
+		spawn_ball()

@@ -9,6 +9,7 @@ func _ready() -> void:
 	EventBus.level_started.connect(level_started)
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * baseSpeed
+	EventBus.added_active_ball.emit()
 
 #Spawn in the ball and scale it
 func level_started() -> void:
@@ -34,3 +35,13 @@ func _physics_process(delta: float) -> void:
 				#print(snapped(collisionInfo.get_angle()/PI, 0.1))
 				position.x = position.x + (10*sign(velocity.x))
 				#print(sign(velocity.x))
+	var camera := get_viewport().get_camera_2d()
+	var cameraPosition: Vector2 = camera.get_screen_center_position()
+	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
+	var offscreen := cameraPosition.y + (halfSize.y * 1.1)
+	if position.y > offscreen:
+		print("Fell off screen.")
+		queue_free()
+
+func _exit_tree() -> void:
+	EventBus.removed_active_ball.emit()

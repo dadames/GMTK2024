@@ -9,3 +9,8 @@ signal level_started()
 signal zoom_finished()
 signal game_over()
 signal score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2)
+
+
+signal added_active_ball()
+signal removed_active_ball()
+signal ball_spawnable()

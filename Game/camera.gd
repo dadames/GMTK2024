@@ -11,9 +11,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if zoom.x <= targetZoom:
-		EventBus.zoom_finished.emit()
 		return
 	set_zoom(zoom - Vector2(zoomSpeed * delta,zoomSpeed * delta))
+	if zoom.x <= targetZoom:
+		EventBus.zoom_finished.emit()
 
 func on_level_started() -> void:
 	targetZoom = 1.0 / Globals.LEVEL_SCALE

@@ -23,6 +23,7 @@ func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 	initialized = true
 	EventBus.level_started.connect(on_level_started)
+	
 
 func _process(_delta: float) -> void:
 	if !initialized:
@@ -35,7 +36,7 @@ func _process(_delta: float) -> void:
 			break
 
 func _physics_process(delta: float) -> void:
-	if !initialized || Engine.is_editor_hint():
+	if !initialized || Engine.is_editor_hint() :
 		return
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -53,10 +54,10 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 		return
 	#print_debug(brick, shift)
 	_consumed_bricks_this_frame.append(brick)
-
+	
 	# align the brick to the grid along shift
 	brick.position += shift
-
+	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			EventBus.score_change.emit("Catch", brick.position, position)
