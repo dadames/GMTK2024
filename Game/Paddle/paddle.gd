@@ -23,7 +23,8 @@ func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 	initialized = true
 	EventBus.level_started.connect(on_level_started)
-	
+	#EventBus.level_completed.connect(on_level_completed)
+	#EventBus.zoom_finished.connect(on_zoom_finished)
 
 func _process(_delta: float) -> void:
 	if !initialized:
@@ -34,6 +35,10 @@ func _process(_delta: float) -> void:
 			child.position = position
 			consume_brick(child, Vector2i.UP + Vector2i.RIGHT)
 			break
+	if !Engine.is_editor_hint():
+		var camera := get_viewport().get_camera_2d()
+		var test: float = camera.targetZoom / camera.zoom.x 
+		position.y = 330 * test * Globals.LEVEL_SCALE
 
 #Movement
 func _physics_process(delta: float) -> void:
@@ -45,10 +50,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * speed)
 	move_and_collide(velocity * delta)
-	var camera := get_viewport().get_camera_2d()
-	var cameraPosition: Vector2 = camera.get_screen_center_position()
-	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
-	position.y = cameraPosition.y + (halfSize.y * 0.9)
+
 
 func consume_brick(brick: Brick, shift: Vector2) -> void:
 	if brick in _consumed_bricks_this_frame:
@@ -76,6 +78,8 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.position = dup.position.snappedf(Globals.BLOCK_PIXELS)
 
 	brick.queue_free()
+
+
 
 func on_level_started() -> void:
 	speed = 2 ** Globals.LEVEL_SCALE * initial_speed
