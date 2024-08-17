@@ -23,11 +23,10 @@ physics_material_override = SubResource("PhysicsMaterial_wnjhu")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(0, 712, 1280, 712, 1280, -8, 24, 0, 24, -32, 1328, -40, 1304, 736, -32, 736, -32, -48, 0, 0)
 
-[node name="Level" type="Node2D" parent="." groups=["Level"]]
-scale = 10
+[node name="Level" type="Node" parent="." groups=["Level"]]
 script = ExtResource("1_akrbi")
 scale = 10
 
 [node name="Brick" parent="Level" instance=ExtResource("4_03qye")]
-position = Vector2(480, 304)
+position = Vector2(545, 350)
 color = Color(0.169077, 0.272924, 0.734172, 1)
