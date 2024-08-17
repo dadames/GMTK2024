@@ -7,8 +7,8 @@
 radius = 16.0
 
 [node name="Ball" type="CharacterBody2D"]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 64
+collision_mask = 40
 script = ExtResource("1_jjx47")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

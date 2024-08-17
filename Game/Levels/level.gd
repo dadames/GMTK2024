@@ -2,7 +2,7 @@ class_name Level
 extends Node
 
 
-@export var levelScale: float = 0.00001
+@export var levelScale: float = 0.001
 
 
 func _ready() -> void:
