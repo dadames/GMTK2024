@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if zoom.x <= targetZoom:
+		EventBus.zoom_finished.emit()
 		return
 	set_zoom(zoom - Vector2(zoomSpeed * delta,zoomSpeed * delta))
 
