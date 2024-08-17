@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjx5beibty7lr"]
+[gd_scene load_steps=7 format=3 uid="uid://bjx5beibty7lr"]
 
 [ext_resource type="Script" path="res://Game/Paddle/paddle.gd" id="1_fdgyd"]
 
@@ -15,6 +15,9 @@ noise = SubResource("FastNoiseLite_1cblr")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5cggl"]
 friction = 0.0
 bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yts6p"]
+size = Vector2(160, 32)
 
 [node name="Paddle" type="CharacterBody2D"]
 collision_layer = 4
@@ -47,7 +50,9 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
-shape = SubResource("RectangleShape2D_7tft1")
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_yts6p")
+one_way_collision = true
 
 [connection signal="body_entered" from="CollisionDetection" to="." method="_on_collision_detection_body_entered"]
 [connection signal="body_shape_entered" from="CollisionDetection" to="." method="_on_collision_detection_body_shape_entered"]
