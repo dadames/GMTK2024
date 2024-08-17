@@ -63,7 +63,7 @@ func disable_boundaries() -> void:
 
 func on_zoom_finished() -> void:
 	set_boundaries()
-	spawn_ball()
+	show_ball_spawnable()
 
 func set_boundaries() -> void:
 	var cameraPosition: Vector2 = camera.get_screen_center_position()

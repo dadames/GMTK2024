@@ -6,15 +6,16 @@ var collide_safe_margin: float = 1.0
 
 
 func _ready() -> void:
-	EventBus.level_started.connect(level_started)
+	EventBus.level_completed.connect(on_level_completed)
+	var TargetSize:int = Globals.LEVEL_SCALE
+	self.scale = Vector2(TargetSize, TargetSize)
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * baseSpeed
 	EventBus.added_active_ball.emit()
 
-#Spawn in the ball and scale it
-func level_started() -> void:
-	var TargetSize:int = Globals.LEVEL_SCALE
-	self.scale = Vector2(TargetSize, TargetSize)
+
+func on_level_completed() -> void:
+	queue_free()
 
 #Collision handling
 func _physics_process(delta: float) -> void:

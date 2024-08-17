@@ -113,7 +113,7 @@ offset_bottom = 130.0
 text = "DebugCompleteLevel"
 script = ExtResource("8_j18m4")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="BallSpawnable" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
