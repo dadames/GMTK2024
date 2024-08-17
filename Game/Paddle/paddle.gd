@@ -12,17 +12,18 @@ var speed: float = INITIAL_SPEED
 		_ready()
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var body: PhysicsBody2D = $StaticBody2D
 @onready var collider: CollisionShape2D = $StaticBody2D/CollisionShape2D
 
 func _ready() -> void:
 	sprite.texture.width = Globals.BLOCK_PIXELS * width
 	(collider.shape as RectangleShape2D).size.x = Globals.BLOCK_PIXELS * width
 
-#func _process(delta: float) -> void:
-#	if Input.is_key_pressed(KEY_0):
-#		for child in get_parent().find_children("Brick"):
-#			add_brick(child, Vector2i(0, 0))
-#			break
+func _process(_delta: float) -> void:
+	if OS.is_debug_build() && !Engine.is_editor_hint() && Input.is_key_pressed(KEY_0):
+		for child in get_parent().find_children("Brick"):
+			consume_brick(child, Vector2i(0, 0))
+			break
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -37,17 +38,22 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func add_brick(brick: Brick, destination: Vector2i) -> void:
+func consume_brick(brick: Brick, destination: Vector2i) -> void:
 	add_child(brick)
 
-	brick.position.x = Globals.BLOCK_PIXELS * destination.x
-	brick.position.y = Globals.BLOCK_PIXELS * destination.y
+	#var position_offset := Globals.BLOCK_PIXELS * (destination as Vector2 - Vector2(0.5, 0.5))
+	var position_offset := Globals.BLOCK_PIXELS * destination as Vector2
 	
 	for child_1 in brick.get_children():
 		if child_1 is SemiBrick:
 			for brick_sprite: Sprite2D in child_1.find_children("Sprite2D"):
 				brick_sprite.get_parent().remove_child(brick_sprite)
 				add_child(brick_sprite)
-				brick_sprite.position = child_1.position
+				brick_sprite.position = child_1.position + position_offset
 
-	remove_child(brick)
+			for brick_collider: CollisionShape2D in child_1.find_children("CollisionShape2D"):
+				brick_collider.get_parent().remove_child(brick_collider)
+				body.add_child(brick_collider)
+				brick_collider.position = child_1.position + position_offset
+
+	brick.queue_free()
