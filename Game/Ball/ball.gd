@@ -12,6 +12,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	#Move the ball, check for collisions, and bounce off if a collision occurs.
-	var collisionInfo := move_and_collide(velocity * delta)
-	if collisionInfo:
-		velocity = velocity.bounce(collisionInfo.get_normal())
+	var CollisionInfo := move_and_collide(velocity * delta)
+	if CollisionInfo:
+		var CollisionType := CollisionInfo.get_collider()
+		velocity = velocity.bounce(CollisionInfo.get_normal())
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("Bricks"):
+	print ("waow it works")
