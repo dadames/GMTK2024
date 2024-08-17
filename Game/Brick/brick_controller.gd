@@ -55,6 +55,7 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 func start_falling() -> void:
 	isFalling = true
 	print("A")
+	falling()
 
 func stop_falling() -> void:
 	isFalling = false
