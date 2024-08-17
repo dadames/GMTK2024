@@ -48,4 +48,4 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
 shape = SubResource("RectangleShape2D_7tft1")
 
-[connection signal="body_shape_entered" from="CollisionDetection" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_entered" from="CollisionDetection" to="." method="_on_collision_detection_body_entered"]
