@@ -14,10 +14,10 @@
 script = ExtResource("1_jkbmv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -1396.0
-offset_top = -2970.0
-offset_right = 1628.0
-offset_bottom = 1062.0
+offset_left = -1714.0
+offset_top = -2590.0
+offset_right = 1310.0
+offset_bottom = 1442.0
 texture = ExtResource("6_rwbxi")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]

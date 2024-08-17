@@ -13,8 +13,10 @@ var Score:int = 0
 @export var ScoreCatch:int = 1
 
 func _ready() -> void:
-	start_level()
 	EventBus.score_change.connect(score_change)
+	EventBus.level_completed.connect(on_level_completed)
+	start_level()
+	
 
 func start_level() -> void:
 	camera = get_viewport().get_camera_2d()
@@ -37,3 +39,10 @@ func score_change(HitType: String) -> void:
 	elif HitType == "Catch":
 		Score += ScoreCatch
 		#print("Block Caught! New score:",Score)
+
+func on_level_completed() -> void:
+	print("Level Completed")
+	var nextLevel := level.nextLevel.instantiate()
+	level.queue_free()
+	level = nextLevel
+	add_child(level)

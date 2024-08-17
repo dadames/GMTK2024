@@ -3,6 +3,7 @@ extends Node
 
 
 @export var levelScale: float = 0.001
+@export var nextLevel: PackedScene
 var bricks: Array[Brick]
 
 func _ready() -> void:
