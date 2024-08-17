@@ -33,4 +33,7 @@ func set_boundaries() -> void:
 func score_change(HitType: String) -> void:
 	if HitType == "Hit":
 		Score += ScoreHit
-		print("Block Hit! New Score:",Score)
+		#print("Block Hit! New score:",Score)
+	elif HitType == "Catch":
+		Score += ScoreCatch
+		#print("Block Caught! New score:",Score)
