@@ -18,9 +18,10 @@ func collided() -> void:
 		State.Static:
 			brick.start_falling()
 		State.Falling:
-			brick.start_merge()
+			pass
+			#brick.start_merge()
 
 func on_falling() -> void:
 	activeState = State.Falling
-	set_collision_layer_value(4, false)
+	#set_collision_layer_value(4, false)
 	set_collision_layer_value(5, true)
