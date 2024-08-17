@@ -21,11 +21,6 @@ offset_right = 1628.0
 offset_bottom = 1062.0
 texture = ExtResource("6_rwbxi")
 
-[node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
-unique_name_in_owner = true
-zoom = Vector2(1, 1)
-script = ExtResource("4_0fnfe")
-
 [node name="TopBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -14.4)
@@ -74,3 +69,8 @@ collision_mask = 14
 
 [node name="Level1" parent="." instance=ExtResource("7_5liut")]
 unique_name_in_owner = true
+
+[node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
+unique_name_in_owner = true
+zoom = Vector2(1, 1)
+script = ExtResource("4_0fnfe")

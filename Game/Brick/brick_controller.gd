@@ -62,3 +62,6 @@ func start_falling() -> void:
 func start_merge() -> void:
 	isFalling = false
 	merge.emit()
+
+func _exit_tree() -> void:
+	EventBus.brick_removed_from_level.emit(self)

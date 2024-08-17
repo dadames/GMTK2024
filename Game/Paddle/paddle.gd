@@ -44,9 +44,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, delta * speed)
 	move_and_collide(velocity * delta)
 	var camera := get_viewport().get_camera_2d()
-	print(get_viewport().get_camera_2d())
 	var cameraPosition: Vector2 = camera.get_screen_center_position()
-	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 4.0
+	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
 	position.y = cameraPosition.y + (halfSize.y * 0.9)
 
 func consume_brick(brick: Brick, shift: Vector2i) -> void:

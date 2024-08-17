@@ -13,10 +13,9 @@ func _ready() -> void:
 
 func on_brick_initialized_in_level(brick: Brick) -> void:
 	bricks.append(brick)
-	print("ADDING")
 
 func on_brick_removed_from_level(brick: Brick) -> void:
 	bricks.erase(brick)
 	if bricks.is_empty():
-		EventBus.level_completed.emit
+		EventBus.level_completed.emit()
 		print("Level Done")
