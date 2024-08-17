@@ -16,5 +16,5 @@ func _physics_process(delta: float) -> void:
 			collider.collided()
 		elif collider.is_class("CharacterBody2D"):
 			var paddle := collider as CharacterBody2D
-			var direction := 1 if paddle.velocity.x > 0 else -1 
-			velocity.x *= direction
+			if paddle.velocity.x != 0:
+				velocity.x = sign(paddle.velocity.x) * abs(velocity.x)
