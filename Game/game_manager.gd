@@ -21,14 +21,6 @@ func _ready() -> void:
 	EventBus.debug_complete_level.connect(on_debug_complete_level)
 	start_level(startingLevel)
 
-func set_boundaries() -> void:
-	var cameraPosition: Vector2 = camera.get_screen_center_position()
-	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / Vector2(2, 2)
-	topBoundary.global_position.y = cameraPosition.y - halfSize.y
-	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
-	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
-	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
-
 #score keeping
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
 	if HitType == "Hit":
@@ -55,6 +47,14 @@ func start_level(nextLevel: PackedScene) -> void:
 	level.initialize()
 	add_child(level)
 	EventBus.level_started.emit()
+
+func set_boundaries() -> void:
+	var cameraPosition: Vector2 = camera.get_screen_center_position()
+	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / Vector2(2, 2)
+	topBoundary.global_position.y = cameraPosition.y - halfSize.y
+	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
+	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
+	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
 
 func reset_game() -> void:
 	print("Resetting game")
