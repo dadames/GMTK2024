@@ -46,7 +46,6 @@ func initialize() -> void:
 	var levelScale: int
 	if !Engine.is_editor_hint():
 		levelScale = Globals.LEVEL_SCALE
-		print(levelScale)
 	else:
 		levelScale = get_tree().get_nodes_in_group("Level").front().levelScale
 	scale = scale.sign() * levelScale * Globals.SCALE_MODIFIER

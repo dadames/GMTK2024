@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=10 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="3_31cgl"]
-[ext_resource type="Script" path="res://Game/camera.gd" id="4_0fnfe"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="Texture2D" uid="uid://b1lw27eu3ilfm" path="res://Game/Bird.png" id="6_rwbxi"]
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
@@ -92,7 +91,6 @@ unique_name_in_owner = true
 [node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
 unique_name_in_owner = true
 zoom = Vector2(1, 1)
-script = ExtResource("4_0fnfe")
 
 [node name="ResetButton" type="Button" parent="."]
 offset_left = -608.0

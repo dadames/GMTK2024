@@ -25,6 +25,7 @@ func start_level() -> void:
 	camera.scale = Vector2(25 * level.levelScale, 25 * level.levelScale)
 	set_boundaries()
 	level.initialize()
+	EventBus.level_started.emit()
 
 func set_boundaries() -> void:
 	var cameraPosition: Vector2 = camera.get_screen_center_position()
