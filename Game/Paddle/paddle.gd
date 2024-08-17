@@ -75,7 +75,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 	brick.queue_free()
 
 func on_level_started() -> void:
-	speed = 2 ** Globals.levelScale * initial_speed
+	speed = 2 ** Globals.LEVEL_SCALE * initial_speed
 
 func _on_collision_detection_body_entered(body: Node2D) -> void:
 	#call_deferred("consume_brick", body.brick, (body.position - position).posmod(Globals.BLOCK_PIXELS).snappedf(1.0))
