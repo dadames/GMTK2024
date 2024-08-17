@@ -30,6 +30,7 @@ func _on_pressed() -> void:
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jkbmv")
+startingLevel = ExtResource("7_5liut")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1714.0

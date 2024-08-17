@@ -6,7 +6,8 @@ extends Node2D
 @onready var leftBoundary: StaticBody2D = %LeftBoundary
 @onready var rightBoundary: StaticBody2D = %RightBoundary
 @onready var camera: Camera2D = %Camera2D
-@onready var level: Level = %Level1
+@export var startingLevel: PackedScene
+var level: Level
 
 var Distance := 0
 var Score:int = 0
@@ -18,15 +19,7 @@ func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
 	EventBus.reset_game.connect(reset_game)
 	EventBus.debug_complete_level.connect(on_debug_complete_level)
-	start_level()
-	
-
-func start_level() -> void:
-	camera = get_viewport().get_camera_2d()
-	camera.scale = Vector2(25 * level.levelScale, 25 * level.levelScale)
-	set_boundaries()
-	level.initialize()
-	EventBus.level_started.emit()
+	start_level(startingLevel)
 
 func set_boundaries() -> void:
 	var cameraPosition: Vector2 = camera.get_screen_center_position()
@@ -51,10 +44,14 @@ func on_level_completed() -> void:
 	if !level.nextLevel:
 		print("Winner")
 		return
-	var nextLevel := level.nextLevel
-	level.queue_free()
+	start_level(level.nextLevel)
+
+func start_level(nextLevel: PackedScene) -> void:
+	if level:
+		level.queue_free()
 	level = nextLevel.instantiate()
 	Globals.LEVEL_SCALE = level.levelScale
+	set_boundaries()
 	level.initialize()
 	add_child(level)
 	EventBus.level_started.emit()

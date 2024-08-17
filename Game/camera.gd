@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 	set_zoom(Vector2(nextZoom, nextZoom))
 
 func on_level_started() -> void:
-	targetZoom = 100
+	targetZoom = 1
 	set_zoom(Vector2(targetZoom, targetZoom))
