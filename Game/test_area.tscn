@@ -26,12 +26,12 @@ levelScale = 5.0
 
 [node name="Brick" parent="Level" instance=ExtResource("4_03qye")]
 position = Vector2(545, 350)
-scale = Vector2(1, 1)
+scale = Vector2(5, 5)
 color = Color(0.169077, 0.272924, 0.734172, 1)
 
 [node name="Brick2" parent="Level" instance=ExtResource("4_03qye")]
 position = Vector2(784, 432)
-scale = Vector2(1, 1)
+scale = Vector2(5, 5)
 color = Color(0.169077, 0.272924, 0.734172, 1)
 
 [node name="Ball" parent="." instance=ExtResource("1_p3k5k")]

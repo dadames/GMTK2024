@@ -19,7 +19,7 @@ func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
 	EventBus.reset_game.connect(reset_game)
 	EventBus.debug_complete_level.connect(on_debug_complete_level)
-	start_level(startingLevel)
+	start_level.call_deferred(startingLevel)
 
 #score keeping
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
@@ -44,7 +44,6 @@ func start_level(nextLevel: PackedScene) -> void:
 	level = nextLevel.instantiate()
 	Globals.LEVEL_SCALE = level.levelScale
 	set_boundaries()
-	level.initialize()
 	add_child(level)
 	EventBus.level_started.emit()
 
