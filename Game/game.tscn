@@ -14,7 +14,6 @@
 script = ExtResource("1_jkbmv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 offset_left = -1396.0
 offset_top = -2970.0
 offset_right = 1628.0
