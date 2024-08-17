@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var baseSpeed: float = 1000
+var collide_safe_margin: float = 1.0
 
 
 func _ready() -> void:
@@ -8,7 +9,7 @@ func _ready() -> void:
 	velocity = Vector2(cos(angle), sin(angle)) * baseSpeed
 
 func _physics_process(delta: float) -> void:
-	var collisionInfo := move_and_collide(velocity * delta)
+	var collisionInfo := move_and_collide(velocity * delta, false, collide_safe_margin)
 	if collisionInfo:
 		var collider := collisionInfo.get_collider()
 		velocity = velocity.bounce(collisionInfo.get_normal())
