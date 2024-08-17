@@ -24,6 +24,12 @@ func _process(_delta: float) -> void:
 			consume_brick(child, Vector2i.UP + Vector2i.RIGHT)
 			break
 
+func set_level_scale(level_scale: int) -> void:
+	speed = INITIAL_SPEED * 2 ** level_scale
+
+func _ready() -> void:
+	set_level_scale(get_tree().get_nodes_in_group("Level").front().levelScale)
+
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -31,9 +37,9 @@ func _physics_process(delta: float) -> void:
 		return
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * delta * INITIAL_SPEED
+		velocity.x = direction * delta * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, delta * INITIAL_SPEED)
+		velocity.x = move_toward(velocity.x, 0, delta * speed)
 	move_and_collide(velocity * delta)
 
 func consume_brick(brick: Brick, shift: Vector2i) -> void:
