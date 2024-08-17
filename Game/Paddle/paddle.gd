@@ -44,23 +44,17 @@ func _physics_process(delta: float) -> void:
 	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / Vector2(2, 2)
 	position.y = cameraPosition.y + (halfSize.y * 0.8)
 
-func consume_brick(brick: Brick, shift: Vector2i) -> void:
+func consume_brick(brick: Brick, shift: Vector2i = Vector2i.UP + Vector2i.RIGHT) -> void:
 	# align the brick to the grid along shift
 	brick.position.x += shift.x * fmod(brick.position.x, Globals.BLOCK_PIXELS)# - Globals.BLOCK_PIXELS / 2.0
 	brick.position.y += shift.y * fmod(brick.position.x, Globals.BLOCK_PIXELS)# - Globals.BLOCK_PIXELS / 2.0
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			var initialScale := child.global_scale
-			for brickSprite: Sprite2D in child.find_children("Sprite2D"):
-				brickSprite.reparent(self)
-				brickSprite.global_position = child.global_position
-				brickSprite.global_scale = initialScale
-			for brickCollider: CollisionShape2D in child.find_children("CollisionShape2D"):
-				brickCollider.reparent(self)
-				brickCollider.global_position = child.global_position
-				brickCollider.scale = initialScale
+			child.reparent(self)
+			child.global_scale = initialScale
+			child.collided()
 	brick.call_deferred("queue_free")
 
-
 func _on_area_2d_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	call_deferred("consume_brick", body.brick, Vector2i.UP + Vector2i.RIGHT)
+	call_deferred("consume_brick", body.brick)

@@ -20,6 +20,7 @@ bounce = 1.0
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
+platform_floor_layers = 4294967040
 script = ExtResource("1_fdgyd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -38,11 +39,11 @@ constant_angular_velocity = 1.74533
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_7tft1")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CollisionDetection" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
 shape = SubResource("RectangleShape2D_7tft1")
 
-[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_entered" from="CollisionDetection" to="." method="_on_area_2d_body_shape_entered"]

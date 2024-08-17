@@ -24,6 +24,7 @@ extends Node2D
 var fallSpeed := 100
 var isFalling := false
 signal falling()
+signal merge()
 
 
 func _ready() -> void:
@@ -56,5 +57,6 @@ func start_falling() -> void:
 	isFalling = true
 	falling.emit()
 
-func stop_falling() -> void:
+func start_merge() -> void:
 	isFalling = false
+	merge.emit()
