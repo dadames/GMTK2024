@@ -17,6 +17,7 @@ var Score:int = 0
 func _ready() -> void:
 	EventBus.score_change.connect(score_change)
 	EventBus.level_completed.connect(on_level_completed)
+	EventBus.zoom_finished.connect(on_zoom_finished)
 	EventBus.reset_game.connect(reset_game)
 	EventBus.debug_complete_level.connect(on_debug_complete_level)
 	start_level.call_deferred(startingLevel)
@@ -43,9 +44,19 @@ func start_level(nextLevel: PackedScene) -> void:
 		level.queue_free()
 	level = nextLevel.instantiate()
 	Globals.LEVEL_SCALE = level.levelScale
-	set_boundaries()
+	disable_boundaries()
 	add_child(level)
 	EventBus.level_started.emit()
+
+func disable_boundaries() -> void:
+	topBoundary.set_collision_layer_value(2, false)
+	leftBoundary.set_collision_layer_value(2, false)
+	rightBoundary.set_collision_layer_value(2, false)
+	bottomBoundary.set_collision_layer_value(8, false)
+	bottomBoundary.set_collision_mask_value(7, false)
+
+func on_zoom_finished() -> void:
+	set_boundaries()
 
 func set_boundaries() -> void:
 	var cameraPosition: Vector2 = camera.get_screen_center_position()
@@ -54,6 +65,11 @@ func set_boundaries() -> void:
 	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
 	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
 	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
+	topBoundary.set_collision_layer_value(2, true)
+	leftBoundary.set_collision_layer_value(2, true)
+	rightBoundary.set_collision_layer_value(2, true)
+	bottomBoundary.set_collision_layer_value(8, true)
+	bottomBoundary.set_collision_mask_value(7, true)
 
 func reset_game() -> void:
 	print("Resetting game")

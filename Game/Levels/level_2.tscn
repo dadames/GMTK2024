@@ -11,7 +11,7 @@ levelScale = 2.0
 
 [node name="Brick" parent="Bricks" instance=ExtResource("2_0eg7v")]
 position = Vector2(-48, -160)
-scale = Vector2(1, 1)
+scale = Vector2(-1, 1)
 color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 2
 mirrored = true
@@ -19,7 +19,7 @@ mirrored = true
 [node name="Brick2" parent="Bricks" instance=ExtResource("2_0eg7v")]
 position = Vector2(16, -256)
 rotation = 3.14159
-scale = Vector2(1, 1)
+scale = Vector2(-1, 1)
 color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 2
 mirrored = true

@@ -10,9 +10,9 @@ var bricks: Array[Brick]
 func _ready() -> void:
 	EventBus.brick_initialized_in_level.connect(on_brick_initialized_in_level)
 	EventBus.brick_removed_from_level.connect(on_brick_removed_from_level)
-
+	
 	bricks_container.scale = Vector2.ONE * 2 ** (levelScale - 1)
-
+	
 	for brick: Brick in bricks_container.get_children():
 		brick.initialize()
 
