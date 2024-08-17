@@ -90,30 +90,32 @@ baseSpeed = 500.0
 unique_name_in_owner = true
 zoom = Vector2(1, 1)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ResetButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -479.0
-offset_top = -357.0
-offset_right = -319.0
-offset_bottom = -293.0
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResetButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_right = 160.0
+offset_bottom = 64.0
 text = "Reset the game"
 script = SubResource("GDScript_uejsq")
 
-[node name="DebugComplete" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -480.0
-offset_top = -278.0
-offset_right = -307.0
-offset_bottom = -214.0
+[node name="DebugComplete" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 3.0
+offset_top = 66.0
+offset_right = 176.0
+offset_bottom = 130.0
 text = "DebugCompleteLevel"
 script = ExtResource("8_j18m4")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
-[connection signal="pressed" from="Control/ResetButton" to="Control/ResetButton" method="_on_pressed"]
-[connection signal="pressed" from="Control/DebugComplete" to="Control/DebugComplete" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ResetButton" to="CanvasLayer/Control/ResetButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
