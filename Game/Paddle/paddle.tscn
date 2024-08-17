@@ -30,6 +30,7 @@ shape = SubResource("RectangleShape2D_7tft1")
 texture = SubResource("NoiseTexture2D_jnx1s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 32
 collision_mask = 64
 physics_material_override = SubResource("PhysicsMaterial_5cggl")
@@ -40,6 +41,7 @@ unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_7tft1")
 
 [node name="CollisionDetection" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 16
 
