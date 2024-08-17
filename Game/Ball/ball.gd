@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
 				pass
 				#velocity.x = sign(paddle.velocity.x) * abs(velocity.x)
 			if snapped(collisionInfo.get_angle()/PI, 0.1) == 0.5:
-				print(snapped(collisionInfo.get_angle()/PI, 0.1))
+				#print(snapped(collisionInfo.get_angle()/PI, 0.1))
 				position.x = position.x + (10*sign(velocity.x))
-				print(sign(velocity.x))
-				#velocity.x = velocity.x * 2
+				#print(sign(velocity.x))
