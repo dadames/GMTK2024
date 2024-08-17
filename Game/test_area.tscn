@@ -13,6 +13,7 @@ bounce = 1.0
 
 [node name="Ball" parent="." instance=ExtResource("1_p3k5k")]
 position = Vector2(640, 256)
+speed = 500.0
 
 [node name="Paddle" parent="." instance=ExtResource("1_3oi57")]
 position = Vector2(645, 608)
@@ -29,4 +30,8 @@ scale = 10
 
 [node name="Brick" parent="Level" instance=ExtResource("4_03qye")]
 position = Vector2(545, 350)
+color = Color(0.169077, 0.272924, 0.734172, 1)
+
+[node name="Brick2" parent="Level" instance=ExtResource("4_03qye")]
+position = Vector2(784, 432)
 color = Color(0.169077, 0.272924, 0.734172, 1)
