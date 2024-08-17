@@ -1,8 +1,8 @@
 class_name Level
-extends Node
+extends Node2D
 
 
-@export var scale: int = 5
+@export var levelScale: int = 5
 
 
 func _ready() -> void:
