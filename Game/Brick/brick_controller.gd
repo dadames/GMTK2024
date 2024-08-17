@@ -21,7 +21,7 @@ extends Node2D
 		elif !value && scale.x < 0:
 			scale.x *= -1
 		_ready()
-var fallSpeed := 10
+var fallSpeed := 100
 var isFalling := false
 signal falling()
 

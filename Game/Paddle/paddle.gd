@@ -14,7 +14,7 @@ var speed: float = INITIAL_SPEED
 		_ready()
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var body: PhysicsBody2D = $StaticBody2D
+@onready var body2D: PhysicsBody2D = $StaticBody2D
 @onready var collider: CollisionShape2D = %CollisionShape2D
 
 
@@ -48,22 +48,19 @@ func consume_brick(brick: Brick, shift: Vector2i) -> void:
 	# align the brick to the grid along shift
 	brick.position.x += shift.x * fmod(brick.position.x, Globals.BLOCK_PIXELS)# - Globals.BLOCK_PIXELS / 2.0
 	brick.position.y += shift.y * fmod(brick.position.x, Globals.BLOCK_PIXELS)# - Globals.BLOCK_PIXELS / 2.0
-	
-	#
-	for child_1 in brick.get_children():
-		if child_1 is SemiBrick:
-			for brick_sprite: Sprite2D in child_1.find_children("Sprite2D"):
-				var brick_global_scale := brick_sprite.global_scale
-				brick_sprite.get_parent().remove_child(brick_sprite)
-				add_child(brick_sprite)
-				brick_sprite.global_position = child_1.global_position
-				brick_sprite.global_scale = brick_global_scale
+	for child: Node2D in brick.get_children():
+		if child is SemiBrick:
+			var initialScale := child.global_scale
+			for brickSprite: Sprite2D in child.find_children("Sprite2D"):
+				brickSprite.reparent(self)
+				brickSprite.global_position = child.global_position
+				brickSprite.global_scale = initialScale
+			for brickCollider: CollisionShape2D in child.find_children("CollisionShape2D"):
+				brickCollider.reparent(self)
+				brickCollider.global_position = child.global_position
+				brickCollider.scale = initialScale
+	brick.call_deferred("queue_free")
 
-			for brick_collider: CollisionShape2D in child_1.find_children("CollisionShape2D"):
-				var brick_global_scale := brick_collider.global_scale
-				brick_collider.get_parent().remove_child(brick_collider)
-				body.add_child(brick_collider)
-				brick_collider.global_position = child_1.global_position
-				brick_collider.scale = brick_global_scale
 
-	brick.queue_free()
+func _on_area_2d_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	call_deferred("consume_brick", body.brick, Vector2i.UP + Vector2i.RIGHT)

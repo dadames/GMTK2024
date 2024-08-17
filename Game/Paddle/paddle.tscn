@@ -30,10 +30,19 @@ texture = SubResource("NoiseTexture2D_jnx1s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 32
-collision_mask = 80
+collision_mask = 64
 physics_material_override = SubResource("PhysicsMaterial_5cggl")
 constant_angular_velocity = 1.74533
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_7tft1")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7tft1")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
