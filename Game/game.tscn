@@ -48,11 +48,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary"]
 shape = SubResource("WorldBoundaryShape2D_1uayy")
 
-[node name="BottomBoundary" type="StaticBody2D" parent="."]
+[node name="BottomBoundary" type="Area2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 14.4)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 128
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary"]
 shape = SubResource("WorldBoundaryShape2D_1uayy")
@@ -100,4 +100,5 @@ offset_bottom = -256.0
 text = "Reset the game"
 script = SubResource("GDScript_uejsq")
 
+[connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

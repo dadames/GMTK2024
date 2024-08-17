@@ -1,3 +1,4 @@
+class_name Ball
 extends CharacterBody2D
 
 @export var baseSpeed: float = 1000

@@ -2,7 +2,7 @@ extends Node2D
 
 
 @onready var topBoundary: StaticBody2D = %TopBoundary
-@onready var bottomBoundary: StaticBody2D = %BottomBoundary
+@onready var bottomBoundary: CollisionObject2D = %BottomBoundary
 @onready var leftBoundary: StaticBody2D = %LeftBoundary
 @onready var rightBoundary: StaticBody2D = %RightBoundary
 @onready var camera: Camera2D = %Camera2D
@@ -56,3 +56,10 @@ func on_level_completed() -> void:
 func reset_game() -> void:
 	print("Reseting game")
 	get_tree().reload_current_scene()
+
+func on_ball_fall() -> void:
+	print_debug("Ball Fell ;(")
+
+func _on_bottom_boundary_body_entered(body:Node2D) -> void:
+	if body is Ball || body.find_parent("Ball"):
+		on_ball_fall()
