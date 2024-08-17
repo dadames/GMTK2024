@@ -33,10 +33,10 @@ script = ExtResource("1_jkbmv")
 startingLevel = ExtResource("7_5liut")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -3382.0
-offset_top = -3303.0
-offset_right = 4223.0
-offset_bottom = 6331.0
+offset_left = -3913.0
+offset_top = -5022.0
+offset_right = 3692.0
+offset_bottom = 4612.0
 texture = ExtResource("3_o420k")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
@@ -85,9 +85,6 @@ position = Vector2(3, 238)
 position = Vector2(0, 159)
 collision_mask = 14
 baseSpeed = 500.0
-
-[node name="Level1" parent="." instance=ExtResource("7_5liut")]
-unique_name_in_owner = true
 
 [node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
 unique_name_in_owner = true
