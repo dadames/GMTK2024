@@ -1,8 +1,8 @@
 extends Camera2D
 
 
-var targetZoom: int
-var zoomSpeed := 0.1
+var targetZoom: float
+var zoomSpeed := 0.5
 var startTime: float
 
 func _ready() -> void:
@@ -10,14 +10,10 @@ func _ready() -> void:
 	targetZoom = zoom.x
 
 func _process(delta: float) -> void:
-	if zoom.x == targetZoom:
+	if zoom.x <= targetZoom:
 		return
-	var elapsedTime := Time.get_unix_time_from_system() - startTime
-	if elapsedTime >= zoomSpeed:
-		set_zoom(zoom + Vector2(1,1))
-		startTime = Time.get_unix_time_from_system()
-	
+	set_zoom(zoom - Vector2(zoomSpeed * delta,zoomSpeed * delta))
+
 
 func on_level_started() -> void:
-	targetZoom = Globals.LEVEL_SCALE / 1
-	startTime = Time.get_unix_time_from_system()
+	targetZoom = 1.0 / Globals.LEVEL_SCALE

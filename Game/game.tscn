@@ -93,7 +93,13 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 zoom = Vector2(1, 1)
 
-[node name="ResetButton" type="Button" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ResetButton" type="Button" parent="Control"]
 offset_left = -479.0
 offset_top = -357.0
 offset_right = -319.0
@@ -101,7 +107,7 @@ offset_bottom = -293.0
 text = "Reset the game"
 script = SubResource("GDScript_uejsq")
 
-[node name="DebugComplete" type="Button" parent="."]
+[node name="DebugComplete" type="Button" parent="Control"]
 offset_left = -480.0
 offset_top = -278.0
 offset_right = -307.0
@@ -110,5 +116,5 @@ text = "DebugCompleteLevel"
 script = ExtResource("8_j18m4")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
-[connection signal="pressed" from="ResetButton" to="ResetButton" method="_on_pressed"]
-[connection signal="pressed" from="DebugComplete" to="DebugComplete" method="_on_pressed"]
+[connection signal="pressed" from="Control/ResetButton" to="Control/ResetButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/DebugComplete" to="Control/DebugComplete" method="_on_pressed"]
