@@ -13,8 +13,16 @@ func _physics_process(delta: float) -> void:
 		var collider := collisionInfo.get_collider()
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
+			#EventBus.score_change.emit("Hit")
 			collider.collided()
 		elif collider.is_class("CharacterBody2D"):
 			var paddle := collider as CharacterBody2D
+			#give paddle velocity to ball
 			if paddle.velocity.x != 0:
-				velocity.x = sign(paddle.velocity.x) * abs(velocity.x)
+				pass
+				#velocity.x = sign(paddle.velocity.x) * abs(velocity.x)
+			if snapped(collisionInfo.get_angle()/PI, 0.1) == 0.5:
+				print(snapped(collisionInfo.get_angle()/PI, 0.1))
+				position.x = position.x + (10*sign(velocity.x))
+				print(sign(velocity.x))
+				#velocity.x = velocity.x * 2
