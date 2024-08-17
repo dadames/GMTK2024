@@ -54,6 +54,7 @@ func on_level_completed() -> void:
 	Globals.LEVEL_SCALE = level.levelScale
 	level.initialize()
 	add_child(level)
+	EventBus.level_started.emit()
 
 func reset_game() -> void:
 	print("Resetting game")

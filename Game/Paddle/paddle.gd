@@ -22,6 +22,7 @@ var initialized := false
 func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 	initialized = true
+	EventBus.level_started.connect(on_level_started)
 
 func _process(_delta: float) -> void:
 	if !initialized:
@@ -72,6 +73,9 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.position = dup.position.snappedf(Globals.BLOCK_PIXELS)
 
 	brick.queue_free()
+
+func on_level_started() -> void:
+	speed = 2 ** Globals.levelScale * initial_speed
 
 func _on_collision_detection_body_entered(body: Node2D) -> void:
 	#call_deferred("consume_brick", body.brick, (body.position - position).posmod(Globals.BLOCK_PIXELS).snappedf(1.0))
