@@ -15,9 +15,7 @@ func _physics_process(delta: float) -> void:
 	var CollisionInfo := move_and_collide(velocity * delta)
 	if CollisionInfo:
 		var CollisionType := CollisionInfo.get_collider()
+		print (CollisionType)
 		velocity = velocity.bounce(CollisionInfo.get_normal())
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	#if body.is_in_group("Bricks"):
-	print ("waow it works")
+		if CollisionType.has_method("collided"):
+			CollisionType.collided()
