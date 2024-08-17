@@ -2,7 +2,7 @@
 
 extends CharacterBody2D
 
-const INITIAL_SPEED = 18000.0
+const INITIAL_SPEED = 2000.0
 
 var speed: float = INITIAL_SPEED
 
@@ -13,7 +13,7 @@ var speed: float = INITIAL_SPEED
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var body: PhysicsBody2D = $StaticBody2D
-@onready var collider: CollisionShape2D = $StaticBody2D/CollisionShape2D
+@onready var collider: CollisionShape2D = %CollisionShape2D
 
 func _ready() -> void:
 	sprite.texture.width = Globals.BLOCK_PIXELS * width
@@ -35,8 +35,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * delta * INITIAL_SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * INITIAL_SPEED)
-
-	move_and_slide()
+	move_and_collide(velocity * delta)
 
 func consume_brick(brick: Brick, destination: Vector2i) -> void:
 	add_child(brick)

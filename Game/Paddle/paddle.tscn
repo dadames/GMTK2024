@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://Game/Paddle/paddle.gd" id="1_fdgyd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tft1"]
+size = Vector2(160, 32)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1cblr"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jnx1s"]
@@ -13,12 +16,14 @@ noise = SubResource("FastNoiseLite_1cblr")
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tft1"]
-size = Vector2(160, 32)
-
 [node name="Paddle" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_fdgyd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7tft1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("NoiseTexture2D_jnx1s")
@@ -28,4 +33,5 @@ physics_material_override = SubResource("PhysicsMaterial_5cggl")
 constant_angular_velocity = 1.74533
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_7tft1")
