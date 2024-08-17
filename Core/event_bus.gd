@@ -1,6 +1,7 @@
 extends Node
 
 signal reset_game()
+signal debug_complete_level()
 signal brick_initialized_in_level(brick: Brick)
 signal brick_removed_from_level(brick: Brick)
 signal level_completed()

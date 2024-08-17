@@ -6,11 +6,10 @@ var brick: Brick
 enum State {Static, Falling, Merged}
 var activeState: State = State.Static
 
-@onready var sprite: Sprite2D = $Sprite2D
 
 func initialize(brickIn: Brick) -> void:
 	brick = brickIn
-	sprite.modulate = brick.color
+	$Sprite2D.modulate = brick.color
 	brick.falling.connect(on_falling)
 
 func collided() -> void:

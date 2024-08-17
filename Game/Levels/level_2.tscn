@@ -11,34 +11,34 @@ levelScale = 1.0
 position = Vector2(-48, -160)
 rotation = -3.14159
 scale = Vector2(-1, -1)
-color = Color(0.946401, 4.52429e-06, 0.581088, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 2
 mirrored = true
 
 [node name="Brick2" parent="." instance=ExtResource("2_0eg7v")]
 position = Vector2(16, -256)
 scale = Vector2(-1, -1)
-color = Color(0, 0.625875, 0.507805, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 2
 mirrored = true
 
 [node name="Brick3" parent="." instance=ExtResource("2_0eg7v")]
 position = Vector2(-32, -208)
 scale = Vector2(1, -1)
-color = Color(0.0186666, 0.56, 0, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 
 [node name="Brick4" parent="." instance=ExtResource("2_0eg7v")]
 position = Vector2(64, -144)
 rotation = -3.14159
 scale = Vector2(-1, -1)
-color = Color(1, 0, 0, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 mirrored = true
 
 [node name="Brick5" parent="." instance=ExtResource("2_0eg7v")]
 position = Vector2(-80, -256)
 rotation = -1.5708
 scale = Vector2(-1, -1)
-color = Color(0.976945, 0, 0.396955, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 3
 mirrored = true
 
@@ -46,21 +46,21 @@ mirrored = true
 position = Vector2(16, -192)
 rotation = -1.57079
 scale = Vector2(-1, -1)
-color = Color(0.976945, 0, 0.396955, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 3
 mirrored = true
 
 [node name="Brick7" parent="." instance=ExtResource("2_0eg7v")]
 position = Vector2(0, -288)
 scale = Vector2(-1, -1)
-color = Color(0.938374, 1.16476e-05, 0.617613, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 0
 mirrored = true
 
 [node name="Brick8" parent="." instance=ExtResource("2_0eg7v")]
 position = Vector2(-32, -128)
 scale = Vector2(-1, -1)
-color = Color(0.248508, 0.585596, 0.675295, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 0
 mirrored = true
 
@@ -68,6 +68,6 @@ mirrored = true
 position = Vector2(80, -240)
 rotation = 1.5708
 scale = Vector2(-1, -1)
-color = Color(0.248508, 0.585596, 0.675295, 1)
+color = Color(0.266331, 0.501214, 1, 1)
 shapeType = 0
 mirrored = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=11 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="Texture2D" uid="uid://b1lw27eu3ilfm" path="res://Game/Bird.png" id="6_rwbxi"]
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
+[ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -92,7 +93,7 @@ unique_name_in_owner = true
 zoom = Vector2(1, 1)
 script = ExtResource("4_0fnfe")
 
-[node name="Button" type="Button" parent="."]
+[node name="ResetButton" type="Button" parent="."]
 offset_left = -608.0
 offset_top = -320.0
 offset_right = -448.0
@@ -100,5 +101,14 @@ offset_bottom = -256.0
 text = "Reset the game"
 script = SubResource("GDScript_uejsq")
 
+[node name="DebugComplete" type="Button" parent="."]
+offset_left = -603.0
+offset_top = -243.0
+offset_right = -430.0
+offset_bottom = -179.0
+text = "DebugCompleteLevel"
+script = ExtResource("8_j18m4")
+
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="ResetButton" to="ResetButton" method="_on_pressed"]
+[connection signal="pressed" from="DebugComplete" to="DebugComplete" method="_on_pressed"]

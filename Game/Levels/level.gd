@@ -9,6 +9,8 @@ var bricks: Array[Brick]
 func _ready() -> void:
 	EventBus.brick_initialized_in_level.connect(on_brick_initialized_in_level)
 	EventBus.brick_removed_from_level.connect(on_brick_removed_from_level)
+
+func initialize() -> void:
 	for child: Node in get_children():
 		child.initialize()
 
