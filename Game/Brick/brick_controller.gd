@@ -29,7 +29,7 @@ signal merge()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
-			initialize()
+		initialize()
 
 func _process(delta: float) -> void:
 	if isFalling && !Engine.is_editor_hint():
@@ -40,6 +40,8 @@ func initialize() -> void:
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	set_shape(shape)
+	if !Engine.is_editor_hint():
+		EventBus.brick_initialized_in_level.emit(self)
 
 func set_shape(shape: BrickShape) -> void:
 	Utilities.clear_children(self)
