@@ -2,7 +2,7 @@ class_name Level
 extends Node
 
 
-@export var scale: int = 5
+@export var levelScale: int = 5
 
 
 func _ready() -> void:

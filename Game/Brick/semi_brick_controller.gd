@@ -5,10 +5,11 @@ extends Node2D
 var brick: Brick
 var hasFallen := false
 
+@onready var sprite: Sprite2D = $Sprite2D
 
 func initialize(brickIn: Brick) -> void:
 	brick = brickIn
-	modulate = brick.color
+	sprite.modulate = brick.color
 	brick.falling.connect(is_falling)
 
 func collided() -> void:

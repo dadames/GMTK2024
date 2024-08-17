@@ -34,3 +34,9 @@ window/stretch/aspect="expand"
 [global_group]
 
 Level=""
+
+[layer_names]
+
+2d_physics/layer_2="Wall"
+2d_physics/layer_3="Paddle"
+2d_physics/layer_4="Brick"

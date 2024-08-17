@@ -6,16 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_viega"]
 size = Vector2(2, 2)
 
-[node name="SemiBrick" type="Node2D"]
+[node name="SemiBrick" type="StaticBody2D"]
+collision_mask = 0
 script = ExtResource("1_4q7xf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.063, 0.063)
 texture = ExtResource("1_r13ow")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.98023e-08, 0)
 shape = SubResource("RectangleShape2D_viega")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]

@@ -14,15 +14,14 @@ func _ready() -> void:
 
 func start_level() -> void:
 	camera = get_viewport().get_camera_2d()
-	camera.scale = Vector2(25 * level.scale, 25 * level.scale)
+	camera.scale = Vector2(25 * level.levelScale, 25 * level.levelScale)
 	set_boundaries()
 
 func set_boundaries() -> void:
 	var cameraPosition: Vector2 = get_viewport().get_camera_2d().get_screen_center_position()
-	var halfY: float = get_viewport().size.y / camera.scale.y
+	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.scale / Vector2(2, 2)
 	print(get_viewport().size)
-	topBoundary.global_position.y = cameraPosition.y - halfY
-	bottomBoundary.global_position.y = cameraPosition.y + halfY
-	var halfX: float = get_viewport().size.x / camera.scale.x
-	leftBoundary.global_position.x = cameraPosition.x - halfX
-	rightBoundary.global_position.x = cameraPosition.x + halfX
+	topBoundary.global_position.y = cameraPosition.y - halfSize.y
+	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
+	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
+	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
