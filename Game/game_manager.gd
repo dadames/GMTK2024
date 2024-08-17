@@ -15,6 +15,7 @@ var Score:int = 0
 func _ready() -> void:
 	EventBus.score_change.connect(score_change)
 	EventBus.level_completed.connect(on_level_completed)
+	EventBus.reset_game.connect(reset_game)
 	start_level()
 	
 
@@ -46,3 +47,8 @@ func on_level_completed() -> void:
 	level.queue_free()
 	level = nextLevel
 	add_child(level)
+
+#Handle resetting the game 
+func reset_game() -> void:
+	print("Reseting game")
+	get_tree().reload_current_scene()
