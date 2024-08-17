@@ -24,12 +24,6 @@ func _process(_delta: float) -> void:
 			consume_brick(child, Vector2i.UP + Vector2i.RIGHT)
 			break
 
-func set_level_scale(level_scale: int) -> void:
-	speed = INITIAL_SPEED * 2 ** level_scale
-
-func _ready() -> void:
-	set_level_scale(get_tree().get_nodes_in_group("Level").front().levelScale)
-
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -41,6 +35,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, delta * speed)
 	move_and_collide(velocity * delta)
+	var camera := get_viewport().get_camera_2d()
+	var cameraPosition: Vector2 = camera.get_screen_center_position()
+	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / Vector2(2, 2)
+	position.y = cameraPosition.y + (halfSize.y * 0.8)
 
 func consume_brick(brick: Brick, shift: Vector2i) -> void:
 	# align the brick to the grid along shift

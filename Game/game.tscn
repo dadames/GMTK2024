@@ -13,24 +13,19 @@
 script = ExtResource("1_jkbmv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -1332.0
-offset_top = -1979.0
-offset_right = 1692.0
-offset_bottom = 2053.0
+offset_left = -1396.0
+offset_top = -2970.0
+offset_right = 1628.0
+offset_bottom = 1062.0
 texture = ExtResource("6_rwbxi")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
 unique_name_in_owner = true
-zoom = Vector2(4.29497e+09, 4.29497e+09)
+zoom = Vector2(1000, 1000)
 
 [node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
-visible = false
-position = Vector2(-9.53674e-07, 11)
-
-[node name="Ball" parent="." instance=ExtResource("4_nyhvm")]
-position = Vector2(0, 4)
-scale = Vector2(0.063, 0.063)
-collision_mask = 14
+position = Vector2(0, 7)
+scale = Vector2(0.001, 0.001)
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
@@ -73,3 +68,9 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="Level1" parent="." instance=ExtResource("2_0hxx3")]
 unique_name_in_owner = true
+
+[node name="Ball" parent="." instance=ExtResource("4_nyhvm")]
+visible = false
+position = Vector2(0, 4)
+scale = Vector2(0.063, 0.063)
+collision_mask = 14

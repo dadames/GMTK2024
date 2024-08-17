@@ -18,9 +18,8 @@ func start_level() -> void:
 	set_boundaries()
 
 func set_boundaries() -> void:
-	var cameraPosition: Vector2 = get_viewport().get_camera_2d().get_screen_center_position()
-	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.scale / Vector2(2, 2)
-	print(get_viewport().size)
+	var cameraPosition: Vector2 = camera.get_screen_center_position()
+	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / Vector2(2, 2)
 	topBoundary.global_position.y = cameraPosition.y - halfSize.y
 	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
 	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
