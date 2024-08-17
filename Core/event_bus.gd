@@ -6,4 +6,4 @@ signal brick_removed_from_level(brick: Brick)
 signal level_completed()
 signal game_over()
 
-signal score_hit()
+signal score_change(HitType: String)

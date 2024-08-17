@@ -14,7 +14,7 @@ var Score:int = 0
 
 func _ready() -> void:
 	start_level()
-	EventBus.score_hit.connect(score_hit)
+	EventBus.score_change.connect(score_change)
 
 func start_level() -> void:
 	camera = get_viewport().get_camera_2d()
@@ -30,6 +30,7 @@ func set_boundaries() -> void:
 	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
 
 #score keeping
-func score_hit() -> void:
-	Score += ScoreHit
-	print(Score)
+func score_change(HitType: String) -> void:
+	if HitType == "Hit":
+		Score += ScoreHit
+		print("Block Hit! New Score:",Score)
