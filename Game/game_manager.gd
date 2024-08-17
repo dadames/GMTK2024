@@ -8,9 +8,13 @@ extends Node2D
 @onready var camera: Camera2D = %Camera2D
 @onready var level: Level = %Level1
 
+var Score:int = 0
+@export var ScoreHit:int = 1
+@export var ScoreCatch:int = 1
 
 func _ready() -> void:
 	start_level()
+	EventBus.score_hit.connect(score_hit)
 
 func start_level() -> void:
 	camera = get_viewport().get_camera_2d()
@@ -24,3 +28,8 @@ func set_boundaries() -> void:
 	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
 	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
 	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
+
+#score keeping
+func score_hit() -> void:
+	Score += ScoreHit
+	print(Score)
