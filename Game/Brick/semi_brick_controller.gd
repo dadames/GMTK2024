@@ -1,6 +1,6 @@
 @tool
 class_name SemiBrick
-extends Node2D
+extends RigidBody2D
 
 var brick: Brick
 var hasFallen := false
@@ -20,3 +20,5 @@ func collided() -> void:
 
 func is_falling() -> void:
 	hasFallen = true
+	set_collision_layer_value(4, false)
+	set_collision_layer_value(5, true)

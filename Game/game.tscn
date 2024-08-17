@@ -24,8 +24,8 @@ unique_name_in_owner = true
 zoom = Vector2(4.29497e+09, 4.29497e+09)
 
 [node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
+visible = false
 position = Vector2(-9.53674e-07, 11)
-scale = Vector2(0.5, 0.5)
 
 [node name="Ball" parent="." instance=ExtResource("4_nyhvm")]
 position = Vector2(0, 4)
@@ -73,3 +73,4 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="Level1" parent="." instance=ExtResource("2_0hxx3")]
 unique_name_in_owner = true
+levelScale = 0.1

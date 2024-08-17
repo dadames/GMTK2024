@@ -53,7 +53,6 @@ func consume_brick(brick: Brick, destination: Vector2i) -> void:
 				brick_sprite.get_parent().remove_child(brick_sprite)
 				add_child(brick_sprite)
 				brick_sprite.position = child_1.position + position_offset
-
 			for brick_collider: CollisionShape2D in child_1.find_children("CollisionShape2D"):
 				brick_collider.get_parent().remove_child(brick_collider)
 				body.add_child(brick_collider)
