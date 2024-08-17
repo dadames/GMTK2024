@@ -1,5 +1,5 @@
 class_name Level
-extends Node2D
+extends Node
 
 
 @export var levelScale: int = 5

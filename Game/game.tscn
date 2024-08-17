@@ -13,6 +13,7 @@ script = ExtResource("1_jkbmv")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
 unique_name_in_owner = true
+zoom = Vector2(1, 1)
 
 [node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
 position = Vector2(-9.53674e-07, 11)
@@ -50,14 +51,12 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="RightBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(43, 0)
+position = Vector2(640, 0)
 rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary"]
 position = Vector2(1, -16)
 shape = SubResource("WorldBoundaryShape2D_1uayy")
 
-[node name="Scaled" type="Node2D" parent="."]
-
-[node name="Level1" parent="Scaled" instance=ExtResource("2_0hxx3")]
+[node name="Level1" parent="." instance=ExtResource("2_0hxx3")]
 unique_name_in_owner = true
