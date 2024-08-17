@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l2cyu1no2u1i"]
 
 [ext_resource type="Script" path="res://Game/Brick/brick_controller.gd" id="1_uxt67"]
-[ext_resource type="PackedScene" uid="uid://c3i5efug856wq" path="res://Game/Brick/semi_brick.tscn" id="2_3ssye"]
+[ext_resource type="PackedScene" uid="uid://nig656d6qykr" path="res://Game/Brick/semi_brick.tscn" id="2_3ssye"]
 
 [node name="Brick" type="Node2D"]
 script = ExtResource("1_uxt67")
