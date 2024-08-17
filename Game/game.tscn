@@ -73,4 +73,3 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="Level1" parent="." instance=ExtResource("2_0hxx3")]
 unique_name_in_owner = true
-levelScale = 0.1

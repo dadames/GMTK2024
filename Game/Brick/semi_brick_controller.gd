@@ -1,6 +1,6 @@
 @tool
 class_name SemiBrick
-extends RigidBody2D
+extends StaticBody2D
 
 var brick: Brick
 var hasFallen := false
