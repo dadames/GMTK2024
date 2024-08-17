@@ -14,6 +14,5 @@ func _process(delta: float) -> void:
 		return
 	set_zoom(zoom - Vector2(zoomSpeed * delta,zoomSpeed * delta))
 
-
 func on_level_started() -> void:
 	targetZoom = 1.0 / Globals.LEVEL_SCALE

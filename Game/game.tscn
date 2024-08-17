@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="3_31cgl"]
+[ext_resource type="Texture2D" uid="uid://dyhjaffr03i5p" path="res://Game/53912178488_3ab9e86872_o.jpg" id="3_o420k"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
-[ext_resource type="Texture2D" uid="uid://b1lw27eu3ilfm" path="res://Game/Bird.png" id="6_rwbxi"]
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
 
@@ -33,11 +33,11 @@ script = ExtResource("1_jkbmv")
 startingLevel = ExtResource("7_5liut")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -1714.0
-offset_top = -2590.0
-offset_right = 1310.0
-offset_bottom = 1442.0
-texture = ExtResource("6_rwbxi")
+offset_left = -3382.0
+offset_top = -3303.0
+offset_right = 4223.0
+offset_bottom = 6331.0
+texture = ExtResource("3_o420k")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
@@ -100,6 +100,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ResetButton" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = -479.0
 offset_top = -357.0
 offset_right = -319.0
@@ -108,6 +109,7 @@ text = "Reset the game"
 script = SubResource("GDScript_uejsq")
 
 [node name="DebugComplete" type="Button" parent="Control"]
+layout_mode = 0
 offset_left = -480.0
 offset_top = -278.0
 offset_right = -307.0
