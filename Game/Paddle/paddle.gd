@@ -34,6 +34,7 @@ func _process(_delta: float) -> void:
 			consume_brick(child, Vector2i.UP + Vector2i.RIGHT)
 			break
 
+#Movement
 func _physics_process(delta: float) -> void:
 	if !initialized || Engine.is_editor_hint():
 		return

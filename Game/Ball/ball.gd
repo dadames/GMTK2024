@@ -14,7 +14,7 @@ func _ready() -> void:
 func level_started() -> void:
 	var TargetSize:int = Globals.LEVEL_SCALE
 	self.scale = Vector2(TargetSize, TargetSize)
-		
+
 #Collision handling
 func _physics_process(delta: float) -> void:
 	var collisionInfo := move_and_collide(velocity * delta, false, collide_safe_margin)
