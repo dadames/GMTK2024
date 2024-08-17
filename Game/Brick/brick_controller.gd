@@ -28,14 +28,14 @@ signal falling()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		initialize()
+			initialize()
 
 func _process(delta: float) -> void:
 	if isFalling && !Engine.is_editor_hint():
 		position.y += delta * fallSpeed
 
 func initialize() -> void:
-	scale = scale.sign() * 2 ** get_tree().get_nodes_in_group("Level").front().levelScale
+	scale = scale.sign() * get_tree().get_nodes_in_group("Level").front().levelScale * Globals.SCALE_MODIFIER
 	var shape := BrickShape.new()
 	shape.shape = shapeType
 	set_shape(shape)
@@ -54,7 +54,6 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 
 func start_falling() -> void:
 	isFalling = true
-	print("A")
 	falling.emit()
 
 func stop_falling() -> void:

@@ -2,7 +2,7 @@
 
 extends CharacterBody2D
 
-const INITIAL_SPEED = 2000.0
+const INITIAL_SPEED = 15000.0
 
 var speed: float = INITIAL_SPEED
 
@@ -16,6 +16,10 @@ var speed: float = INITIAL_SPEED
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var body: PhysicsBody2D = $StaticBody2D
 @onready var collider: CollisionShape2D = %CollisionShape2D
+
+
+func _ready() -> void:
+	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 
 func _process(_delta: float) -> void:
 	if OS.is_debug_build() && !Engine.is_editor_hint() && Input.is_key_pressed(KEY_0):

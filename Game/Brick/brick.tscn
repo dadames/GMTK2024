@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3i5efug856wq" path="res://Game/Brick/semi_brick.tscn" id="2_3ssye"]
 
 [node name="Brick" type="Node2D"]
+scale = Vector2(100, 100)
 script = ExtResource("1_uxt67")
 semiBrickPrefab = ExtResource("2_3ssye")
 shapeType = 1
