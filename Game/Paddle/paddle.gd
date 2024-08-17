@@ -23,6 +23,8 @@ func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 
 func _process(_delta: float) -> void:
+	_consumed_bricks_this_frame = []
+
 	if OS.is_debug_build() && !Engine.is_editor_hint() && Input.is_key_pressed(KEY_0):
 		for child in get_parent().find_children("Brick"):
 			child.position = position
