@@ -58,3 +58,7 @@ spawn_ball={
 2d_physics/layer_6="ColliderPaddle"
 2d_physics/layer_7="Ball"
 2d_physics/layer_8="Bottom"
+
+[rendering]
+
+viewport/hdr_2d=true

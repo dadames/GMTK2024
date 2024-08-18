@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=16 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
+[ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="9_3vi6x"]
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="9_cchhr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
@@ -31,12 +32,18 @@ func _on_pressed() -> void:
 	EventBus.reset_game.emit()
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kn3pt"]
+shader = ExtResource("9_3vi6x")
+shader_parameter/fadeSpeed = 1.0
+
 [sub_resource type="Environment" id="Environment_ad25h"]
 background_mode = 3
 glow_enabled = true
-glow_bloom = 0.01
+glow_intensity = 0.32
+glow_strength = 0.7
+glow_bloom = 0.15
 glow_blend_mode = 0
-glow_hdr_threshold = 2.0
+glow_hdr_scale = 1.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jkbmv")
@@ -134,6 +141,7 @@ text = "DebugCompleteLevel"
 script = ExtResource("8_j18m4")
 
 [node name="BallSpawnable" type="Label" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_kn3pt")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
