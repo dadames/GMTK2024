@@ -53,13 +53,31 @@ func _physics_process(delta: float) -> void:
 
 
 func consume_brick(brick: Brick, shift: Vector2) -> void:
+	brick.reparent(self)
+
 	if brick in _consumed_bricks_this_frame:
 		return
 	#print_debug(brick, shift)
 	_consumed_bricks_this_frame.append(brick)
+
+	var brick_parity := BrickShape.get_parity(brick.shapeType)
+	brick_parity = ((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i
+
+	print_debug(brick_parity, brick.rotation)
+
+	if brick_parity.x % 2 != 0:
+		brick.position.x -= Globals.BLOCK_PIXELS * 0.5
+	if brick_parity.y % 2 != 0:
+		brick.position.y -= Globals.BLOCK_PIXELS * 0.5
 	
 	# align the brick to the grid along shift
-	brick.position += shift
+	brick.position = brick.position.snappedf(Globals.BLOCK_PIXELS)
+
+	if brick_parity.x % 2 != 0:
+		brick.position.x += Globals.BLOCK_PIXELS * 0.5
+	if brick_parity.y % 2 != 0:
+		brick.position.y += Globals.BLOCK_PIXELS * 0.5
+
 	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
@@ -67,7 +85,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				#brick_sprite.position += offset
 				brick_sprite.reparent(self)
-				brick_sprite.position = brick_sprite.position.snappedf(Globals.BLOCK_PIXELS)
+				#brick_sprite.position = brick_sprite.position.snappedf(Globals.BLOCK_PIXELS)
 
 			for brick_collider: CollisionShape2D in child.find_children("CollisionShape2D"):
 				for body in bodies:
@@ -75,7 +93,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					body.add_child(dup)
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
-					dup.position = dup.position.snappedf(Globals.BLOCK_PIXELS)
+					#dup.position = dup.position.snappedf(Globals.BLOCK_PIXELS)
 
 	brick.queue_free()
 

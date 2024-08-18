@@ -82,6 +82,7 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
 position = Vector2(0, 330)
+width = null
 
 [node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
 unique_name_in_owner = true
