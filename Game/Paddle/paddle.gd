@@ -104,53 +104,14 @@ func on_level_started() -> void:
 
 # Detect when a falling block hits and "catch" it if its hitting us from above
 func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
-	#print("detected")
-	#call_deferred("consume_brick", body.brick, Vector2.ZERO)
-	var Direction: Vector2 = (body.global_position - global_position).normalized()
-	var Side: float = Direction.angle_to(Vector2.RIGHT)
-	var Angle:int = rad_to_deg(Side)
-	if Angle > 15 and Angle < 165 : #Defines what "above" means
-			call_deferred("consume_brick", body.brick, Vector2.ZERO)
-		#print("within angle. angle is:", Angle, " or ", Side)
-	#else:
-		#print("outside of angle. angle is:", Angle, " or ", Side)
-		
-	## FAILED EXPERIMENT DO NOT DELETE
-	#var local_owner := shape_owner_get_owner(local_shape_index) as Node2D
-	#var body_owner := shape_owner_get_owner(body_shape_index) as Node2D
+	var body_owner: CollisionShape2D = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))
+	var local_owner: CollisionShape2D = self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))
 
-	#var local_shape: Shape2D = local_owner.shape
-	#var body_shape: Shape2D = body_owner.shape
+	var body_rect := body_owner.global_transform * body_owner.shape.get_rect()
+	var local_rect := local_owner.global_transform * local_owner.shape.get_rect()
 
-	#var local_rect: Rect2 = local_shape.get_rect()
-	#var body_rect: Rect2 = body_shape.get_rect()
-
-	#var local_transform := local_owner.global_transform
-	#var body_transform := body_owner.global_transform
-
-	#var contacts := local_shape.collide_and_get_contacts(local_transform, body_shape, body_transform)
-
-	#print_debug(contacts)
-
-	#var contacts_average := Vector2.ZERO
-
-	#for i in range(contacts.size() / 2):
-	#	print_debug(contacts[2 * i + 1] - contacts[2 * i])
-	#	contacts_average += (contacts[2 * i + 1] - contacts[2 * i]) / (contacts.size() as float / 2.0)
-
-	#print_debug(contacts_average)
-
-	#var direction := contacts_average
-	#print_debug("direction", direction)
-
-	#var shift := Vector2.ZERO
-
-	#if abs(direction.x) < abs(direction.y):
-	#	shift.y = sign(direction.y) * (Globals.BLOCK_PIXELS / 2.0)
-	#else:
-	#	shift.x = sign(direction.x) * (Globals.BLOCK_PIXELS / 2.0)
-
-	#print_debug(shift)
-
-	#call_deferred("consume_brick", body.brick, shift)
+	var intersection := body_rect.intersection(local_rect)
 	
+	# if we're more through top than side, it's on top
+	if intersection.size.x > intersection.size.y:
+		call_deferred("consume_brick", body.brick, Vector2.ZERO)

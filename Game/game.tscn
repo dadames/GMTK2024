@@ -65,7 +65,6 @@ grow_vertical = 2
 pivot_offset = Vector2(3802.5, 4817)
 texture = ExtResource("3_o420k")
 script = ExtResource("5_re16v")
-scale_mul = null
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
