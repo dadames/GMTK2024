@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_gvk1q"]
 [ext_resource type="Script" path="res://Game/Ball/ball.gd" id="1_jjx47"]
-[ext_resource type="Texture2D" uid="uid://0sqipj2u5iud" path="res://Game/Ball/spotlight_7.png" id="3_imgyi"]
+[ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="3_acwtm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yh17"]
 radius = 16.0
@@ -26,5 +26,7 @@ shape = SubResource("CircleShape2D_1yh17")
 shape = SubResource("CircleShape2D_1yh17")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.42
-texture = ExtResource("3_imgyi")
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+texture = ExtResource("3_acwtm")

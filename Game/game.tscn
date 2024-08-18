@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=14 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -30,6 +30,11 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	EventBus.reset_game.emit()
 "
+
+[sub_resource type="Environment" id="Environment_ad25h"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jkbmv")
@@ -204,6 +209,9 @@ theme_override_font_sizes/font_size = 50
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ad25h")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/ResetButton" to="CanvasLayer/Control/ResetButton" method="_on_pressed"]
