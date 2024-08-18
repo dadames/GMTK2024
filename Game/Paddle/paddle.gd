@@ -112,7 +112,7 @@ func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_
 	var Side: float = Direction.angle_to(Vector2.RIGHT)
 	var Angle:int = rad_to_deg(Side)
 	
-	if Angle > 10 and Angle < 170 :
+	if Angle > 15 and Angle < 165 :
 		call_deferred("consume_brick", body.brick, Vector2.ZERO)
 		print("within angle. angle is:", Angle, " or ", Side)
 	else:
