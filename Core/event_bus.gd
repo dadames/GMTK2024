@@ -10,6 +10,7 @@ signal zoom_finished()
 signal game_over(score: int)
 signal score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2)
 
+signal modifier_collected(modifier: Modifier)
 
 signal added_active_ball()
 signal removed_active_ball()

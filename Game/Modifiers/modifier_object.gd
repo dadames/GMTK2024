@@ -1,5 +1,5 @@
 class_name ModifierObject
-extends CharacterBody2D
+extends Area2D
 
 @onready var icon := %Icon
 
@@ -8,10 +8,17 @@ extends CharacterBody2D
 @export var downward_speed_min := 100.0
 @export var downward_speed_max := 200.0
 
+var speed: float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	icon.texture = modifier.icon
-	velocity.y = lerp(downward_speed_min, downward_speed_max, randf())
+	speed = lerp(downward_speed_min, downward_speed_max, randf())
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
+	position.y += speed * delta
+
+func _on_body_entered(body: Node) -> void:
+	if body is Paddle:
+		EventBus.modifier_collected.emit(self.modifier)
+		queue_free.call_deferred()

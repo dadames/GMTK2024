@@ -1,5 +1,6 @@
 @tool
 
+class_name Paddle
 extends CharacterBody2D
 
 @export var initial_speed: float = 30000.0

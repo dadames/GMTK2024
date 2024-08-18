@@ -15,6 +15,7 @@ var _modifiers: Array[Resource] = []
 
 func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
+	EventBus.modifier_collected.connect(_on_modifier_event)
 	speed = baseSpeed * Globals.level_factor
 	var targetSize := Globals.level_scale
 	self.scale = Vector2(targetSize, targetSize)
@@ -23,7 +24,11 @@ func _ready() -> void:
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 	EventBus.added_active_ball.emit()
 
-func add_modifier(modifier: Resource) -> void:
+func _on_modifier_event(modifier: Modifier) -> void:
+	if modifier.applies_to(self):
+		add_modifier(modifier)
+
+func add_modifier(modifier: Modifier) -> void:
 	modifier.apply(self)
 	_modifiers.append(modifier)
 
