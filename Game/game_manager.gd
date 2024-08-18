@@ -52,7 +52,7 @@ func start_level(nextLevel: PackedScene) -> void:
 	if level:
 		level.queue_free()
 	level = nextLevel.instantiate()
-	Globals.LEVEL_SCALE = level.levelScale
+	Globals.level_scale = level.levelScale
 	disable_boundaries()
 	add_child(level)
 	EventBus.level_started.emit()

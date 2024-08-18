@@ -17,4 +17,4 @@ func _process(delta: float) -> void:
 		EventBus.zoom_finished.emit()
 
 func on_level_started() -> void:
-	targetZoom = 1.0 / Globals.LEVEL_SCALE
+	targetZoom = 1.0 / Globals.level_scale

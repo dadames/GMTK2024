@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	if !Engine.is_editor_hint():
 		var camera := get_viewport().get_camera_2d()
 		var test: float = camera.targetZoom / camera.zoom.x 
-		position.y = 330 * test * Globals.LEVEL_SCALE
+		position.y = 330 * test * Globals.level_scale
 
 #Movement
 func _physics_process(delta: float) -> void:
@@ -61,7 +61,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 
 	brick.reparent(self)
 
-	var grid_size := Globals.BLOCK_PIXELS * 2 ** (Globals.LEVEL_SCALE - 1)
+	var grid_size := Globals.BLOCK_PIXELS * 2 ** (Globals.level_scale - 1)
 
 	var brick_parity := BrickShape.get_parity(brick.shapeType)
 	brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)
@@ -97,7 +97,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 
 
 func on_level_started() -> void:
-	speed = 2 ** Globals.LEVEL_SCALE * initial_speed
+	speed = 2 ** Globals.level_scale * initial_speed
 
 func _on_collision_detection_body_entered(body: Node2D) -> void:
 	#call_deferred("consume_brick", body.brick, (body.position - position).posmod(Globals.BLOCK_PIXELS).snappedf(1.0))

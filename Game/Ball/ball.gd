@@ -7,8 +7,8 @@ var collide_safe_margin: float = 1.0
 
 func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
-	baseSpeed *= 2 ** Globals.LEVEL_SCALE 
-	var TargetSize:int = Globals.LEVEL_SCALE
+	baseSpeed *= 2 ** Globals.level_scale 
+	var TargetSize:int = Globals.level_scale
 	self.scale = Vector2(TargetSize, TargetSize)
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * baseSpeed
