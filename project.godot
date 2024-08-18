@@ -30,7 +30,7 @@ gdscript/warnings/untyped_declaration=2
 window/size/viewport_width=1024
 window/size/viewport_height=768
 window/size/resizable=false
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
 [global_group]
