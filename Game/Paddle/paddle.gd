@@ -99,12 +99,19 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 func on_level_started() -> void:
 	speed = 2 ** Globals.level_scale * initial_speed
 
-func _on_collision_detection_body_entered(body: Node2D) -> void:
-	#call_deferred("consume_brick", body.brick, (body.position - position).posmod(Globals.BLOCK_PIXELS).snappedf(1.0))
-	pass
-
-
 func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
+	print("detected")
+	call_deferred("consume_brick", body.brick, Vector2.ZERO)
+	#var Direction: Vector2 = (body.global_position - global_position).normalized()
+	#var Side: float = Direction.angle_to(Vector2.RIGHT)
+	#var Angle:int = rad_to_deg(Side)
+	
+	#if Angle > 15 and Angle < 165 :
+		#call_deferred("consume_brick", body.brick, Vector2.ZERO)
+		#print("within angle. angle is:", Angle, " or ", Side)
+	#else:
+		#print("outside of angle. angle is:", Angle, " or ", Side)
+		
 	## FAILED EXPERIMENT DO NOT DELETE
 	#var local_owner := shape_owner_get_owner(local_shape_index) as Node2D
 	#var body_owner := shape_owner_get_owner(body_shape_index) as Node2D
@@ -143,4 +150,4 @@ func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_
 	#print_debug(shift)
 
 	#call_deferred("consume_brick", body.brick, shift)
-	call_deferred("consume_brick", body.brick, Vector2.ZERO)
+	

@@ -33,7 +33,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if isFalling && !Engine.is_editor_hint():
-		position.y += delta * fallSpeed
+		# position.y += delta * fallSpeed
 		var camera := get_viewport().get_camera_2d()
 		var cameraPosition: Vector2 = camera.get_screen_center_position()
 		var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
