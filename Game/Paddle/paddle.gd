@@ -110,13 +110,13 @@ func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_
 	#call_deferred("consume_brick", body.brick, Vector2.ZERO)
 	var Direction: Vector2 = body.linear_velocity
 	var Side: float = Direction.angle_to(Vector2.RIGHT)
-	var angle:int = rad_to_deg(Side)
+	var Angle:int = rad_to_deg(Side)
 	
-	if angle > 0 and angle < 180 :
+	if Angle > 210 and Angle < 330 :
 		call_deferred("consume_brick", body.brick, Vector2.ZERO)
-		print("within angle")
+		print("within angle. angle is:", Angle, "or", Side)
 	else:
-		print("outside of angle")
+		print("outside of angle. angle is:", Angle, "or", Side)
 		
 	## FAILED EXPERIMENT DO NOT DELETE
 	#var local_owner := shape_owner_get_owner(local_shape_index) as Node2D
