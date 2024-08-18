@@ -24,6 +24,7 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 EventBus="*res://Core/event_bus.gd"
 Globals="*res://Core/globals.gd"
 MusicPlayer="*res://Audio/music_player.tscn"
+SaveData="*res://Core/save_data.gd"
 
 [debug]
 

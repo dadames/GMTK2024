@@ -7,5 +7,10 @@ func _ready() -> void:
 	hide()
 
 func on_game_over(score: int) -> void:
+	if score > SaveData.highScore:
+		SaveData.highScore = score
+		%NewHighScore.show()
 	%FinalScore.text = "Final Score: " + str(score)
+	%HighScore.text = "High Score: " + str(SaveData.highScore)
+	SaveData.save()
 	show()

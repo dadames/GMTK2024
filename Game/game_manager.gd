@@ -15,10 +15,10 @@ var bottomBoundaryPosition: float = 384
 var level: Level
 @export var ballPrefab: PackedScene
 
-var Distance := 0
-var Score:int = 0
-@export var ScoreHit:int = 100
-@export var ScoreCatch:int = 100
+var distance := 0
+var score:int = 0
+@export var scoreHit:int = 100
+@export var scoreCatch:int = 100
 var availableBalls: int = 3
 var activeBalls: int = 0
 var ballSpawnable := true
@@ -35,15 +35,17 @@ func _ready() -> void:
 	start_level.call_deferred(startingLevel)
 	set_boundaries.call_deferred()
 	%BallLabel.text = str(availableBalls)
+	SaveData.load()
 
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
 	if HitType == "Hit":
-		Score += ScoreHit
-		#print("Block Hit! New score:",Score)
+		score += scoreHit
+		#print("Block Hit! New score:",score)
 	elif HitType == "Catch":
-		Distance = PaddlePosition.distance_to(HitPosition)
-		Score += ((ScoreCatch * (Distance/10)) / 4)
-		#print("Block Caught! New score:",Score)
+		score = PaddlePosition.distance_to(HitPosition)
+		score += ((scoreCatch * (score/10)) / 4)
+		#print("Block Caught! New score:",score)
+	EventBus.update_score.emit(score)
 
 func on_level_completed() -> void:
 	print("Level Completed")
@@ -58,7 +60,7 @@ func start_level(nextLevel: PackedScene) -> void:
 	level = nextLevel.instantiate()
 	Globals.level_scale = level.levelScale
 	disable_boundaries()
-	add_child(level)
+	add_child.call_deferred(level)
 	EventBus.level_started.emit()
 
 func disable_boundaries() -> void:
@@ -118,8 +120,7 @@ func on_removed_active_ball() -> void:
 		if availableBalls > 0:
 			show_ball_spawnable()
 		else:
-			EventBus.game_over.emit(Score)
-			print("loser")
+			EventBus.game_over.emit(score)
 
 func on_added_available_ball() -> void:
 	availableBalls += 1
