@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	if !Engine.is_editor_hint():
 		var camera := get_viewport().get_camera_2d()
 		var test: float = camera.targetZoom / camera.zoom.x 
-		position.y = 330 * test * Globals.level_scale
+		position.y = 330 * test * 2 ** (Globals.level_scale - 1)
 
 #Movement
 func _physics_process(delta: float) -> void:
