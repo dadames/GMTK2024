@@ -10,7 +10,7 @@ func _ready() -> void:
 	baseSpeed *= 2 ** Globals.level_scale 
 	var targetSize:int = Globals.level_scale
 	self.scale = Vector2(targetSize, targetSize)
-	%CPUParticles2D.emission_sphere_radius = %Sprite2D.texture.get_width() / 2.0 * scale.x
+	%CPUParticles2D.emission_sphere_radius = 128
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * baseSpeed
 	EventBus.added_active_ball.emit()

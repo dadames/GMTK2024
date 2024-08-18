@@ -34,12 +34,16 @@ texture = ExtResource("3_acwtm")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
-amount = 10000
+visible = false
+amount = 50000
 lifetime = 0.3
 lifetime_randomness = 1.0
 emission_shape = 1
-emission_sphere_radius = 15.0
+emission_sphere_radius = 128.0
 gravity = Vector2(0, 0)
 scale_amount_min = 0.0
 scale_amount_max = 14.0
 color = Color(0, 1, 1, 0.0196078)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+trail_enabled = true
