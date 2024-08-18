@@ -5,10 +5,13 @@ extends CharacterBody2D
 @export var min_speeds := Vector2(25, 100)
 var collide_safe_margin: float = 1.0
 var speed: float
-@onready var audioPlayer: AudioStreamPlayer2D = %AudioStreamPlayer2D
-@export var bounceSounds: Array[AudioStreamMP3]
+@onready var blockBounceAudio: AudioStreamPlayer2D = %BlockBounceAudio
+@onready var paddleBounceAudio: AudioStreamPlayer2D = %PaddleBounceAudio
+@onready var wallBounceAudio: AudioStreamPlayer2D = %WallBounceAudio
+@export var collisionVFXPrefab: PackedScene
 
 var _modifiers: Array[Resource] = []
+
 
 func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
@@ -43,10 +46,13 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
 			EventBus.score_change.emit("Hit", Vector2(0,0), Vector2(0,0))
+			var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
+			get_tree().root.add_child(vfx)
+			vfx.global_position = collisionInfo.get_position()
 			collider.collided()
-			audioPlayer.stream = bounceSounds[0]
-			audioPlayer.play()
+			blockBounceAudio.play()
 		elif collider.is_class("CharacterBody2D"):
+			print("Paddle")
 			var paddle := collider as CharacterBody2D
 			#give paddle velocity to ball
 			if paddle.velocity.x != 0:
@@ -56,7 +62,9 @@ func _physics_process(delta: float) -> void:
 				#print(snapped(collisionInfo.get_angle()/PI, 0.1))
 				position.x = position.x + (10*sign(velocity.x))
 				#print(sign(velocity.x))
-
+			paddleBounceAudio.play()
+		else:
+			wallBounceAudio.play()
 	if abs(velocity.x) < min_speeds.x:
 		print_debug("Amplifying x velocity")
 		match sign(velocity.x):
