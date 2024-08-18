@@ -95,6 +95,9 @@ func _on_bottom_boundary_body_entered(body: Node2D) -> void:
 	if body is Ball || body.find_parent("Ball"):
 		on_ball_fall()
 
+	if body is ModifierObject:
+		body.queue_free.call_deferred()
+
 func spawn_ball() -> void:
 	var newBall := ballPrefab.instantiate()
 	add_child(newBall)
