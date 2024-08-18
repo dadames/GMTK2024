@@ -100,9 +100,9 @@ func on_level_started() -> void:
 	speed = 2 ** Globals.level_scale * initial_speed
 
 
-#Detect when a falling block hits and "catch" it if its hitting us from above
+# Detect when a falling block hits and "catch" it if its hitting us from above
 func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
-	print("detected")
+	#print("detected")
 	#call_deferred("consume_brick", body.brick, Vector2.ZERO)
 	var Direction: Vector2 = (body.global_position - global_position).normalized()
 	var Side: float = Direction.angle_to(Vector2.RIGHT)
