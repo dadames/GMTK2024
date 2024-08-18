@@ -3,7 +3,6 @@
 class_name Brick
 extends Node2D
 
-
 @export var semiBrickPrefab: PackedScene
 @export var color: Color:
 	set(value):
@@ -21,11 +20,15 @@ extends Node2D
 		elif !value && scale.x < 0:
 			scale.x *= -1
 		_ready()
+
+@export var modifier_prefab: PackedScene
+@export var modifiers: Array[Modifier] = []
+
 var fallSpeed := 100
 var isFalling := false
+
 signal falling()
 signal merge()
-
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -63,6 +66,14 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 
 func start_falling() -> void:
 	isFalling = true
+
+	for modifier in modifiers:
+		var instance := modifier_prefab.instantiate()
+		instance.modifier = modifier
+
+		get_parent().add_child(instance)
+	
+
 	falling.emit()
 
 func start_merge() -> void:
