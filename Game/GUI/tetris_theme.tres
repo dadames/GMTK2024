@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://cxqbaudi5opa4"]
 
 [ext_resource type="Texture2D" uid="uid://ca3c261j4clja" path="res://Game/Menus/blue_panel.png" id="1_lcdgv"]
-[ext_resource type="FontFile" uid="uid://c6o8ht2hs3aif" path="res://Game/Designer.otf" id="1_p2mho"]
+[ext_resource type="FontFile" uid="uid://c6o8ht2hs3aif" path="res://Game/GUI/Designer.otf" id="1_p2mho"]
 [ext_resource type="Texture2D" uid="uid://1ypivkaqe8nc" path="res://Game/Menus/blue_button04.png" id="1_y3c0u"]
 [ext_resource type="Texture2D" uid="uid://csawr6qbrntpf" path="res://Game/Menus/blue_button05.png" id="2_vnuye"]
 

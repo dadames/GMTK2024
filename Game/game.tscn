@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dyhjaffr03i5p" path="res://Game/53912178488_3ab9e86872_o.jpg" id="3_o420k"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
-[ext_resource type="Script" path="res://Game/restart_button.gd" id="7_jra2j"]
+[ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="7_jra2j"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="9_cchhr"]
-[ext_resource type="Script" path="res://Game/game_over_menu.gd" id="11_q0i4k"]
+[ext_resource type="Script" path="res://Game/GUI/game_over_menu.gd" id="11_q0i4k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 

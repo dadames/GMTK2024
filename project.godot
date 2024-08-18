@@ -39,7 +39,7 @@ Level=""
 
 [gui]
 
-theme/custom="res://Game/tetris_theme.tres"
+theme/custom="res://Game/GUI/tetris_theme.tres"
 
 [input]
 
