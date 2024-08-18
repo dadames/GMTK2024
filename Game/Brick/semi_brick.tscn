@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3i5efug856wq"]
+[gd_scene load_steps=5 format=3 uid="uid://c3i5efug856wq"]
 
 [ext_resource type="Script" path="res://Game/Brick/semi_brick_controller.gd" id="1_4q7xf"]
 [ext_resource type="Texture2D" uid="uid://i4iq7xw8jao7" path="res://Game/Brick/initial_size.png" id="1_r13ow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_viega"]
 size = Vector2(32, 32)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uvki5"]
+polygon = PackedVector2Array(18, 18, 18, -18, -18, -18, -18, 18)
 
 [node name="SemiBrick" type="RigidBody2D"]
 collision_layer = 8
@@ -20,3 +23,7 @@ texture = ExtResource("1_r13ow")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.98023e-08, 0)
 shape = SubResource("RectangleShape2D_viega")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+unique_name_in_owner = true
+occluder = SubResource("OccluderPolygon2D_uvki5")

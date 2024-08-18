@@ -59,7 +59,7 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 	add_child(semibrick)
 	semibrick.position = quadrantPosition
 	semibrick.initialize(self)
-	semibrick.SizeChange(Vector2.ONE * 2 ** (Globals.level_scale - 1))
+	semibrick.size_change(Vector2.ONE * 2 ** (Globals.level_scale - 1))
 
 func start_falling() -> void:
 	isFalling = true

@@ -18,13 +18,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#preventing it from moving side to side
-	var Velocity: Vector2 = linear_velocity
-	Velocity.x = 0
+	linear_velocity.x = 0
 	
 #handle size changing because you can't sale rigid bodies for some reason...
-func SizeChange(Scale: Vector2) -> void:
-	$Sprite2D.scale = Scale
-	$CollisionShape2D.scale = Scale
+func size_change(scaleIn: Vector2) -> void:
+	$Sprite2D.scale = scaleIn
+	$CollisionShape2D.scale = scaleIn
+	%LightOccluder2D.scale = scaleIn
 
 func collided() -> void:
 	match activeState:
