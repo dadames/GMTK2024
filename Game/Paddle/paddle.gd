@@ -99,6 +99,8 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 func on_level_started() -> void:
 	speed = 2 ** Globals.level_scale * initial_speed
 
+
+
 func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
 	print("detected")
 	call_deferred("consume_brick", body.brick, Vector2.ZERO)
