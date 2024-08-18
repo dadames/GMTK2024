@@ -30,6 +30,10 @@ var isFalling := false
 signal falling()
 signal merge()
 
+var brickSpawned: Array[Node2D] = []
+var relativePositions: Array[Vector2] = []
+
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		initialize()
@@ -44,6 +48,14 @@ func _process(delta: float) -> void:
 		if position.y > offscreen:
 			queue_free()
 
+func _physics_process(delta: float) -> void:
+	if brickSpawned.size() == 0:
+		pass
+	else:
+		var initalRelative: Vector2 = brickSpawned[0].global_position
+		for i in range(1, brickSpawned.size()):
+			brickSpawned[i].global_position = initalRelative + relativePositions[i]
+
 func initialize() -> void:
 	var shape := BrickShape.new()
 	shape.shape = shapeType
@@ -51,11 +63,33 @@ func initialize() -> void:
 	if !Engine.is_editor_hint():
 		EventBus.brick_initialized_in_level.emit(self)
 
+
 func set_shape(shape: BrickShape) -> void:
 	Utilities.clear_children(self)
 	var positions := shape.get_node_orientations()
-	for quadrantPosition: Vector2i in positions:
+	brickSpawned.clear()
+	relativePositions.clear()
+
+	for quadrantPosition: Vector2 in positions:
 		spawn_semibrick(quadrantPosition)
+		
+	for child in get_children():
+		if child is Node2D:
+			brickSpawned.append(child)
+
+	var initialRelative: Vector2 = brickSpawned[0].global_position
+	for brickSpawned: Node2D in brickSpawned :
+		relativePositions.append(brickSpawned.global_position - initialRelative)
+
+	
+	#failed experiment
+#	for child in get_children():
+#		for neighbor in get_children():
+#			if neighbor != child:
+#				var pin: Node2D = PinJoint2D.new()
+#				pin.node_a = child.get_path()
+#				pin.node_b = neighbor.get_path()
+#				pin.bias = 0.1
 
 func spawn_semibrick(quadrantPosition: Vector2) -> void:
 	var semibrick: Node2D = semiBrickPrefab.instantiate()
@@ -63,7 +97,8 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 	semibrick.position = quadrantPosition
 	semibrick.initialize(self)
 	semibrick.size_change(Vector2.ONE * 2 ** (Globals.level_scale - 1))
-
+	
+	
 func start_falling() -> void:
 	isFalling = true
 
