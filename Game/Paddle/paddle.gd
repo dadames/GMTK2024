@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if !initialized || Engine.is_editor_hint():
 		return
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * delta * speed
 	else:
