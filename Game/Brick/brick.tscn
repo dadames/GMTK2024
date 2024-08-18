@@ -7,3 +7,7 @@
 script = ExtResource("1_uxt67")
 semiBrickPrefab = ExtResource("2_3ssye")
 shapeType = 1
+bounceSounds = Array[AudioStreamMP3]([null, null, null, null, null])
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
