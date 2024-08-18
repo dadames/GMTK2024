@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b35gsl4fcdk6r"]
+[gd_scene load_steps=3 format=3 uid="uid://lygh0kjxdqn7"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_mno2w"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_t7vie"]
@@ -10,6 +10,7 @@ levelScale = 4.0
 [node name="Bricks" type="Node2D" parent="."]
 
 [node name="Brick" parent="Bricks" instance=ExtResource("2_t7vie")]
+position = Vector2(0, -32)
 color = Color(0.56, 0.336, 0, 1)
 shapeType = 3
 
@@ -28,10 +29,10 @@ color = Color(1, 0.847833, 0.17, 1)
 shapeType = 3
 
 [node name="Brick4" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(0, -112)
-rotation = 1.5708
+position = Vector2(0, -128)
+rotation = 3.14159
 color = Color(0.69, 0.414, 0, 1)
-shapeType = 0
+shapeType = 3
 
 [node name="Brick5" parent="Bricks" instance=ExtResource("2_t7vie")]
 position = Vector2(-48, -192)
@@ -89,16 +90,19 @@ color = Color(0.488, 0.36, 1, 1)
 shapeType = 0
 
 [node name="Brick14" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(96, -64)
+position = Vector2(128, -48)
+rotation = 1.5708
 scale = Vector2(1, -1)
 color = Color(1, 0.36, 0.36, 1)
-shapeType = 3
+shapeType = 4
 
 [node name="Brick15" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-96, -64)
-scale = Vector2(1, -1)
+position = Vector2(-128, -48)
+rotation = 1.5708
+scale = Vector2(-1, -1)
 color = Color(1, 0.360784, 0.360784, 1)
-shapeType = 3
+shapeType = 4
+mirrored = true
 
 [node name="Brick16" parent="Bricks" instance=ExtResource("2_t7vie")]
 position = Vector2(-464, -368)
