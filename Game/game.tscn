@@ -36,10 +36,16 @@ startingLevel = ExtResource("7_5liut")
 ballPrefab = ExtResource("4_nyhvm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -3913.0
-offset_top = -5022.0
-offset_right = 3692.0
-offset_bottom = 4612.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17664.0
+offset_top = -16000.0
+offset_right = -10059.0
+offset_bottom = -6366.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.5, 4.5)
 texture = ExtResource("3_o420k")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
