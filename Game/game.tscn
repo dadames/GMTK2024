@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=27 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -12,7 +12,15 @@
 [ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="9_3vi6x"]
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="9_cchhr"]
 [ext_resource type="Shader" path="res://Game/GUI/sprite_outline.gdshader" id="11_2uk8u"]
-[ext_resource type="PackedScene" path="res://Game/Menus/game_over_menu.tscn" id="12_ivnku"]
+[ext_resource type="PackedScene" uid="uid://cvqohvlr6nu66" path="res://Game/GUI/Menus/game_over_menu.tscn" id="12_ivnku"]
+[ext_resource type="Texture2D" uid="uid://d1belnql5dpju" path="res://Game/GUI/Menus/flatDark12.png" id="14_ux6ar"]
+[ext_resource type="Texture2D" uid="uid://b8d0lji5e8gcl" path="res://Game/GUI/Menus/flatDark14.png" id="15_ip5y3"]
+[ext_resource type="Texture2D" uid="uid://b732g7g3glw6j" path="res://Game/GUI/Menus/flatDark16.png" id="16_ed2c6"]
+[ext_resource type="Script" path="res://Game/mute_music_button.gd" id="16_wo35x"]
+[ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
+[ext_resource type="Texture2D" uid="uid://dpn1wdavomp5a" path="res://Game/GUI/Menus/flatDark20.png" id="18_13cm6"]
+[ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
+[ext_resource type="Script" path="res://Game/GUI/restart_button_texture.gd" id="21_j754g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -60,6 +68,8 @@ glow_hdr_scale = 1.0
 script = ExtResource("1_jkbmv")
 startingLevel = ExtResource("7_5liut")
 ballPrefab = ExtResource("4_nyhvm")
+ScoreHit = null
+ScoreCatch = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -168,69 +178,6 @@ theme_override_font_sizes/font_size = 50
 text = "Press Space to Spawn a Ball"
 script = ExtResource("8_23gjy")
 
-[node name="Score" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -183.0
-offset_bottom = 99.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Score"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 15
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/Score/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 50
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BallsAvailable" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -183.0
-offset_top = 99.0
-offset_bottom = 198.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/BallsAvailable"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 15
-
-[node name="BallCounter" type="HBoxContainer" parent="CanvasLayer/Control/BallsAvailable/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/BallsAvailable/MarginContainer/BallCounter"]
-material = SubResource("ShaderMaterial_3imvo")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("9_cchhr")
-expand_mode = 2
-
-[node name="BallLabel" type="Label" parent="CanvasLayer/Control/BallsAvailable/MarginContainer/BallCounter"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 50
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="GameOverMenu" parent="CanvasLayer/Control" instance=ExtResource("12_ivnku")]
 layout_mode = 1
 offset_left = -137.0
@@ -238,9 +185,92 @@ offset_top = -87.0
 offset_right = 137.0
 offset_bottom = 87.0
 
+[node name="BottomBar" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"BottomBar"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/BottomBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/BottomBar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+material = SubResource("ShaderMaterial_3imvo")
+layout_mode = 2
+texture = ExtResource("9_cchhr")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="BallLabel" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreName" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MuteMusicButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("16_ed2c6")
+texture_pressed = ExtResource("17_erae7")
+script = ExtResource("16_wo35x")
+
+[node name="MuteSFXButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("14_ux6ar")
+texture_pressed = ExtResource("15_ip5y3")
+script = ExtResource("19_spq8m")
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("18_13cm6")
+script = ExtResource("21_j754g")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ad25h")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/ResetButton" to="CanvasLayer/Control/ResetButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
+[connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/RestartButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/RestartButton" method="_on_pressed"]

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var initial_speed: float = 30000.0
 var speed: float = initial_speed
+var initialHeight: float = 300
 
 @export var width: int = 5:
 	set(value):
@@ -37,8 +38,8 @@ func _process(_delta: float) -> void:
 			break
 	if !Engine.is_editor_hint():
 		var camera := get_viewport().get_camera_2d()
-		var test: float = camera.targetZoom / camera.zoom.x 
-		position.y = 330 * test * 2 ** (Globals.level_scale - 1)
+		var cameraScaling: float = camera.targetZoom / camera.zoom.x 
+		position.y = initialHeight * cameraScaling * 2 ** (Globals.level_scale - 1)
 
 #Movement
 func _physics_process(delta: float) -> void:
@@ -61,7 +62,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 
 	brick.reparent(self)
 
-	var grid_size := Globals.BLOCK_PIXELS * 2 ** (Globals.level_scale - 1)
+	var grid_size := Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 
 	#var brick_parity := BrickShape.get_parity(brick.shapeType)
 	#brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)

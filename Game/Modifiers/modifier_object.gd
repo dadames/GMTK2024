@@ -1,3 +1,4 @@
+class_name ModifierObject
 extends CharacterBody2D
 
 @onready var icon := %Icon

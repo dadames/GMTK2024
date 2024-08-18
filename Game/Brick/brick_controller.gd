@@ -40,13 +40,21 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if isFalling && !Engine.is_editor_hint():
-		# position.y += delta * fallSpeed
 		var camera := get_viewport().get_camera_2d()
 		var cameraPosition: Vector2 = camera.get_screen_center_position()
 		var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
 		var offscreen := cameraPosition.y + (halfSize.y * 1.1)
-		if position.y > offscreen:
-			queue_free()
+
+		# clean-up can be slower, it's a lot of looping
+		if Engine.get_process_frames() % 20 == 0:
+			var min_position_semis := Vector2.INF
+			for child in get_children():
+				if child is SemiBrick:
+					min_position_semis = min_position_semis.min(child.global_position)
+
+			if min_position_semis.y > offscreen:
+				print_debug("Brick fell and was collected")
+				queue_free()
 
 func _physics_process(delta: float) -> void:
 	if brickSpawned.size() == 0:
