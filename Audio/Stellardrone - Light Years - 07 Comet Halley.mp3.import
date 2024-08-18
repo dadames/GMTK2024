@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvp2w30menm0s"
+path="res://.godot/imported/Stellardrone - Light Years - 07 Comet Halley.mp3-81b3798e010cc9eb9019fde9d1bc0662.mp3str"
+
+[deps]
+
+source_file="res://Audio/Stellardrone - Light Years - 07 Comet Halley.mp3"
+dest_files=["res://.godot/imported/Stellardrone - Light Years - 07 Comet Halley.mp3-81b3798e010cc9eb9019fde9d1bc0662.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

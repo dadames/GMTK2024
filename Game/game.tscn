@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=26 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -23,24 +23,6 @@
 [ext_resource type="Script" path="res://Game/GUI/restart_button_texture.gd" id="21_j754g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
-
-[sub_resource type="GDScript" id="GDScript_uejsq"]
-script/source = "extends Button
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_pressed() -> void:
-	EventBus.reset_game.emit()
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kn3pt"]
 shader = ExtResource("9_3vi6x")
@@ -143,19 +125,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResetButton" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 1
-offset_right = 160.0
-offset_bottom = 64.0
-text = "Reset the game"
-script = SubResource("GDScript_uejsq")
-
 [node name="DebugComplete" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
-offset_left = 3.0
-offset_top = 66.0
-offset_right = 176.0
-offset_bottom = 130.0
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 227.0
+offset_bottom = 40.0
 focus_mode = 0
 text = "DebugCompleteLevel"
 script = ExtResource("8_j18m4")
@@ -269,7 +244,6 @@ script = ExtResource("21_j754g")
 environment = SubResource("Environment_ad25h")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
-[connection signal="pressed" from="CanvasLayer/Control/ResetButton" to="CanvasLayer/Control/ResetButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
 [connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" method="_on_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" method="_on_toggled"]

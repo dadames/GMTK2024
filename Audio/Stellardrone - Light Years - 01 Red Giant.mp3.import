@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b756vocl2lfl4"
+path="res://.godot/imported/Stellardrone - Light Years - 01 Red Giant.mp3-a63e11ef82adc644df9c93776af34359.mp3str"
+
+[deps]
+
+source_file="res://Audio/Stellardrone - Light Years - 01 Red Giant.mp3"
+dest_files=["res://.godot/imported/Stellardrone - Light Years - 01 Red Giant.mp3-a63e11ef82adc644df9c93776af34359.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
