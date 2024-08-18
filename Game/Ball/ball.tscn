@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cik3us1ca1grp"]
+[gd_scene load_steps=6 format=3 uid="uid://cik3us1ca1grp"]
 
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_gvk1q"]
 [ext_resource type="Script" path="res://Game/Ball/ball.gd" id="1_jjx47"]
+[ext_resource type="AudioStream" uid="uid://c05pmawakmeum" path="res://Game/Brick/audio/smf.mp3" id="2_u7wx6"]
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="3_acwtm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yh17"]
@@ -11,6 +12,7 @@ radius = 16.0
 collision_layer = 64
 collision_mask = 42
 script = ExtResource("1_jjx47")
+bounceSounds = Array[AudioStreamMP3]([ExtResource("2_u7wx6")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -44,3 +46,7 @@ gravity = Vector2(0, 0)
 scale_amount_min = 0.0
 scale_amount_max = 14.0
 color = Color(0, 1, 1, 0.0196078)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"

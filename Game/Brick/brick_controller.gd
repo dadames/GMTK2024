@@ -25,7 +25,6 @@ var fallSpeed := 100
 var isFalling := false
 signal falling()
 signal merge()
-@export var bounceSounds: Array[AudioStreamMP3]
 
 
 func _ready() -> void:

@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var baseSpeed: float = 250
 @export var min_speeds := Vector2(25, 100)
 var collide_safe_margin: float = 1.0
+@export var bounceSounds: Array[AudioStreamMP3]
+@onready var audioPlayer: AudioStreamPlayer2D = %AudioStreamPlayer2D
+
 
 
 func _ready() -> void:
@@ -30,6 +33,8 @@ func _physics_process(delta: float) -> void:
 		if collider.has_method("collided"):
 			EventBus.score_change.emit("Hit", Vector2(0,0), Vector2(0,0))
 			collider.collided()
+			audioPlayer.stream = bounceSounds[0]
+			audioPlayer.play()
 		elif collider.is_class("CharacterBody2D"):
 			var paddle := collider as CharacterBody2D
 			#give paddle velocity to ball

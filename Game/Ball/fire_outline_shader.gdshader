@@ -35,7 +35,7 @@ float get_line_width(vec2 p, float s) {
 		p /= 2.0;
 		intensity /= 2.0;
 	}
-	
+
 	return mix(max_line_width, min_line_width, w);
 }
 
@@ -43,19 +43,19 @@ bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, vec2 image_top_left,
 	for (float i = -ceil(max_line_width); i <= ceil(max_line_width); i++) {
 		float x = abs(i) > max_line_width ? max_line_width * sign(i) : i;
 		float offset;
-		
+
 		offset = floor(sqrt(pow(max_line_width + 0.5, 2) - x * x));
-		
+
 		for (float j = -ceil(offset); j <= ceil(offset); j++) {
 			float y = abs(j) > offset ? offset * sign(j) : j;
 			vec2 xy = uv + texture_pixel_size * vec2(x, y);
-			
+
 			if ((xy != clamp(xy, image_top_left, image_bottom_right) || texture(texture, xy).a <= 0.0)) {
 				return true;
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -69,8 +69,8 @@ void fragment() {
 		vec2 disp = scale * vec2(cos(angle), sin(angle));
 		alpha += texture(TEXTURE, UV + disp).a;
 	}
-	
-	
+
+
 	vec2 uv = UV;
 	vec2 image_top_left = floor(uv);
 	vec2 image_bottom_right = image_top_left + vec2(1.0);
@@ -81,14 +81,14 @@ void fragment() {
 	} else {
 		COLOR = texture(TEXTURE, uv);
 	}
-	
+
 	//if ((alpha > 0.0) && (texture(TEXTURE, uv).a < 0.1)) {
 		//COLOR = color;
 	//}
 	//else {
 		//COLOR = texture(TEXTURE, UV);
 	//}
-	
+
 	if (COLOR.a > 0.0 && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, image_top_left, image_bottom_right, TEXTURE)) {
 		if (texture(TEXTURE, uv).a < 0.1){
 			COLOR = color;
