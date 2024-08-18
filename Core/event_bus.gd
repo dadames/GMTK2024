@@ -7,7 +7,7 @@ signal brick_removed_from_level(brick: Brick)
 signal level_completed()
 signal level_started()
 signal zoom_finished()
-signal game_over()
+signal game_over(score: int)
 signal score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2)
 
 

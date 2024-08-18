@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=13 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -6,29 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dyhjaffr03i5p" path="res://Game/53912178488_3ab9e86872_o.jpg" id="3_o420k"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
+[ext_resource type="Script" path="res://Game/restart_button.gd" id="7_jra2j"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="9_cchhr"]
+[ext_resource type="Script" path="res://Game/game_over_menu.gd" id="11_q0i4k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
-
-[sub_resource type="GDScript" id="GDScript_uejsq"]
-script/source = "extends Button
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_pressed() -> void:
-	EventBus.reset_game.emit()
-"
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jkbmv")
@@ -103,7 +87,7 @@ layout_mode = 1
 offset_right = 160.0
 offset_bottom = 64.0
 text = "Reset the game"
-script = SubResource("GDScript_uejsq")
+script = ExtResource("7_jra2j")
 
 [node name="DebugComplete" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -193,6 +177,43 @@ text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GameOverMenu" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -29.0
+offset_right = 32.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_q0i4k")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/GameOverMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/GameOverMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FinalScore" type="Label" parent="CanvasLayer/Control/GameOverMenu/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Final Score: 1000000000"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/Control/GameOverMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+script = ExtResource("7_jra2j")
+
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/ResetButton" to="CanvasLayer/Control/ResetButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/GameOverMenu/MarginContainer/VBoxContainer/RestartButton" to="CanvasLayer/Control/GameOverMenu/MarginContainer/VBoxContainer/RestartButton" method="_on_pressed"]

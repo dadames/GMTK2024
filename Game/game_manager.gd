@@ -111,7 +111,7 @@ func on_removed_active_ball() -> void:
 		if availableBalls > 0:
 			show_ball_spawnable()
 		else:
-			EventBus.game_over.emit()
+			EventBus.game_over.emit(Score)
 			print("loser")
 
 func on_added_available_ball() -> void:

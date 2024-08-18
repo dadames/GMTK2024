@@ -2,6 +2,7 @@
 class_name SemiBrick
 extends StaticBody2D
 
+
 var brick: Brick
 enum State {Static, Falling, Merged}
 var activeState: State = State.Static

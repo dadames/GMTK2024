@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cxqbaudi5opa4"]
+
+[ext_resource type="Texture2D" uid="uid://ca3c261j4clja" path="res://Game/Menus/blue_panel.png" id="1_lcdgv"]
+[ext_resource type="Texture2D" uid="uid://1ypivkaqe8nc" path="res://Game/Menus/blue_button04.png" id="1_y3c0u"]
+[ext_resource type="Texture2D" uid="uid://csawr6qbrntpf" path="res://Game/Menus/blue_button05.png" id="2_vnuye"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqsk4"]
+texture = ExtResource("1_y3c0u")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_236cj"]
+texture = ExtResource("2_vnuye")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0b8o3"]
+texture = ExtResource("1_lcdgv")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/styles/normal = SubResource("StyleBoxTexture_uqsk4")
+Button/styles/pressed = SubResource("StyleBoxTexture_236cj")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_0b8o3")

@@ -37,6 +37,10 @@ window/stretch/aspect="expand"
 
 Level=""
 
+[gui]
+
+theme/custom="res://Game/tetris_theme.tres"
+
 [input]
 
 spawn_ball={
