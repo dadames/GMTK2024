@@ -8,8 +8,9 @@ var collide_safe_margin: float = 1.0
 func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
 	baseSpeed *= 2 ** Globals.level_scale 
-	var TargetSize:int = Globals.level_scale
-	self.scale = Vector2(TargetSize, TargetSize)
+	var targetSize:int = Globals.level_scale
+	self.scale = Vector2(targetSize, targetSize)
+	%CPUParticles2D.emission_sphere_radius = %Sprite2D.texture.get_width() / 2.0 * scale.x
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * baseSpeed
 	EventBus.added_active_ball.emit()

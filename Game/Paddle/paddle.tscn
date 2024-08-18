@@ -31,6 +31,7 @@ initial_speed = 20000.0
 shape = SubResource("RectangleShape2D_7tft1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = SubResource("NoiseTexture2D_jnx1s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
