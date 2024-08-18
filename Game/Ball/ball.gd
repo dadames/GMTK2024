@@ -56,6 +56,7 @@ func _physics_process(delta: float) -> void:
 			vfx.global_position = collisionInfo.get_position()
 			collider.collided()
 			blockBounceAudio.play()
+			EventBus.ball_collided.emit()
 		elif collider.is_class("CharacterBody2D"):
 			print("Paddle")
 			var paddle := collider as CharacterBody2D
