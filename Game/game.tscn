@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="9_3vi6x"]
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="9_cchhr"]
 [ext_resource type="Shader" path="res://Game/GUI/sprite_outline.gdshader" id="11_2uk8u"]
-[ext_resource type="PackedScene" uid="uid://cvqohvlr6nu66" path="res://Game/Menus/game_over_menu.tscn" id="12_ivnku"]
+[ext_resource type="PackedScene" uid="uid://cvqohvlr6nu66" path="res://Game/GUI/Menus/game_over_menu.tscn" id="12_ivnku"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -212,7 +212,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 3
@@ -227,7 +227,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -237,10 +237,22 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MuteMusicButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MuteSFXButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ad25h")
