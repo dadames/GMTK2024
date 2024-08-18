@@ -103,7 +103,7 @@ func on_level_started() -> void:
 
 
 # Detect when a falling block hits and "catch" it if its hitting us from above
-func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
+func _on_collision_detection_body_shape_entered(_body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
 	var body_owner: CollisionShape2D = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))
 	var local_owner: CollisionShape2D = self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))
 
@@ -113,5 +113,5 @@ func _on_collision_detection_body_shape_entered(body_rid:RID, body:Node2D, body_
 	var intersection := body_rect.intersection(local_rect)
 	
 	# if we're more through top than side, it's on top
-	if intersection.size.x > intersection.size.y:
+	if intersection.size.x > intersection.size.y && intersection.get_center().y < local_rect.get_center().y:
 		call_deferred("consume_brick", body.brick, Vector2.ZERO)
