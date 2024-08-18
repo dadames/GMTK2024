@@ -2,9 +2,14 @@ extends Node2D
 
 
 @onready var topBoundary: StaticBody2D = %TopBoundary
-@onready var bottomBoundary: CollisionObject2D = %BottomBoundary
 @onready var leftBoundary: StaticBody2D = %LeftBoundary
 @onready var rightBoundary: StaticBody2D = %RightBoundary
+@onready var bottomBoundary: CollisionObject2D = %BottomBoundary
+var topBoundaryPosition: float = -384
+var leftBoundaryPosition: float = -512
+var rightBoundaryPosition: float = 512
+var bottomBoundaryPosition: float = 384
+
 @onready var camera: Camera2D = %Camera2D
 @export var startingLevel: PackedScene
 var level: Level
@@ -31,7 +36,6 @@ func _ready() -> void:
 	set_boundaries.call_deferred()
 	%BallLabel.text = str(availableBalls)
 
-#score keeping
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
 	if HitType == "Hit":
 		Score += ScoreHit
@@ -69,12 +73,12 @@ func on_zoom_finished() -> void:
 	show_ball_spawnable()
 
 func set_boundaries() -> void:
-	var cameraPosition: Vector2 = camera.get_screen_center_position()
-	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / Vector2(2, 2)
-	topBoundary.global_position.y = cameraPosition.y - halfSize.y
-	bottomBoundary.global_position.y = cameraPosition.y + halfSize.y
-	leftBoundary.global_position.x = cameraPosition.x - halfSize.x
-	rightBoundary.global_position.x = cameraPosition.x + halfSize.x
+	var camera := get_viewport().get_camera_2d()
+	var cameraScaling: float = camera.targetZoom / camera.zoom.x 
+	topBoundary.global_position.y = topBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
+	leftBoundary.global_position.x = leftBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
+	rightBoundary.global_position.x = rightBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
+	bottomBoundary.global_position.y = bottomBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
 	topBoundary.set_collision_layer_value(2, true)
 	leftBoundary.set_collision_layer_value(2, true)
 	rightBoundary.set_collision_layer_value(2, true)

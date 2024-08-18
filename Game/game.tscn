@@ -69,7 +69,7 @@ script = ExtResource("5_re16v")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -14.4)
+position = Vector2(0, -384)
 rotation = 3.14159
 collision_layer = 2
 collision_mask = 0
@@ -79,7 +79,7 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="LeftBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-25.6, 0)
+position = Vector2(-512, 0)
 rotation = 1.5708
 collision_layer = 2
 collision_mask = 0
@@ -89,7 +89,7 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="RightBoundary" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(25.6, 0)
+position = Vector2(512, 0)
 rotation = -1.5708
 collision_layer = 2
 collision_mask = 0
@@ -99,7 +99,7 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="BottomBoundary" type="Area2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 14.4)
+position = Vector2(384, 0)
 collision_layer = 128
 collision_mask = 64
 
