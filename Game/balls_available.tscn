@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://26o4u7ymhxq"]
+
+[ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_g2a3t"]
+
+[node name="BallsAvailable" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -183.0
+offset_top = 99.0
+offset_bottom = 198.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="BallCounter" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/BallCounter"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_g2a3t")
+expand_mode = 2
+
+[node name="BallLabel" type="Label" parent="MarginContainer/BallCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1

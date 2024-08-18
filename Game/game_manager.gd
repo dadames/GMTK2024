@@ -29,6 +29,7 @@ func _ready() -> void:
 	EventBus.added_available_ball.connect(on_added_available_ball)
 	start_level.call_deferred(startingLevel)
 	set_boundaries.call_deferred()
+	%BallLabel.text = str(availableBalls)
 
 #score keeping
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
@@ -98,6 +99,7 @@ func spawn_ball() -> void:
 	var newBall := ballPrefab.instantiate()
 	add_child(newBall)
 	ballSpawnable = false
+	%BallLabel.text = str(availableBalls)
 
 func on_added_active_ball() -> void:
 	activeBalls += 1
@@ -114,6 +116,7 @@ func on_removed_active_ball() -> void:
 
 func on_added_available_ball() -> void:
 	availableBalls += 1
+	%BallLabel.text = str(availableBalls)
 
 func show_ball_spawnable() -> void:
 	ballSpawnable = true
