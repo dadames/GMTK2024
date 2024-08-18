@@ -36,10 +36,11 @@ vertical = true
 [resource]
 BottomBar/base_type = &"PanelContainer"
 BottomBar/styles/panel = SubResource("StyleBoxFlat_bxoyn")
-Button/colors/font_color = Color(0.223103, 0.223103, 0.223103, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0.223529, 0.223529, 0.223529, 1)
+Button/colors/font_outline_color = Color(0, 0.59, 0.59, 1)
 Button/colors/font_pressed_color = Color(0.223529, 0.223529, 0.223529, 1)
-Button/constants/outline_size = 0
+Button/constants/outline_size = 7
 Button/fonts/font = ExtResource("1_p2mho")
 Button/styles/hover = SubResource("StyleBoxTexture_60otn")
 Button/styles/normal = SubResource("StyleBoxTexture_uqsk4")
