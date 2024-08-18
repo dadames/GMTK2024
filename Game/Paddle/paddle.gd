@@ -53,33 +53,31 @@ func _physics_process(delta: float) -> void:
 
 
 func consume_brick(brick: Brick, shift: Vector2) -> void:
-	brick.reparent(self)
-
 	if brick in _consumed_bricks_this_frame:
 		return
+
 	#print_debug(brick, shift)
 	_consumed_bricks_this_frame.append(brick)
 
-	var grid_size := Globals.BLOCK_PIXELS * brick.global_scale.x
+	brick.reparent(self)
+
+	var grid_size := Globals.BLOCK_PIXELS * 2 ** (Globals.LEVEL_SCALE - 1)
 
 	var brick_parity := BrickShape.get_parity(brick.shapeType)
 	brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)
 
-	print_debug(brick_parity, brick.rotation)
-
 	if posmod(brick_parity.x, 2) != 0:
-		brick.position.x -= Globals.BLOCK_PIXELS * 0.5
+		brick.position.x -= grid_size * 0.5
 	if posmod(brick_parity.y, 2) != 0:
-		brick.position.y -= Globals.BLOCK_PIXELS * 0.5
+		brick.position.y -= grid_size * 0.5
 	
 	# align the brick to the grid along shift
 	brick.position = brick.position.snappedf(grid_size)
 
 	if posmod(brick_parity.x, 2) != 0:
-		brick.position.x += Globals.BLOCK_PIXELS * 0.5
+		brick.position.x += grid_size * 0.5
 	if posmod(brick_parity.y, 2) != 0:
-		brick.position.y += Globals.BLOCK_PIXELS * 0.5
-
+		brick.position.y += grid_size * 0.5
 	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
