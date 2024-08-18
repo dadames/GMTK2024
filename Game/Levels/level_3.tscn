@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw2vtd4sihxde"]
+[gd_scene load_steps=4 format=3 uid="uid://bw2vtd4sihxde"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_btgxq"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="1_rm660"]
+[ext_resource type="PackedScene" uid="uid://cdg74qp6orcll" path="res://Game/Levels/level_4.tscn" id="2_ic4nd"]
 
 [node name="Level3" type="Node" groups=["Level"]]
 script = ExtResource("1_btgxq")
 levelScale = 3.0
+nextLevel = ExtResource("2_ic4nd")
 
 [node name="Bricks" type="Node2D" parent="."]
 
