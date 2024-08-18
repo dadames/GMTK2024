@@ -16,8 +16,13 @@ func _ready() -> void:
 	lock_rotation = true
 
 func _physics_process(delta: float) -> void:
+<<<<<<< Updated upstream
 	if activeState == State.Falling :
 		linear_velocity.y = 100 * Globals.level_factor
+=======
+	#preventing it from moving side to side
+	#linear_velocity.x = 0
+>>>>>>> Stashed changes
 	pass
 	
 #handle size changing because you can't sale rigid bodies for some reason...
