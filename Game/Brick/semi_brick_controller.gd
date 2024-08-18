@@ -36,7 +36,7 @@ func collided() -> void:
 
 func on_falling() -> void:
 	activeState = State.Falling
-	apply_central_impulse(Vector2(0,100))
+	apply_central_impulse(Vector2(0,100 * Globals.level_factor))
 	#set_collision_layer_value(4, false)
 	set_collision_layer_value(5, true)
 	set_collision_mask_value(6, false)
