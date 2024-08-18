@@ -2,6 +2,7 @@ class_name Ball
 extends CharacterBody2D
 
 @export var baseSpeed: float = 250
+@export var min_speeds := Vector2(25, 100)
 var collide_safe_margin: float = 1.0
 
 
@@ -39,10 +40,28 @@ func _physics_process(delta: float) -> void:
 				#print(snapped(collisionInfo.get_angle()/PI, 0.1))
 				position.x = position.x + (10*sign(velocity.x))
 				#print(sign(velocity.x))
+
+	# make ball always have at least velocity on each component
+	var speed := velocity.length()
+
+	if abs(velocity.x) < min_speeds.x:
+		print_debug("Amplifying x velocity")
+		match sign(velocity.x):
+			0: velocity.x = ((randi() % 2) * 2 - 1) * min_speeds.x
+			var s: velocity.x = s * min_speeds.x
+	if abs(velocity.y) < min_speeds.y:
+		print_debug("Amplifying y velocity")
+		match sign(velocity.y):
+			0: velocity.y = -min_speeds.y
+			var s: velocity.y = s * min_speeds.y
+
+	velocity = velocity.normalized() * speed
+
 	var camera := get_viewport().get_camera_2d()
 	var cameraPosition: Vector2 = camera.get_screen_center_position()
 	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
 	var offscreen := cameraPosition.y + (halfSize.y * 1.1)
+
 	if position.y > offscreen:
 		queue_free()
 
