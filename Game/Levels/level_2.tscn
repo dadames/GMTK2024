@@ -58,10 +58,8 @@ mirrored = true
 [node name="Brick8" parent="Bricks" instance=ExtResource("2_0eg7v")]
 position = Vector2(-272, -256)
 rotation = 1.5708
-scale = Vector2(-1, 1)
 color = Color(0.44, 1, 0.44, 1)
 shapeType = 4
-mirrored = true
 
 [node name="Brick9" parent="Bricks" instance=ExtResource("2_0eg7v")]
 position = Vector2(-192, -272)
