@@ -50,8 +50,6 @@ glow_hdr_scale = 1.0
 script = ExtResource("1_jkbmv")
 startingLevel = ExtResource("7_5liut")
 ballPrefab = ExtResource("4_nyhvm")
-ScoreHit = null
-ScoreCatch = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -110,6 +108,8 @@ shape = SubResource("WorldBoundaryShape2D_1uayy")
 
 [node name="Paddle" parent="." instance=ExtResource("3_31cgl")]
 position = Vector2(0, 330)
+collision_layer = 260
+collision_mask = 258
 
 [node name="Camera2D" parent="." instance=ExtResource("1_mqw14")]
 unique_name_in_owner = true

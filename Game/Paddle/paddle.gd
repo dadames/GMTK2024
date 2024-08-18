@@ -57,12 +57,12 @@ func _physics_process(delta: float) -> void:
 func consume_brick(brick: Brick, shift: Vector2) -> void:
 	if brick in _consumed_bricks_this_frame:
 		return
-
+	
 	#print_debug(brick, shift)
 	_consumed_bricks_this_frame.append(brick)
-
+	
 	brick.reparent(self)
-
+	
 	var grid_size := Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 
 	#var brick_parity := BrickShape.get_parity(brick.shapeType)
@@ -87,7 +87,6 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				brick_sprite.reparent(self)
 				brick_sprite.position = brick_sprite.position.snappedf(grid_size)
-
 			for brick_collider: CollisionShape2D in child.find_children("CollisionShape2D"):
 				for body in bodies:
 					var dup := brick_collider.duplicate()
@@ -95,7 +94,6 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
 					dup.position = dup.position.snappedf(grid_size)
-
 	brick.queue_free()
 
 
@@ -108,10 +106,10 @@ func on_level_started() -> void:
 func _on_collision_detection_body_shape_entered(_body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
 	var body_owner: CollisionShape2D = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))
 	var local_owner: CollisionShape2D = self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))
-
+	
 	var body_rect := body_owner.global_transform * body_owner.shape.get_rect()
 	var local_rect := local_owner.global_transform * local_owner.shape.get_rect()
-
+	
 	var intersection := body_rect.intersection(local_rect)
 	
 	# if we're more through top than side, it's on top
