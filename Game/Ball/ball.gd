@@ -66,12 +66,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			wallBounceAudio.play()
 	if abs(velocity.x) < min_speeds.x:
-		print_debug("Amplifying x velocity")
 		match sign(velocity.x):
 			0: velocity.x = ((randi() % 2) * 2 - 1) * min_speeds.x
 			var s: velocity.x = s * min_speeds.x
 	if abs(velocity.y) < min_speeds.y:
-		print_debug("Amplifying y velocity")
 		match sign(velocity.y):
 			0: velocity.y = -min_speeds.y
 			var s: velocity.y = s * min_speeds.y
