@@ -6,15 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_viega"]
 size = Vector2(32, 32)
 
-[node name="SemiBrick" type="StaticBody2D"]
+[node name="SemiBrick" type="RigidBody2D"]
 collision_layer = 8
 collision_mask = 96
+gravity_scale = 0.0
 script = ExtResource("1_4q7xf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 5
-texture = ExtResource("1_r13ow")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.98023e-08, 0)
 shape = SubResource("RectangleShape2D_viega")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("1_r13ow")
