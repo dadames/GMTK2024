@@ -1,10 +1,13 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cxqbaudi5opa4"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cxqbaudi5opa4"]
 
 [ext_resource type="FontFile" uid="uid://c6o8ht2hs3aif" path="res://Game/GUI/Designer.otf" id="1_p2mho"]
 [ext_resource type="Texture2D" uid="uid://1ypivkaqe8nc" path="res://Game/Menus/blue_button04.png" id="1_y3c0u"]
 [ext_resource type="Texture2D" uid="uid://b5pccdp0cmrrx" path="res://Game/Menus/button_hover.png" id="2_8lcbw"]
 [ext_resource type="Texture2D" uid="uid://csawr6qbrntpf" path="res://Game/Menus/blue_button05.png" id="2_vnuye"]
 [ext_resource type="Texture2D" uid="uid://cpwk2pg4p8eh2" path="res://Game/Menus/panel2.png" id="4_1s50u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxoyn"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60otn"]
 texture = ExtResource("2_8lcbw")
@@ -26,7 +29,13 @@ texture_margin_bottom = 10.0
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0b8o3"]
 texture = ExtResource("4_1s50u")
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pxnv3"]
+color = Color(1, 1, 1, 1)
+vertical = true
+
 [resource]
+BottomBar/base_type = &"PanelContainer"
+BottomBar/styles/panel = SubResource("StyleBoxFlat_bxoyn")
 Button/colors/font_color = Color(0.223103, 0.223103, 0.223103, 1)
 Button/colors/font_hover_color = Color(0.223529, 0.223529, 0.223529, 1)
 Button/colors/font_pressed_color = Color(0.223529, 0.223529, 0.223529, 1)
@@ -38,3 +47,4 @@ Button/styles/pressed = SubResource("StyleBoxTexture_236cj")
 Label/constants/outline_size = 10
 Label/fonts/font = ExtResource("1_p2mho")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_0b8o3")
+VSeparator/styles/separator = SubResource("StyleBoxLine_pxnv3")

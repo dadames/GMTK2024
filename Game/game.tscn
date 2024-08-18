@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="9_3vi6x"]
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="9_cchhr"]
 [ext_resource type="Shader" path="res://Game/GUI/sprite_outline.gdshader" id="11_2uk8u"]
-[ext_resource type="PackedScene" path="res://Game/Menus/game_over_menu.tscn" id="12_ivnku"]
+[ext_resource type="PackedScene" uid="uid://cvqohvlr6nu66" path="res://Game/Menus/game_over_menu.tscn" id="12_ivnku"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -168,75 +168,79 @@ theme_override_font_sizes/font_size = 50
 text = "Press Space to Spawn a Ball"
 script = ExtResource("8_23gjy")
 
-[node name="Score" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -183.0
-offset_bottom = 99.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/Score"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 15
-
-[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/Score/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 50
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BallsAvailable" type="PanelContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -183.0
-offset_top = 99.0
-offset_bottom = 198.0
-grow_horizontal = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/BallsAvailable"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 15
-
-[node name="BallCounter" type="HBoxContainer" parent="CanvasLayer/Control/BallsAvailable/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/BallsAvailable/MarginContainer/BallCounter"]
-material = SubResource("ShaderMaterial_3imvo")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("9_cchhr")
-expand_mode = 2
-
-[node name="BallLabel" type="Label" parent="CanvasLayer/Control/BallsAvailable/MarginContainer/BallCounter"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_stretch_ratio = 3.0
-theme_override_font_sizes/font_size = 50
-text = "10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="GameOverMenu" parent="CanvasLayer/Control" instance=ExtResource("12_ivnku")]
 layout_mode = 1
 offset_left = -137.0
 offset_top = -87.0
 offset_right = 137.0
 offset_bottom = 87.0
+
+[node name="BottomBar" type="PanelContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"BottomBar"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/BottomBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/BottomBar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="BallCounter" type="HBoxContainer" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/BallCounter"]
+material = SubResource("ShaderMaterial_3imvo")
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_cchhr")
+expand_mode = 2
+
+[node name="BallLabel" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/BallCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreName" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 50
+text = "Score: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ad25h")
