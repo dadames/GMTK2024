@@ -1,0 +1,166 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh4l1wl7hdggl"]
+
+[ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_1e0eb"]
+[ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_5cycd"]
+
+[node name="Level" type="Node" groups=["Level"]]
+script = ExtResource("1_1e0eb")
+levelScale = 5.0
+
+[node name="Bricks" type="Node2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Brick" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(0, -16)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 0
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(80, -288)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(0, -320)
+rotation = 3.14159
+scale = Vector2(1, -1)
+color = Color(1, 0.847833, 0.17, 1)
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(128, -16)
+rotation = 3.14159
+color = Color(0.56, 0.56, 0.56, 1)
+shapeType = 0
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-176, -224)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+color = Color(0.56, 0.56, 0.56, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(368, -96)
+rotation = 1.5708
+color = Color(0.1656, 0.46, 0.1656, 1)
+shapeType = 4
+
+[node name="Brick21" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(304, -80)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+color = Color(0.1656, 0.46, 0.1656, 1)
+shapeType = 3
+mirrored = true
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-80, -288)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+color = Color(0.1656, 0.46, 0.1656, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(176, -224)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+color = Color(0.56, 0.56, 0.56, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-272, -160)
+rotation = 1.5708
+scale = Vector2(1, -1)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 4
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-368, -96)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+color = Color(0.2304, 0.64, 0.2304, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick22" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-368, -48)
+scale = Vector2(-1, 1)
+color = Color(0.2304, 0.64, 0.2304, 1)
+shapeType = 2
+mirrored = true
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(256, -16)
+scale = Vector2(1, -1)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 0
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-384, -16)
+scale = Vector2(1, -1)
+color = Color(0.56, 0.56, 0.56, 1)
+shapeType = 0
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-256, -16)
+scale = Vector2(1, -1)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 0
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(272, -160)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+color = Color(0.231373, 0.639216, 0.231373, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick20" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(256, -112)
+scale = Vector2(1, -1)
+color = Color(0.231373, 0.639216, 0.231373, 1)
+shapeType = 4
+
+[node name="Brick15" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-128, -16)
+scale = Vector2(-1, -1)
+color = Color(0.56, 0.56, 0.56, 1)
+shapeType = 0
+mirrored = true
+
+[node name="Brick17" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(384, -16)
+scale = Vector2(-1, -1)
+color = Color(0.56, 0.56, 0.56, 1)
+shapeType = 0
+mirrored = true
+
+[node name="Brick18" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(464, -32)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick19" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-464, -32)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+color = Color(0.48, 0.48, 0.48, 1)
+shapeType = 4
+mirrored = true
+
+[node name="Brick16" parent="Bricks" instance=ExtResource("2_5cycd")]
+position = Vector2(-48, -240)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+color = Color(0.164706, 0.458824, 0.164706, 1)
+shapeType = 3
+mirrored = true

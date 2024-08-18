@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://l2cyu1no2u1i"]
+[gd_scene load_steps=4 format=3 uid="uid://l2cyu1no2u1i"]
 
 [ext_resource type="Script" path="res://Game/Brick/brick_controller.gd" id="1_uxt67"]
 [ext_resource type="PackedScene" uid="uid://c3i5efug856wq" path="res://Game/Brick/semi_brick.tscn" id="2_3ssye"]
+[ext_resource type="PackedScene" uid="uid://ca4ii2uujd1r5" path="res://Game/Modifiers/modifier.tscn" id="3_imnwe"]
 
 [node name="Brick" type="Node2D"]
 script = ExtResource("1_uxt67")
 semiBrickPrefab = ExtResource("2_3ssye")
 shapeType = 1
+modifier_prefab = ExtResource("3_imnwe")

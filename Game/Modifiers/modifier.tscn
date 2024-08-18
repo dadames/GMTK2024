@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca4ii2uujd1r5"]
+
+[ext_resource type="Script" path="res://Game/Modifiers/modifier_object.gd" id="1_xy31g"]
+[ext_resource type="Texture2D" uid="uid://oh8juaya4485" path="res://Game/Modifiers/capsule.png" id="2_w7vaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs1sb"]
+size = Vector2(32, 12)
+
+[node name="Modifier" type="CharacterBody2D"]
+collision_layer = 256
+collision_mask = 0
+platform_floor_layers = 4294902015
+script = ExtResource("1_xy31g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w7vaq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vs1sb")
