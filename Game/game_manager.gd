@@ -35,6 +35,7 @@ func _ready() -> void:
 	start_level.call_deferred(startingLevel)
 	set_boundaries.call_deferred()
 	%BallLabel.text = str(availableBalls)
+	%ScoreLabel.text = str(score)
 	SaveData.load()
 
 func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
@@ -45,7 +46,7 @@ func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2
 		score = PaddlePosition.distance_to(HitPosition)
 		score += ((scoreCatch * (score/10)) / 4)
 		#print("Block Caught! New score:",score)
-	EventBus.update_score.emit(score)
+	%ScoreLabel.text = str(score)
 
 func on_level_completed() -> void:
 	print("Level Completed")
