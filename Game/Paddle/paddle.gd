@@ -61,7 +61,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 
 	brick.reparent(self)
 
-	var grid_size := Globals.BLOCK_PIXELS * 2 ** (Globals.level_scale - 1)
+	var grid_size := Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 
 	#var brick_parity := BrickShape.get_parity(brick.shapeType)
 	#brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)
