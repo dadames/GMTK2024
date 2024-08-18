@@ -51,7 +51,7 @@ func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2
 func on_level_completed() -> void:
 	print("Level Completed")
 	if !level.nextLevel:
-		print("Winner")
+		EventBus.game_won.emit(score)
 		return
 	start_level(level.nextLevel)
 
