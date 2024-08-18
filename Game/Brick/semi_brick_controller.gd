@@ -7,7 +7,6 @@ var brick: Brick
 enum State {Static, Falling, Merged}
 var activeState: State = State.Static
 
-
 func initialize(brickIn: Brick) -> void:
 	brick = brickIn
 	$Sprite2D.modulate = brick.color
@@ -17,8 +16,9 @@ func _ready() -> void:
 	lock_rotation = true
 
 func _physics_process(delta: float) -> void:
-	#preventing it from moving side to side
-	linear_velocity.x = 0
+	if activeState == State.Falling :
+		linear_velocity.y = 100 * Globals.level_factor
+	pass
 	
 #handle size changing because you can't sale rigid bodies for some reason...
 func size_change(scaleIn: Vector2) -> void:
@@ -36,7 +36,6 @@ func collided() -> void:
 
 func on_falling() -> void:
 	activeState = State.Falling
-	apply_central_impulse(Vector2(0,100 * Globals.level_factor))
 	#set_collision_layer_value(4, false)
 	set_collision_layer_value(5, true)
 	set_collision_mask_value(6, false)
