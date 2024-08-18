@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func on_level_completed() -> void:
+	EventBus.added_available_ball.emit()
 	queue_free()
 
 #Collision handling
@@ -42,7 +43,6 @@ func _physics_process(delta: float) -> void:
 	var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
 	var offscreen := cameraPosition.y + (halfSize.y * 1.1)
 	if position.y > offscreen:
-		print("Fell off screen.")
 		queue_free()
 
 func _exit_tree() -> void:

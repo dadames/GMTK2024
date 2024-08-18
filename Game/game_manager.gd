@@ -14,6 +14,7 @@ var Distance := 0
 var Score:int = 0
 @export var ScoreHit:int = 100
 @export var ScoreCatch:int = 100
+var availableBalls: int = 3
 var activeBalls: int = 0
 var ballSpawnable := true
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 	EventBus.debug_complete_level.connect(on_debug_complete_level)
 	EventBus.added_active_ball.connect(on_added_active_ball)
 	EventBus.removed_active_ball.connect(on_removed_active_ball)
+	EventBus.added_available_ball.connect(on_added_available_ball)
 	start_level.call_deferred(startingLevel)
 	set_boundaries.call_deferred()
 
@@ -99,11 +101,19 @@ func spawn_ball() -> void:
 
 func on_added_active_ball() -> void:
 	activeBalls += 1
+	availableBalls -=1
 
 func on_removed_active_ball() -> void:
 	activeBalls -= 1
 	if activeBalls <= 0:
-		show_ball_spawnable()
+		if availableBalls > 0:
+			show_ball_spawnable()
+		else:
+			EventBus.game_over.emit()
+			print("loser")
+
+func on_added_available_ball() -> void:
+	availableBalls += 1
 
 func show_ball_spawnable() -> void:
 	ballSpawnable = true

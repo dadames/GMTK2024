@@ -14,3 +14,4 @@ signal score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vecto
 signal added_active_ball()
 signal removed_active_ball()
 signal ball_spawnable()
+signal added_available_ball()

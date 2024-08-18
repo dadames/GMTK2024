@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 
 #Movement
 func _physics_process(delta: float) -> void:
-	if !initialized || Engine.is_editor_hint() :
+	if !initialized || Engine.is_editor_hint():
 		return
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
