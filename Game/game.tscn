@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=27 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -16,8 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://d1belnql5dpju" path="res://Game/GUI/Menus/flatDark12.png" id="14_ux6ar"]
 [ext_resource type="Texture2D" uid="uid://b8d0lji5e8gcl" path="res://Game/GUI/Menus/flatDark14.png" id="15_ip5y3"]
 [ext_resource type="Texture2D" uid="uid://b732g7g3glw6j" path="res://Game/GUI/Menus/flatDark16.png" id="16_ed2c6"]
+[ext_resource type="Script" path="res://Game/mute_music_button.gd" id="16_wo35x"]
 [ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
 [ext_resource type="Texture2D" uid="uid://dpn1wdavomp5a" path="res://Game/GUI/Menus/flatDark20.png" id="18_13cm6"]
+[ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
+[ext_resource type="Script" path="res://Game/GUI/restart_button_texture.gd" id="21_j754g"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -252,19 +255,25 @@ layout_mode = 2
 
 [node name="MuteMusicButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("14_ux6ar")
-texture_pressed = ExtResource("15_ip5y3")
-
-[node name="MuteSFXButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
+focus_mode = 0
 toggle_mode = true
 texture_normal = ExtResource("16_ed2c6")
 texture_pressed = ExtResource("17_erae7")
+script = ExtResource("16_wo35x")
+
+[node name="MuteSFXButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("14_ux6ar")
+texture_pressed = ExtResource("15_ip5y3")
+script = ExtResource("19_spq8m")
 
 [node name="RestartButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("18_13cm6")
+script = ExtResource("21_j754g")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ad25h")
@@ -272,3 +281,6 @@ environment = SubResource("Environment_ad25h")
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/ResetButton" to="CanvasLayer/Control/ResetButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
+[connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/RestartButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/RestartButton" method="_on_pressed"]
