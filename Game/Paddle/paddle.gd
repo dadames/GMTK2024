@@ -63,27 +63,28 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 
 	var grid_size := Globals.BLOCK_PIXELS * 2 ** (Globals.level_scale - 1)
 
-	var brick_parity := BrickShape.get_parity(brick.shapeType)
-	brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)
+	#var brick_parity := BrickShape.get_parity(brick.shapeType)
+	#brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)
 
-	if posmod(brick_parity.x, 2) != 0:
-		brick.position.x -= grid_size * 0.5
-	if posmod(brick_parity.y, 2) != 0:
-		brick.position.y -= grid_size * 0.5
-	
-	# align the brick to the grid along shift
-	brick.position = brick.position.snappedf(grid_size)
+	#if posmod(brick_parity.x, 2) != 0:
+	#	brick.position.x -= grid_size * 0.5
+	#if posmod(brick_parity.y, 2) != 0:
+	#	brick.position.y -= grid_size * 0.5
+	#
+	## align the brick to the grid along shift
+	#brick.position = brick.position.snappedf(grid_size)
 
-	if posmod(brick_parity.x, 2) != 0:
-		brick.position.x += grid_size * 0.5
-	if posmod(brick_parity.y, 2) != 0:
-		brick.position.y += grid_size * 0.5
+	#if posmod(brick_parity.x, 2) != 0:
+	#	brick.position.x += grid_size * 0.5
+	#if posmod(brick_parity.y, 2) != 0:
+	#	brick.position.y += grid_size * 0.5
 	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			EventBus.score_change.emit("Catch", brick.position, position)
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				brick_sprite.reparent(self)
+				brick_sprite.position = brick_sprite.position.snappedf(grid_size)
 
 			for brick_collider: CollisionShape2D in child.find_children("CollisionShape2D"):
 				for body in bodies:
@@ -91,6 +92,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					body.add_child(dup)
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
+					dup.position = dup.position.snappedf(grid_size)
 
 	brick.queue_free()
 
