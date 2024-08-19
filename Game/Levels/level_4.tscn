@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lygh0kjxdqn7"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_mno2w"]
-[ext_resource type="PackedScene" uid="uid://bh4l1wl7hdggl" path="res://Game/Levels/level_5.tscn" id="2_e0p12"]
+[ext_resource type="PackedScene" path="res://Game/Levels/level_5.tscn" id="2_e0p12"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_t7vie"]
 
 [node name="Level" type="Node" groups=["Level"]]
@@ -10,6 +10,7 @@ levelScale = 4.0
 nextLevel = ExtResource("2_e0p12")
 
 [node name="Bricks" type="Node2D" parent="."]
+modulate = Color(2, 2, 2, 1)
 
 [node name="Brick" parent="Bricks" instance=ExtResource("2_t7vie")]
 position = Vector2(0, -32)

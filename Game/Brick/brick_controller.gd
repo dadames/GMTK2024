@@ -44,19 +44,21 @@ func _process(delta: float) -> void:
 		var cameraPosition: Vector2 = camera.get_screen_center_position()
 		var halfSize: Vector2 = Vector2(get_viewport().size) / camera.zoom / 2.0
 		var offscreen := cameraPosition.y + (halfSize.y * 1.1)
-
+		
 		# clean-up can be slower, it's a lot of looping
 		if Engine.get_process_frames() % 20 == 0:
 			var min_position_semis := Vector2.INF
 			for child in get_children():
 				if child is SemiBrick:
 					min_position_semis = min_position_semis.min(child.global_position)
-
+		
 			if min_position_semis.y > offscreen:
 				print_debug("Brick fell and was collected")
 				queue_free()
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if brickSpawned.size() == 0:
 		pass
 	else:
@@ -77,14 +79,14 @@ func set_shape(shape: BrickShape) -> void:
 	var positions := shape.get_node_orientations()
 	brickSpawned.clear()
 	relativePositions.clear()
-
+	
 	for quadrantPosition: Vector2 in positions:
 		spawn_semibrick(quadrantPosition)
 		
 	for child in get_children():
 		if child is Node2D:
 			brickSpawned.append(child)
-
+	
 	var initialRelative: Vector2 = brickSpawned[0].global_position
 	for brickSpawned: Node2D in brickSpawned :
 		relativePositions.append(brickSpawned.global_position - initialRelative)
@@ -96,8 +98,7 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 	semibrick.position = quadrantPosition
 	semibrick.initialize(self)
 	semibrick.size_change()
-	
-	
+
 func start_falling() -> void:
 	isFalling = true
 
@@ -106,7 +107,6 @@ func start_falling() -> void:
 		instance.modifier = modifier
 		instance.position = global_position * get_parent().global_transform
 		get_parent().add_child(instance)
-	
 	falling.emit()
 
 func start_merge() -> void:
