@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=27 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="3_31cgl"]
 [ext_resource type="Texture2D" uid="uid://dyhjaffr03i5p" path="res://Game/53912178488_3ab9e86872_o.jpg" id="3_o420k"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
+[ext_resource type="Shader" path="res://Game/overlay.gdshader" id="4_yp74y"]
 [ext_resource type="Script" path="res://Game/background.gd" id="5_re16v"]
 [ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
@@ -20,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
 [ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mkyta"]
+shader = ExtResource("4_yp74y")
+shader_parameter/strength = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -51,6 +56,7 @@ startingLevel = ExtResource("7_5liut")
 ballPrefab = ExtResource("4_nyhvm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_mkyta")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
