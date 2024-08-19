@@ -18,8 +18,7 @@ func _ready() -> void:
 	EventBus.modifier_collected.connect(_on_modifier_event)
 	EventBus.destroy_ball_called.connect(on_destroy_ball_called)
 	speed = baseSpeed * Globals.level_factor
-	var targetSize := Globals.level_scale
-	self.scale = Vector2(targetSize, targetSize)
+	scale *= Vector2(Globals.level_scale, Globals.level_scale)
 	%CPUParticles2D.emission_sphere_radius *= Globals.level_scale
 	%CPUParticles2D.scale_amount_min *= Globals.level_scale
 	%CPUParticles2D.scale_amount_min *= Globals.level_scale

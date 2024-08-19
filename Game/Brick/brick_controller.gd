@@ -101,7 +101,6 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 
 func start_falling() -> void:
 	isFalling = true
-
 	for modifier in modifiers:
 		var instance := modifier_prefab.instantiate()
 		instance.modifier = modifier
@@ -114,4 +113,5 @@ func start_merge() -> void:
 	merge.emit()
 
 func _exit_tree() -> void:
-	EventBus.brick_removed_from_level.emit(self)
+	if !Engine.is_editor_hint():
+		EventBus.brick_removed_from_level.emit(self)

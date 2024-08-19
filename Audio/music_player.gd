@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_finished() -> void:
 	currentIndex += 1
-	if currentIndex > soundtrack.size():
+	if currentIndex >= soundtrack.size():
 		currentIndex = 0
 	stream = soundtrack[currentIndex]
 	play()
