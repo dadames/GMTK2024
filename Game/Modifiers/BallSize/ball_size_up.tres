@@ -7,3 +7,4 @@
 script = ExtResource("1_mp46t")
 factor = 2.0
 icon = ExtResource("1_ovhvc")
+flyingText = "Ball Size Increase"

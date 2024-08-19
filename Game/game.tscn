@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=33 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -24,6 +24,9 @@
 [ext_resource type="Script" path="res://Game/GUI/Menus/destroy_ball_button.gd" id="21_ah6ks"]
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="22_nblwm"]
 [ext_resource type="AudioStream" uid="uid://wpkcl5fb15ub" path="res://Game/Ball/Audio/611798__metalfortress__error.wav" id="23_lpoqu"]
+[ext_resource type="PackedScene" uid="uid://baigi8431vl47" path="res://Game/GUI/flying_text_prefab.tscn" id="25_etm0e"]
+[ext_resource type="Script" path="res://Game/GUI/flying_text.gd" id="26_rxd8t"]
+[ext_resource type="Script" path="res://Game/GUI/flying_text_manager.gd" id="27_ug28f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkyta"]
 shader = ExtResource("4_yp74y")
@@ -279,6 +282,17 @@ unique_name_in_owner = true
 stream = ExtResource("23_lpoqu")
 volume_db = 1.0
 bus = &"SFX"
+
+[node name="FlyingTextPrefab" parent="." instance=ExtResource("25_etm0e")]
+offset_left = 367.0
+offset_top = 612.0
+offset_right = 539.0
+offset_bottom = 629.0
+script = ExtResource("26_rxd8t")
+
+[node name="FlyingTextManager" type="Node" parent="."]
+script = ExtResource("27_ug28f")
+flyingTextPrefab = ExtResource("25_etm0e")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]

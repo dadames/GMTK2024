@@ -21,4 +21,5 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body is Paddle:
 		EventBus.modifier_collected.emit(self.modifier)
+		EventBus.generate_flying_text.emit(global_position, modifier.flyingText)
 		queue_free.call_deferred()

@@ -10,6 +10,7 @@ signal zoom_finished()
 signal game_won(score: int)
 signal game_over(score: int)
 signal score_change(HitType: String)
+signal generate_flying_text(position: Vector2, text: String)
 
 signal modifier_collected(modifier: Modifier)
 

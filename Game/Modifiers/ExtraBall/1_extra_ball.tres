@@ -7,3 +7,4 @@
 script = ExtResource("1_nhhd8")
 extraBalls = 1
 icon = ExtResource("1_l0rcl")
+flyingText = "Extra Ball"
