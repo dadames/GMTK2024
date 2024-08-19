@@ -8,7 +8,7 @@
 
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_cg55m")
-levelScale = 1.0
+levelScale = 7.0
 nextLevel = ExtResource("2_ltecf")
 
 [node name="Bricks" type="Node2D" parent="."]
