@@ -271,6 +271,8 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 texture = ExtResource("22_nblwm")
 
+[node name="BallSpawnSound" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
 [connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" method="_on_toggled"]

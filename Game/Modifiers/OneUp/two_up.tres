@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("2_htjbt")
-extraLives = 1
+extraLives = 2
 icon = ExtResource("1_bwgcu")
