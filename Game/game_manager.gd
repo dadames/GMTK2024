@@ -16,9 +16,9 @@ var level: Level
 @export var ballPrefab: PackedScene
 
 var distance := 0
-var score:int = 0
-@export var scoreHit:int = 1
-@export var scoreCatch:int = 100
+var score:float = 0
+@export var scoreHit:float = 1
+#@export var scoreCatch:int = 100
 var availableBalls: int = 3
 var activeBalls: int = 0
 var ballSpawnable := true
@@ -40,8 +40,8 @@ func _ready() -> void:
 	
 
 func score_change(HitType:String) -> void:
-	if HitType == "Hit":
-		score += scoreHit
+	if HitType == "Catch":
+		score += (scoreHit / 4)
 		#print("Block Hit! New score:",score)
 	#elif HitType == "Catch":
 	#	score = PaddlePosition.distance_to(HitPosition)
