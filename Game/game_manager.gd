@@ -66,7 +66,6 @@ func on_level_completed() -> void:
 		EventBus.game_won.emit(score)
 		return
 	start_level(level.nextLevel)
-	%LevelPassed.play()
 
 func start_level(nextLevel: PackedScene) -> void:
 	if level:

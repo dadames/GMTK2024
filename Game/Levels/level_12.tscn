@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dr8erptudlybr"]
+[gd_scene load_steps=7 format=3 uid="uid://dr8erptudlybr"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_8oec2"]
+[ext_resource type="PackedScene" uid="uid://1pqa4jjamy0m" path="res://Game/Levels/level_13.tscn" id="2_7cwne"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_texhw"]
 [ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_jmof7"]
 [ext_resource type="Resource" uid="uid://caqnwjdggugyp" path="res://Game/Modifiers/BallSpeed/ball_double_speed.tres" id="4_u47wq"]
@@ -8,7 +9,8 @@
 
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_8oec2")
-levelScale = 9.0
+levelScale = 12.0
+nextLevel = ExtResource("2_7cwne")
 
 [node name="Bricks" type="Node2D" parent="."]
 modulate = Color(2, 2, 2, 1)
