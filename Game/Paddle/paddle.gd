@@ -89,7 +89,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			var parameters := PhysicsPointQueryParameters2D.new()
-			parameters.position = child.global_position.snappedf(grid_size)
+			parameters.position = self.global_transform * (self.global_transform.affine_inverse() * child.global_position).snappedf(grid_size)
 			parameters.collision_mask = 0x4
 			if !space_state.intersect_point(parameters, 1).is_empty():
 				return
