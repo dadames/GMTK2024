@@ -52,7 +52,7 @@ scale_amount_min = 0.0
 scale_amount_max = 14.0
 color = Color(0, 1, 1, 0.0196078)
 
-[node name="BlockBounceAudio" type="AudioStreamPlayer" parent="."]
+[node name="BrickBounceAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_dmoyv")
 bus = &"SFX"
