@@ -51,13 +51,15 @@ func _physics_process(delta: float) -> void:
 		var collider := collisionInfo.get_collider()
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
-			EventBus.score_change.emit("Hit", Vector2(0,0), Vector2(0,0))
-			var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
-			get_tree().root.add_child(vfx)
-			vfx.global_position = collisionInfo.get_position()
 			collider.collided()
-			blockBounceAudio.play()
-			EventBus.ball_collided.emit()
+			if collider.activeState == SemiBrick.State.Static:
+				blockBounceAudio.play()
+				EventBus.ball_collided.emit()
+				var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
+				get_tree().root.add_child(vfx)
+				vfx.global_position = collisionInfo.get_position()
+			else:
+				wallBounceAudio.play()
 		elif collider.is_class("CharacterBody2D"):
 			print("Paddle")
 			var paddle := collider as CharacterBody2D
