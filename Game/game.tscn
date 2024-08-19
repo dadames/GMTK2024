@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=25 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -18,9 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://b732g7g3glw6j" path="res://Game/GUI/Menus/flatDark16.png" id="16_ed2c6"]
 [ext_resource type="Script" path="res://Game/mute_music_button.gd" id="16_wo35x"]
 [ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
-[ext_resource type="Texture2D" uid="uid://dpn1wdavomp5a" path="res://Game/GUI/Menus/flatDark20.png" id="18_13cm6"]
 [ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
-[ext_resource type="Script" path="res://Game/GUI/restart_button_texture.gd" id="21_j754g"]
+[ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
@@ -234,11 +233,18 @@ texture_normal = ExtResource("14_ux6ar")
 texture_pressed = ExtResource("15_ip5y3")
 script = ExtResource("19_spq8m")
 
-[node name="RestartButton" type="TextureButton" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+[node name="Destroyball" type="Button" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("18_13cm6")
-script = ExtResource("21_j754g")
+theme_type_variation = &"BottomBarButton"
+text = "Destroy Ball"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BottomBarButton"
+text = "Restart"
+script = ExtResource("20_7dudw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ad25h")
@@ -247,4 +253,5 @@ environment = SubResource("Environment_ad25h")
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]
 [connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteMusicButton" method="_on_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/MuteSFXButton" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/Destroyball" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/Destroyball" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/RestartButton" to="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer/RestartButton" method="_on_pressed"]

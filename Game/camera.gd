@@ -5,7 +5,7 @@ var targetZoom: float
 var zoomPeriod := 2.0
 var zoomSpeed: float
 
-var shakeStrength: float = 30
+var shakeStrength: float = 0
 var baseShakeFade: float = 1
 
 
