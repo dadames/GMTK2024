@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1ka6hlnlrts8"]
+[gd_scene load_steps=11 format=3 uid="uid://c1ka6hlnlrts8"]
 
 [ext_resource type="Script" path="res://Audio/music_player.gd" id="1_jpuug"]
 [ext_resource type="AudioStream" uid="uid://b756vocl2lfl4" path="res://Audio/Stellardrone - Light Years - 01 Red Giant.mp3" id="2_v5i5i"]
 [ext_resource type="AudioStream" uid="uid://dhhe63pgf82ek" path="res://Audio/Stellardrone - Light Years - 02 Airglow.mp3" id="3_emp28"]
+[ext_resource type="AudioStream" uid="uid://b8ygp4r3rpxir" path="res://Audio/Stellardrone - Light Years - 03 Eternity.mp3" id="4_6ebe3"]
+[ext_resource type="AudioStream" uid="uid://cbriky3ixcd58" path="res://Audio/Stellardrone - Light Years - 04 Light Years.mp3" id="5_7qx73"]
+[ext_resource type="AudioStream" uid="uid://dp75ur0s27iy0" path="res://Audio/Stellardrone - Light Years - 05 In Time.mp3" id="6_3ayoa"]
+[ext_resource type="AudioStream" uid="uid://dyd14fn6ty4g8" path="res://Audio/Stellardrone - Light Years - 06 Cepheid.mp3" id="7_hol2w"]
+[ext_resource type="AudioStream" uid="uid://4f3huoyoe8qt" path="res://Audio/Stellardrone - Light Years - 08 Ultra Deep Field.mp3" id="9_vf4gx"]
+[ext_resource type="AudioStream" uid="uid://b48s2e85tvqga" path="res://Audio/Stellardrone - Light Years - 09 Eternity (Reprise).mp3" id="10_wcjnw"]
+[ext_resource type="AudioStream" uid="uid://t8bxkpfahv5p" path="res://Audio/Stellardrone - Light Years - 10 Messier 45.mp3" id="11_5ln42"]
 
 [node name="Music" type="AudioStreamPlayer"]
 autoplay = true
 bus = &"Music"
 script = ExtResource("1_jpuug")
-soundtrack = Array[AudioStream]([ExtResource("2_v5i5i"), ExtResource("3_emp28")])
+soundtrack = Array[AudioStream]([ExtResource("2_v5i5i"), ExtResource("3_emp28"), ExtResource("4_6ebe3"), ExtResource("5_7qx73"), ExtResource("6_3ayoa"), ExtResource("7_hol2w"), ExtResource("9_vf4gx"), ExtResource("9_vf4gx"), ExtResource("10_wcjnw"), ExtResource("11_5ln42")])
 
 [connection signal="finished" from="." to="." method="_on_finished"]
