@@ -41,17 +41,14 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_gvk1q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_1yh17")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_1yh17")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
