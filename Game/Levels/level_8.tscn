@@ -276,6 +276,7 @@ position = Vector2(480, -288)
 color = Color(0.114939, 0.530484, 0.646363, 1)
 
 [node name="CameraSizeGuide(Hide)" type="Panel" parent="."]
+visible = false
 offset_left = -512.0
 offset_top = -384.0
 offset_right = 512.0
