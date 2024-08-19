@@ -63,8 +63,6 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 	#print_debug(brick, shift)
 	_consumed_bricks_this_frame.append(brick)
 	
-	brick.reparent(self)
-	
 	var grid_size := Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 
 	#var brick_parity := BrickShape.get_parity(brick.shapeType)
@@ -82,6 +80,20 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 	#	brick.position.x += grid_size * 0.5
 	#if posmod(brick_parity.y, 2) != 0:
 	#	brick.position.y += grid_size * 0.5
+
+	var space_state := get_world_2d().direct_space_state
+
+	# check if the spot is actually free
+	# if not we return early
+	for child: Node2D in brick.get_children():
+		if child is SemiBrick:
+			var parameters := PhysicsPointQueryParameters2D.new()
+			parameters.position = child.global_position
+			parameters.collision_mask = 0x4
+			if !space_state.intersect_point(parameters, 1).is_empty():
+				return
+	
+	brick.reparent(self)
 	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
@@ -96,6 +108,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
 					dup.position = dup.position.snappedf(grid_size)
+
 	brick.queue_free()
 
 

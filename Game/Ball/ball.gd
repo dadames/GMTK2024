@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var min_speeds := Vector2(25, 100)
 var collide_safe_margin: float = 1.0
 var speed: float
-@onready var blockBounceAudio: AudioStreamPlayer2D = %BlockBounceAudio
-@onready var paddleBounceAudio: AudioStreamPlayer2D = %PaddleBounceAudio
-@onready var wallBounceAudio: AudioStreamPlayer2D = %WallBounceAudio
+@onready var brickBounceAudio: AudioStreamPlayer = %BrickBounceAudio
+@onready var paddleBounceAudio: AudioStreamPlayer = %PaddleBounceAudio
+@onready var wallBounceAudio: AudioStreamPlayer = %WallBounceAudio
 @export var collisionVFXPrefab: PackedScene
 
 var _modifiers: Array[Resource] = []
@@ -16,6 +16,7 @@ var _modifiers: Array[Resource] = []
 func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
 	EventBus.modifier_collected.connect(_on_modifier_event)
+	EventBus.destroy_ball_called.connect(on_destroy_ball_called)
 	speed = baseSpeed * Globals.level_factor
 	var targetSize := Globals.level_scale
 	self.scale = Vector2(targetSize, targetSize)
@@ -50,13 +51,16 @@ func _physics_process(delta: float) -> void:
 		var collider := collisionInfo.get_collider()
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
-			EventBus.score_change.emit("Hit", Vector2(0,0), Vector2(0,0))
-			var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
-			get_tree().root.add_child(vfx)
-			vfx.global_position = collisionInfo.get_position()
+			if collider.activeState == SemiBrick.State.Static:
+				EventBus.ball_collided.emit()
+				var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
+				get_tree().root.add_child(vfx)
+				vfx.global_position = collisionInfo.get_position()
+				collider.collided()
+				brickBounceAudio.play()
+			else:
+				wallBounceAudio.play()
 			collider.collided()
-			blockBounceAudio.play()
-			EventBus.ball_collided.emit()
 		elif collider.is_class("CharacterBody2D"):
 			print("Paddle")
 			var paddle := collider as CharacterBody2D
@@ -90,6 +94,9 @@ func _physics_process(delta: float) -> void:
 
 	if position.y > offscreen:
 		queue_free()
+
+func on_destroy_ball_called() -> void:
+	queue_free()
 
 func _exit_tree() -> void:
 	EventBus.removed_active_ball.emit()

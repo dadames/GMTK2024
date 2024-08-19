@@ -52,17 +52,17 @@ scale_amount_min = 0.0
 scale_amount_max = 14.0
 color = Color(0, 1, 1, 0.0196078)
 
-[node name="BlockBounceAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="BrickBounceAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_dmoyv")
 bus = &"SFX"
 
-[node name="PaddleBounceAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PaddleBounceAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_0jpbr")
 bus = &"SFX"
 
-[node name="WallBounceAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="WallBounceAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_0vjle")
 bus = &"SFX"

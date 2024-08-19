@@ -6,6 +6,7 @@ var zoomPeriod := 2.0
 var zoomSpeed: float
 
 var shakeStrength: float = 0
+var shakeMultiplier: float = 1.5
 var baseShakeFade: float = 1
 
 
@@ -34,4 +35,4 @@ func random_offset() -> Vector2:
 	return Vector2(rng.randf_range(-shakeStrength, shakeStrength),rng.randf_range(-shakeStrength, shakeStrength))
 
 func on_ball_collided() -> void:
-	shakeStrength += 2 ** (Globals.level_scale + 1)
+	shakeStrength += 2 ** (Globals.level_scale + 1) * shakeMultiplier

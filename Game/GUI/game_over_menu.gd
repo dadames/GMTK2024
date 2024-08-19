@@ -1,7 +1,6 @@
 extends PanelContainer
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventBus.game_over.connect(on_game_over)
 	EventBus.game_won.connect(on_game_won)

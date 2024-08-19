@@ -1,46 +1,35 @@
-// Godot 4.3
-shader_type spatial;
-render_mode unshaded, fog_disabled;
+shader_type canvas_item;
 
-uniform sampler2D screen_texture : source_color, hint_screen_texture;
-uniform sampler2D depth_texture : source_color, hint_depth_texture;
-uniform sampler2D normal_rough_texture : source_color, hint_normal_roughness_texture;
+uniform int strength: hint_range(1, 512) = 2;
 
-void vertex() {
-	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
+vec4 blur_size(sampler2D tex,vec2 fragCoord, vec2 pixelSize) {
+    
+    vec4 color = vec4(0.,0.,0.,0.);
+    float strengthFloat = float(strength);	
+
+    vec2 pixel = fragCoord/pixelSize;
+    int x_min = max(int(pixel.x-strengthFloat), 0);
+    int x_max = min(int(pixel.x+strengthFloat), int(1./pixelSize.x));
+    int y_min = max(int(pixel.y-strengthFloat), 0);
+    int y_max = min(int(pixel.y+strengthFloat), int(1./pixelSize.y));
+
+    int count =0;
+
+    // Sum the pixels colors
+    for(int x=x_min; x <= x_max; x++) {
+        for(int y = y_min; y <= y_max; y++) {           
+            color += texture(tex, vec2(float(x), float(y)) * pixelSize);
+            count++;
+        }
+    }
+    
+    // Divide the color by the number of colors you summed up
+    color /= float(count);
+    
+    return color;
 }
 
 void fragment() {
-	vec4 screen = texture(screen_texture, SCREEN_UV);
-	
-	float depth_raw = texture(depth_texture, SCREEN_UV).x;
-	vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth_raw);
-	vec4 position_view = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
-	position_view.xyz /= position_view.w;
-	float linear_depth = -position_view.z;
-	
-	vec4 world = INV_VIEW_MATRIX * INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
-	vec3 position_world = world.xyz / world.w;
-	
-	vec4 normal_rough = texture(normal_rough_texture, SCREEN_UV);
-	vec3 normals_view_raw = normal_rough.xyz; // Normals in view space, in [0.0,1.0] range
-	vec3 normals_view_remapped = normals_view_raw.xyz * 2.0 - 1.0;  // Normals in view space, in [-1.0,1.0] range
-	vec3 normals_world = (INV_VIEW_MATRIX * vec4(normals_view_remapped, 0.0)).xyz;
-	float roughness = normal_rough.w;
-	
-	// Visualize the outputs
-	// Screen texture
-	ALBEDO.rgb = screen.rgb;
-	// Raw depth
-	//ALBEDO.rgb = vec3(depth_raw);
-	// Linear depth
-	//ALBEDO.rgb = vec3(fract(linear_depth));
-	// World position
-	//ALBEDO.rgb = fract(position_world);	
-	// Normals from the normal buffer, in view space
-	//ALBEDO.rgb = normals_view_raw;
-	// Normals in world space, [-1.0,1.0] range
-	//ALBEDO.rgb = normals_world;
-	// Roughness
-	//ALBEDO.rgb = vec3(roughness);
+    COLOR = blur_size(TEXTURE,UV,TEXTURE_PIXEL_SIZE) * 0.2;
+	COLOR.a = 0.5;
 }

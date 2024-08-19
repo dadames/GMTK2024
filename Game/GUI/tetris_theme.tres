@@ -1,14 +1,25 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cxqbaudi5opa4"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://cxqbaudi5opa4"]
 
+[ext_resource type="Texture2D" uid="uid://bropwfpyqsyp2" path="res://Game/GUI/Menus/bottom_bar_texture.png" id="1_4mb6d"]
+[ext_resource type="Texture2D" uid="uid://cxmi6ld6oy02i" path="res://Game/GUI/Menus/bottom_bar_hover.png" id="1_kk301"]
 [ext_resource type="FontFile" uid="uid://c6o8ht2hs3aif" path="res://Game/GUI/Designer.otf" id="1_p2mho"]
 [ext_resource type="Texture2D" uid="uid://cfnxteehcaji4" path="res://Game/GUI/Menus/bottom_bar_button.png" id="1_sg01d"]
 [ext_resource type="Texture2D" uid="uid://1ypivkaqe8nc" path="res://Game/GUI/Menus/blue_button04.png" id="1_y3c0u"]
 [ext_resource type="Texture2D" uid="uid://b5pccdp0cmrrx" path="res://Game/GUI/Menus/button_hover.png" id="2_8lcbw"]
+[ext_resource type="Texture2D" uid="uid://cbldvsheh1qsd" path="res://Game/GUI/Menus/bottom_bar_pressed.png" id="2_183yd"]
 [ext_resource type="Texture2D" uid="uid://csawr6qbrntpf" path="res://Game/GUI/Menus/blue_button05.png" id="2_vnuye"]
 [ext_resource type="Texture2D" uid="uid://cpwk2pg4p8eh2" path="res://Game/GUI/Menus/panel2.png" id="4_1s50u"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxoyn"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mairf"]
+texture = ExtResource("1_4mb6d")
+texture_margin_left = 5.0
+texture_margin_right = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fx87u"]
+texture = ExtResource("1_kk301")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16oqp"]
+texture = ExtResource("2_183yd")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_soa5b"]
 texture = ExtResource("1_sg01d")
@@ -16,6 +27,9 @@ texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_82rhk"]
+texture = ExtResource("2_183yd")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60otn"]
 texture = ExtResource("2_8lcbw")
@@ -43,7 +57,7 @@ vertical = true
 
 [resource]
 BottomBar/base_type = &"PanelContainer"
-BottomBar/styles/panel = SubResource("StyleBoxFlat_bxoyn")
+BottomBar/styles/panel = SubResource("StyleBoxTexture_mairf")
 BottomBarButton/base_type = &"Button"
 BottomBarButton/colors/font_color = Color(1, 1, 1, 1)
 BottomBarButton/colors/font_hover_color = Color(1, 1, 1, 1)
@@ -51,12 +65,16 @@ BottomBarButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 BottomBarButton/colors/font_outline_color = Color(0, 0, 0, 1)
 BottomBarButton/colors/font_pressed_color = Color(1, 1, 1, 1)
 BottomBarButton/constants/outline_size = 8
+BottomBarButton/styles/hover = SubResource("StyleBoxTexture_fx87u")
+BottomBarButton/styles/hover_pressed = SubResource("StyleBoxTexture_16oqp")
 BottomBarButton/styles/normal = SubResource("StyleBoxTexture_soa5b")
-Button/colors/font_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_color = Color(0.223529, 0.223529, 0.223529, 1)
-Button/colors/font_outline_color = Color(0, 0.59, 0.59, 1)
-Button/colors/font_pressed_color = Color(0.223529, 0.223529, 0.223529, 1)
+BottomBarButton/styles/pressed = SubResource("StyleBoxTexture_82rhk")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/constants/outline_size = 7
+Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("1_p2mho")
 Button/styles/hover = SubResource("StyleBoxTexture_60otn")
 Button/styles/normal = SubResource("StyleBoxTexture_uqsk4")
