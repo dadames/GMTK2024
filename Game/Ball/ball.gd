@@ -16,6 +16,7 @@ var _modifiers: Array[Resource] = []
 func _ready() -> void:
 	EventBus.level_completed.connect(on_level_completed)
 	EventBus.modifier_collected.connect(_on_modifier_event)
+	EventBus.destroy_ball_called.connect(on_destroy_ball_called)
 	speed = baseSpeed * Globals.level_factor
 	var targetSize := Globals.level_scale
 	self.scale = Vector2(targetSize, targetSize)
@@ -90,6 +91,9 @@ func _physics_process(delta: float) -> void:
 
 	if position.y > offscreen:
 		queue_free()
+
+func on_destroy_ball_called() -> void:
+	queue_free()
 
 func _exit_tree() -> void:
 	EventBus.removed_active_ball.emit()
