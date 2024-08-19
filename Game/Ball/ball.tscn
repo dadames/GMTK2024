@@ -68,7 +68,7 @@ emission_sphere_radius = 11.0
 gravity = Vector2(0, 0)
 scale_amount_min = 0.25
 scale_amount_max = 0.25
-color = Color(0, 1, 1, 0.0196078)
+color = Color(0, 1, 1, 0.562)
 
 [node name="BrickBounceAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

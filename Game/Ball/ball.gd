@@ -19,9 +19,8 @@ func _ready() -> void:
 	EventBus.destroy_ball_called.connect(on_destroy_ball_called)
 	speed = baseSpeed * Globals.level_factor
 	scale *= Vector2(Globals.level_factor, Globals.level_factor)
-	%CPUParticles2D.emission_sphere_radius *= Globals.level_scale
-	%CPUParticles2D.scale_amount_min *= Globals.level_scale
-	%CPUParticles2D.scale_amount_min *= Globals.level_scale
+	print(Globals.level_factor * 0.25)
+	%CPUParticles2D.scale_amount_min *= Globals.level_factor
 	var angle: float = deg_to_rad(randf_range(240,300))
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 	EventBus.added_active_ball.emit()
