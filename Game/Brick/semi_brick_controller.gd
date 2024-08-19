@@ -8,6 +8,8 @@ enum State {Static, Falling, Merged}
 var activeState: State = State.Static
 var pushed: bool = false
 
+@onready var collision_shape := $CollisionShape2D
+
 func initialize(brickIn: Brick) -> void:
 	brick = brickIn
 	$Sprite2D.modulate = brick.color
@@ -19,13 +21,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if activeState == State.Falling:
 		linear_velocity.y = 100 * Globals.level_factor
-		if pushed == false:
-			linear_velocity.x = 0
-	
+
 #handle size changing because you can't sale rigid bodies for some reason...
 func size_change() -> void:
 	$Sprite2D.scale = global_scale
-	$CollisionShape2D.scale = global_scale
+	collision_shape.scale = global_scale
 	%LightOccluder2D.scale = global_scale
 
 func collided() -> void:
@@ -43,20 +43,3 @@ func on_falling() -> void:
 	set_collision_layer_value(5, true)
 	set_collision_mask_value(6, false)
 	set_collision_mask_value(7, false)
-
-
-func _on_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-	if activeState == State.Falling :
-		print("entered collision")
-		if body.name == "Paddle" :
-			pushed = true
-	else:
-		pass
-
-func _on_body_shape_exited(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
-	if activeState == State.Falling :
-		print("left collision")
-		if body.name == "Paddle" :
-			pushed = false
-	else:
-		pass

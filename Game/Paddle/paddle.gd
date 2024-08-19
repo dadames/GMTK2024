@@ -15,6 +15,7 @@ var initialHeight: float = 300
 		_ready()
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var static_body: StaticBody2D = %StaticBody2D
 @onready var bodies: Array[CollisionObject2D] = [%StaticBody2D, %CollisionDetection, self]
 @onready var base_collider: CollisionShape2D = %CollisionShape2D
 
@@ -60,14 +61,21 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * delta * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, delta * speed)
-	move_and_collide(velocity * delta)
 
-func consume_brick(brick: Brick, shift: Vector2) -> void:
+		# test move (doesn't move) to push bricks away
+		var collision_info := static_body.move_and_collide(velocity * delta, true)
+
+		if collision_info and collision_info.get_collider() is SemiBrick:
+			collision_info.get_collider().brick.global_position += collision_info.get_remainder()
+
+		move_and_collide(velocity * delta)
+
+
+func consume_brick(brick: Brick, shift: Vector2) -> bool:
 	if brick in _consumed_bricks_this_frame:
-		return
+		return false
 	
 	#print_debug(brick, shift)
-	_consumed_bricks_this_frame.append(brick)
 	
 	var grid_size := Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 	
@@ -95,7 +103,10 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 			parameters.position = self.global_transform * (self.global_transform.affine_inverse() * child.global_position).snappedf(grid_size)
 			parameters.collision_mask = 0x4
 			if !space_state.intersect_point(parameters, 1).is_empty():
-				return
+				return false
+
+	_consumed_bricks_this_frame.append(brick)
+	
 	brick.reparent(self)
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
@@ -112,6 +123,8 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.position = dup.position.snappedf(grid_size)
 	brick.queue_free()
 
+	return true
+
 func on_level_started() -> void:
 	speed = 2 ** Globals.level_scale * initial_speed
 	canMove = false
@@ -121,17 +134,18 @@ func on_zoom_finished() -> void:
 
 # Detect when a falling block hits and "catch" it if its hitting us from above
 func _on_collision_detection_body_shape_entered(_body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
-	var body_owner: CollisionShape2D = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))
-	var local_owner: CollisionShape2D = self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))
-	
-	var body_rect := body_owner.global_transform * body_owner.shape.get_rect()
-	var local_rect := local_owner.global_transform * local_owner.shape.get_rect()
-	
-	var intersection := body_rect.intersection(local_rect)
-	
-	# if we're more through top than side, it's on top
-	if intersection.size.x > intersection.size.y && intersection.get_center().y < local_rect.get_center().y:
-		call_deferred("consume_brick", body.brick, Vector2.ZERO)
+	if body is SemiBrick:
+		var body_owner: CollisionShape2D = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index))
+		var local_owner: CollisionShape2D = self.shape_owner_get_owner(self.shape_find_owner(local_shape_index))
+		
+		var body_rect := body_owner.global_transform * body_owner.shape.get_rect()
+		var local_rect := local_owner.global_transform * local_owner.shape.get_rect()
+		
+		var intersection := body_rect.intersection(local_rect)
+
+		# if we're more through top than side, it's on top
+		if intersection.size.x > intersection.size.y && intersection.get_center().y < local_rect.get_center().y:
+			consume_brick.call_deferred(body.brick, Vector2.ZERO)
 
 func _on_modifier_event(modifier: Modifier) -> void:
 	if modifier.applies_to(self):

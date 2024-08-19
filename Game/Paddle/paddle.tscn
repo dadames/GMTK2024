@@ -31,7 +31,7 @@ texture = ExtResource("2_qu78u")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 32
-collision_mask = 64
+collision_mask = 80
 physics_material_override = SubResource("PhysicsMaterial_5cggl")
 constant_angular_velocity = 1.74533
 
@@ -41,7 +41,7 @@ shape = SubResource("RectangleShape2D_7tft1")
 
 [node name="CollisionDetection" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 16
+collision_layer = 0
 collision_mask = 272
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
