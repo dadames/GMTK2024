@@ -9,7 +9,12 @@ max_value = 1024.0
 _data = [Vector2(0.0168539, 200), 0.0, 0.0, 0, 0, Vector2(1, -200), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="CollisionVFX" type="CPUParticles2D"]
+[node name="Node2D" type="Node2D"]
+modulate = Color(2, 2, 2, 1)
+script = ExtResource("1_vwwkf")
+
+[node name="CollisionVFX" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
 z_index = 20
 position = Vector2(-38, 4)
 emitting = false
@@ -24,11 +29,10 @@ initial_velocity_max = 80.0
 orbit_velocity_min = -1.0
 orbit_velocity_max = 1.0
 linear_accel_curve = SubResource("Curve_4rjol")
-scale_amount_min = 0.08
-scale_amount_max = 0.12
-color = Color(0, 1, 1, 1)
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+color = Color(0, 2, 2, 1)
 hue_variation_min = -0.59
 hue_variation_max = 0.51
-script = ExtResource("1_vwwkf")
 
-[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="finished" from="CollisionVFX" to="." method="_on_collision_vfx_finished"]

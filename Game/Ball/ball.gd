@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 		if collider.has_method("collided"):
 			if collider.activeState == SemiBrick.State.Static:
 				EventBus.ball_collided.emit()
-				var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
+				var vfx: Node2D = collisionVFXPrefab.instantiate()
 				get_tree().root.add_child(vfx)
 				vfx.global_position = collisionInfo.get_position()
 				vfx.initialize(collider.brick.color)
