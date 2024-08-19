@@ -22,7 +22,7 @@ func _ready() -> void:
 	%CPUParticles2D.emission_sphere_radius *= Globals.level_scale
 	%CPUParticles2D.scale_amount_min *= Globals.level_scale
 	%CPUParticles2D.scale_amount_min *= Globals.level_scale
-	var angle: float = deg_to_rad(randf_range(60,120))
+	var angle: float = deg_to_rad(randf_range(240,300))
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 	EventBus.added_active_ball.emit()
 
