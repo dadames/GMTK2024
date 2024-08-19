@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=29 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="22_nblwm"]
+[ext_resource type="AudioStream" uid="uid://wpkcl5fb15ub" path="res://Game/Ball/Audio/611798__metalfortress__error.wav" id="23_lpoqu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkyta"]
 shader = ExtResource("4_yp74y")
@@ -271,7 +272,11 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
 texture = ExtResource("22_nblwm")
 
-[node name="BallSpawnSound" type="AudioStreamPlayer2D" parent="."]
+[node name="BallLostAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("23_lpoqu")
+volume_db = 1.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]

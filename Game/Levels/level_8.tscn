@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://chdd7s006d4ci"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_n6mnl"]
-[ext_resource type="PackedScene" path="res://Game/Levels/level_9.tscn" id="2_hsyct"]
+[ext_resource type="PackedScene" uid="uid://cpsi5tdk5j0qo" path="res://Game/Levels/level_9.tscn" id="2_hsyct"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_ktn44"]
 
 [node name="Level" type="Node" groups=["Level"]]

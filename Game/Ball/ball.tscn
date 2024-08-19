@@ -83,3 +83,8 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("6_0vjle")
 bus = &"SFX"
+
+[node name="SpawnAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_0vjle")
+bus = &"SFX"

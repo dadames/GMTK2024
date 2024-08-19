@@ -36,6 +36,7 @@ func _ready() -> void:
 	EventBus.added_available_ball.connect(on_added_available_ball)
 	EventBus.modifier_collected.connect(on_modifier_event)
 	EventBus.spawn_extra_ball.connect(on_spawn_extra_ball)
+	EventBus.ball_lost.connect(on_ball_lost)
 	start_game.call_deferred()
 	%BallLabel.text = str(availableBalls)
 	%ScoreLabel.text = str(score)
@@ -167,3 +168,6 @@ func add_modifier(modifier: Modifier) -> void:
 func on_spawn_extra_ball() -> void:
 	availableBalls += 1
 	call_deferred("spawn_ball")
+
+func on_ball_lost() -> void:
+	%BallLostAudio.play()

@@ -94,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	var offscreen := cameraPosition.y + (halfSize.y * 1.1)
 
 	if position.y > offscreen:
+		EventBus.ball_lost.emit()
 		queue_free()
 
 func on_destroy_ball_called() -> void:
