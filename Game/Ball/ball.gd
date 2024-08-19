@@ -51,7 +51,6 @@ func _physics_process(delta: float) -> void:
 		var collider := collisionInfo.get_collider()
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
-			collider.collided()
 			if collider.activeState == SemiBrick.State.Static:
 				blockBounceAudio.play()
 				EventBus.ball_collided.emit()
@@ -60,6 +59,7 @@ func _physics_process(delta: float) -> void:
 				vfx.global_position = collisionInfo.get_position()
 			else:
 				wallBounceAudio.play()
+			collider.collided()
 		elif collider.is_class("CharacterBody2D"):
 			print("Paddle")
 			var paddle := collider as CharacterBody2D
