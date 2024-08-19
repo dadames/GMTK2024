@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PaddleSpeedModifier" load_steps=2 format=3 uid="uid://cdpm6ir2v2st7"]
+
+[ext_resource type="Script" path="res://Game/Modifiers/PaddleSpeed/paddle_speed.gd" id="1_7iy5g"]
+
+[resource]
+script = ExtResource("1_7iy5g")
+factor = 2.0

@@ -9,7 +9,7 @@ signal level_started()
 signal zoom_finished()
 signal game_won(score: int)
 signal game_over(score: int)
-signal score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2)
+signal score_change(HitType: String)
 
 signal modifier_collected(modifier: Modifier)
 

@@ -29,6 +29,7 @@ func _ready() -> void:
 	EventBus.level_started.connect(on_level_started)
 	#EventBus.level_completed.connect(on_level_completed)
 	#EventBus.zoom_finished.connect(on_zoom_finished)
+	EventBus.modifier_collected.connect(_on_modifier_event)
 
 func _process(_delta: float) -> void:
 	if !initialized:
@@ -97,7 +98,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
-			EventBus.score_change.emit("Catch", brick.position, position)
+			EventBus.score_change.emit("Catch")
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				brick_sprite.reparent(self)
 				brick_sprite.position = brick_sprite.position.snappedf(grid_size)
@@ -130,3 +131,17 @@ func _on_collision_detection_body_shape_entered(_body_rid:RID, body:Node2D, body
 	# if we're more through top than side, it's on top
 	if intersection.size.x > intersection.size.y && intersection.get_center().y < local_rect.get_center().y:
 		call_deferred("consume_brick", body.brick, Vector2.ZERO)
+
+func _on_modifier_event(modifier: Modifier) -> void:
+	if modifier.applies_to(self):
+		add_modifier(modifier)
+
+func add_modifier(modifier: Modifier) -> void:
+	modifier.apply(self)
+	_modifiers.append(modifier)
+
+func clear_modifiers() -> void:
+	_modifiers.reverse()
+	for modifier in _modifiers:
+		modifier.unapply(self)
+	_modifiers.clear()

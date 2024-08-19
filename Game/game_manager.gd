@@ -17,7 +17,7 @@ var level: Level
 
 var distance := 0
 var score:int = 0
-@export var scoreHit:int = 100
+@export var scoreHit:int = 1
 @export var scoreCatch:int = 100
 var availableBalls: int = 3
 var activeBalls: int = 0
@@ -37,19 +37,21 @@ func _ready() -> void:
 	%BallLabel.text = str(availableBalls)
 	%ScoreLabel.text = str(score)
 	SaveData.load()
+	
 
-func score_change(HitType: String, HitPosition: Vector2, PaddlePosition: Vector2) -> void:
+func score_change(HitType:String) -> void:
 	if HitType == "Hit":
 		score += scoreHit
 		#print("Block Hit! New score:",score)
-	elif HitType == "Catch":
-		score = PaddlePosition.distance_to(HitPosition)
-		score += ((scoreCatch * (score/10)) / 4)
-		#print("Block Caught! New score:",score)
+	#elif HitType == "Catch":
+	#	score = PaddlePosition.distance_to(HitPosition)
+	#	score += ((scoreCatch * (score/10)) / 4)
+	#	#print("Block Caught! New score:",score)
 	%ScoreLabel.text = str(score)
 
 func on_level_completed() -> void:
 	print("Level Completed")
+	%Paddle.clear_modifiers()
 	if !level.nextLevel:
 		EventBus.game_won.emit(score)
 		return
