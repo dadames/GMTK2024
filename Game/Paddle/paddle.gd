@@ -28,6 +28,8 @@ var _modifiers: Array[Resource] = []
 
 func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
+	if Engine.is_editor_hint():
+		return
 	initialized = true
 	EventBus.level_started.connect(on_level_started)
 	EventBus.zoom_finished.connect(on_zoom_finished)

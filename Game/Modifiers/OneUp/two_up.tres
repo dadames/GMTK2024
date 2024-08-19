@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="OneUpModifier" load_steps=3 format=3 uid="uid://dk6x4nh3fo1up"]
 
-[ext_resource type="Texture2D" uid="uid://66461e48qydv" path="res://Game/Modifiers/ExtraBall/one_up.png" id="1_bwgcu"]
+[ext_resource type="Texture2D" uid="uid://dyra3aptm7vfs" path="res://Game/Modifiers/OneUp/one_up.svg" id="1_b2knc"]
 [ext_resource type="Script" path="res://Game/Modifiers/ExtraBall/extra_ball_modifier.gd" id="2_htjbt"]
 
 [resource]
 script = ExtResource("2_htjbt")
 extraLives = 2
-icon = ExtResource("1_bwgcu")
+icon = ExtResource("1_b2knc")
 flyingText = "+2 Lives"
