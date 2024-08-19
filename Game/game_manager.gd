@@ -56,7 +56,8 @@ func on_level_completed() -> void:
 	print("Level Completed")
 	%Paddle.clear_modifiers()
 	if !level.nextLevel:
-		EventBus.game_won.emit(score)
+		Globals.level_scale = 1
+		EventBus.game_won.emit(score)		
 		return
 	start_level(level.nextLevel)
 
@@ -129,6 +130,7 @@ func on_removed_active_ball() -> void:
 		if availableBalls > 0:
 			show_ball_spawnable()
 		else:
+			Globals.level_scale = 1
 			EventBus.game_over.emit(score)
 
 func on_added_available_ball() -> void:
