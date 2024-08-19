@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=28 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
 [ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
+[ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="22_nblwm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkyta"]
 shader = ExtResource("4_yp74y")
@@ -258,6 +259,17 @@ script = ExtResource("20_7dudw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ad25h")
+
+[node name="BallSpawnVisualizer" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("9_cchhr")
+
+[node name="PointLight2D" type="PointLight2D" parent="BallSpawnVisualizer"]
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+texture = ExtResource("22_nblwm")
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/DebugComplete" to="CanvasLayer/Control/DebugComplete" method="_on_pressed"]

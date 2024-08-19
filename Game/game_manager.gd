@@ -23,6 +23,7 @@ var score:float = 0
 @export var availableBalls: int = 3
 var activeBalls: int = 0
 var ballSpawnable := true
+var isLevelTransition := false
 
 func _ready() -> void:
 	EventBus.score_change.connect(score_change)
@@ -56,11 +57,12 @@ func score_change(HitType:String) -> void:
 	%ScoreLabel.text = str(score)
 
 func on_level_completed() -> void:
+	isLevelTransition = true
 	print("Level Completed")
 	%Paddle.clear_modifiers()
 	if !level.nextLevel:
 		Globals.level_scale = 1
-		EventBus.game_won.emit(score)		
+		EventBus.game_won.emit(score)
 		return
 	start_level(level.nextLevel)
 
@@ -72,6 +74,7 @@ func start_level(nextLevel: PackedScene) -> void:
 	disable_boundaries()
 	add_child.call_deferred(level)
 	EventBus.level_started.emit()
+	%BallSpawnVisualizer.hide()
 
 func disable_boundaries() -> void:
 	topBoundary.set_collision_layer_value(2, false)
@@ -82,6 +85,7 @@ func disable_boundaries() -> void:
 
 func on_zoom_finished() -> void:
 	set_boundaries()
+	isLevelTransition = false
 	show_ball_spawnable()
 
 func set_boundaries() -> void:
@@ -122,6 +126,7 @@ func spawn_ball() -> void:
 	add_child(newBall)
 	ballSpawnable = false
 	%BallLabel.text = str(availableBalls)
+	%BallSpawnVisualizer.hide()
 
 func on_added_active_ball() -> void:
 	activeBalls += 1
@@ -131,7 +136,8 @@ func on_removed_active_ball() -> void:
 	activeBalls -= 1
 	if activeBalls <= 0:
 		if availableBalls > 0:
-			show_ball_spawnable()
+			if !isLevelTransition:
+				show_ball_spawnable()
 		else:
 			Globals.level_scale = 1
 			EventBus.game_over.emit(score)
@@ -142,6 +148,9 @@ func on_added_available_ball() -> void:
 
 func show_ball_spawnable() -> void:
 	ballSpawnable = true
+	%BallSpawnVisualizer.global_position = Vector2(0,(64 * 2 ** (Globals.level_scale -1)))
+	%BallSpawnVisualizer.scale = Vector2(0.1, 0.1) * Vector2(Globals.level_scale, Globals.level_scale)
+	%BallSpawnVisualizer.show()
 	EventBus.ball_spawnable.emit()
 
 func _unhandled_key_input(event: InputEvent) -> void:
