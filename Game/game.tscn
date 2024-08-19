@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=30 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
 [ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
+[ext_resource type="Script" path="res://Game/GUI/Menus/destroy_ball_button.gd" id="21_ah6ks"]
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="22_nblwm"]
 [ext_resource type="AudioStream" uid="uid://wpkcl5fb15ub" path="res://Game/Ball/Audio/611798__metalfortress__error.wav" id="23_lpoqu"]
 
@@ -250,6 +251,7 @@ layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"BottomBarButton"
 text = "Destroy Ball"
+script = ExtResource("21_ah6ks")
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
