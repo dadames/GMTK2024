@@ -1,0 +1,400 @@
+[gd_scene load_steps=8 format=3 uid="uid://bems64qvvqjge"]
+
+[ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_n825i"]
+[ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_ir3fm"]
+[ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_hgy5c"]
+[ext_resource type="Resource" uid="uid://caqnwjdggugyp" path="res://Game/Modifiers/BallSpeed/ball_double_speed.tres" id="4_1u226"]
+[ext_resource type="Resource" uid="uid://4ow0asjwvaya" path="res://Game/Modifiers/OneUp/three_up.tres" id="5_0ljso"]
+[ext_resource type="Script" path="res://Game/Modifiers/PaddleSpeed/paddle_speed.gd" id="6_8ctpu"]
+
+[sub_resource type="Resource" id="Resource_ti5pl"]
+script = ExtResource("6_8ctpu")
+factor = 2.0
+
+[node name="Level" type="Node" groups=["Level"]]
+script = ExtResource("1_n825i")
+levelScale = 9.0
+
+[node name="Bricks" type="Node2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+position = Vector2(0, -32)
+
+[node name="Brick" parent="Bricks" instance=ExtResource("2_ir3fm")]
+rotation = 1.5708
+color = Color(0.971053, 0, 0.469222, 1)
+modifiers = Array[ExtResource("3_hgy5c")]([ExtResource("4_1u226")])
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(16, -96)
+rotation = 1.5708
+color = Color(0.941101, 0.252931, 0, 1)
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(0, -48)
+color = Color(0.941176, 0.25098, 0, 1)
+shapeType = 2
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(0, -144)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.941176, 0.25098, 0, 1)
+shapeType = 2
+mirrored = true
+modifiers = Array[ExtResource("3_hgy5c")]([ExtResource("5_0ljso")])
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(112, -208)
+rotation = -1.5708
+color = Color(0.249783, 0.556783, 0.143193, 1)
+shapeType = 3
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-112, -208)
+rotation = 1.5708
+color = Color(0.249783, 0.556783, 0.143193, 1)
+shapeType = 3
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(48, -176)
+color = Color(0.249783, 0.556783, 0.143193, 1)
+shapeType = 3
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-48, -176)
+color = Color(0.249783, 0.556783, 0.143193, 1)
+shapeType = 3
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-48, -240)
+rotation = 3.14159
+color = Color(0.249783, 0.556783, 0.143193, 1)
+shapeType = 2
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(48, -240)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.249783, 0.556783, 0.143193, 1)
+shapeType = 2
+mirrored = true
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-80, -128)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.941176, 0.25098, 0, 1)
+mirrored = true
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(80, -128)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.941176, 0.25098, 0, 1)
+mirrored = true
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-128, -272)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 0
+mirrored = true
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(0, -272)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 0
+mirrored = true
+
+[node name="Brick15" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(128, -272)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 0
+mirrored = true
+
+[node name="Brick16" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-160, -224)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.249783, 0.556783, 0.143193, 1)
+mirrored = true
+modifiers = Array[ExtResource("3_hgy5c")]([SubResource("Resource_ti5pl")])
+
+[node name="Brick17" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(160, -224)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.249783, 0.556783, 0.143193, 1)
+mirrored = true
+modifiers = Array[ExtResource("3_hgy5c")]([SubResource("Resource_ti5pl")])
+
+[node name="Brick18" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-176, -304)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 2
+mirrored = true
+
+[node name="Brick19" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(176, -304)
+rotation = 3.14159
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 2
+
+[node name="Brick20" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(208, -336)
+rotation = 3.14159
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 2
+
+[node name="Brick21" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-208, -336)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 2
+mirrored = true
+
+[node name="Brick22" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-112, -336)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 3
+mirrored = true
+
+[node name="Brick23" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(112, -336)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 3
+mirrored = true
+
+[node name="Brick24" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(48, -304)
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 3
+mirrored = true
+
+[node name="Brick25" parent="Bricks" instance=ExtResource("2_ir3fm")]
+position = Vector2(-48, -304)
+scale = Vector2(-1, 1)
+color = Color(0.597266, 0.00983388, 1.92523e-07, 1)
+shapeType = 3
+mirrored = true
+
+[node name="CameraSizeGuide(Hide)" type="Panel" parent="."]
+visible = false
+offset_left = -512.0
+offset_top = -384.0
+offset_right = 512.0
+offset_bottom = 384.0
+
+[connection signal="body_shape_entered" from="Bricks/Brick/SemiBrick" to="Bricks/Brick/SemiBrick" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/SemiBrick" to="Bricks/Brick/SemiBrick" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@164068" to="Bricks/Brick/@RigidBody2D@164068" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@164068" to="Bricks/Brick/@RigidBody2D@164068" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@164069" to="Bricks/Brick/@RigidBody2D@164069" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@164069" to="Bricks/Brick/@RigidBody2D@164069" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@164070" to="Bricks/Brick/@RigidBody2D@164070" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@164070" to="Bricks/Brick/@RigidBody2D@164070" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick2/@RigidBody2D@164678" to="Bricks/Brick2/@RigidBody2D@164678" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick2/@RigidBody2D@164678" to="Bricks/Brick2/@RigidBody2D@164678" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick2/@RigidBody2D@164679" to="Bricks/Brick2/@RigidBody2D@164679" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick2/@RigidBody2D@164679" to="Bricks/Brick2/@RigidBody2D@164679" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick2/@RigidBody2D@164680" to="Bricks/Brick2/@RigidBody2D@164680" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick2/@RigidBody2D@164680" to="Bricks/Brick2/@RigidBody2D@164680" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick2/@RigidBody2D@164681" to="Bricks/Brick2/@RigidBody2D@164681" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick2/@RigidBody2D@164681" to="Bricks/Brick2/@RigidBody2D@164681" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick3/@RigidBody2D@165159" to="Bricks/Brick3/@RigidBody2D@165159" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick3/@RigidBody2D@165159" to="Bricks/Brick3/@RigidBody2D@165159" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick3/@RigidBody2D@165160" to="Bricks/Brick3/@RigidBody2D@165160" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick3/@RigidBody2D@165160" to="Bricks/Brick3/@RigidBody2D@165160" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick3/@RigidBody2D@165161" to="Bricks/Brick3/@RigidBody2D@165161" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick3/@RigidBody2D@165161" to="Bricks/Brick3/@RigidBody2D@165161" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick3/@RigidBody2D@165162" to="Bricks/Brick3/@RigidBody2D@165162" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick3/@RigidBody2D@165162" to="Bricks/Brick3/@RigidBody2D@165162" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick4/@RigidBody2D@165640" to="Bricks/Brick4/@RigidBody2D@165640" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick4/@RigidBody2D@165640" to="Bricks/Brick4/@RigidBody2D@165640" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick4/@RigidBody2D@165641" to="Bricks/Brick4/@RigidBody2D@165641" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick4/@RigidBody2D@165641" to="Bricks/Brick4/@RigidBody2D@165641" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick4/@RigidBody2D@165642" to="Bricks/Brick4/@RigidBody2D@165642" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick4/@RigidBody2D@165642" to="Bricks/Brick4/@RigidBody2D@165642" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick4/@RigidBody2D@165643" to="Bricks/Brick4/@RigidBody2D@165643" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick4/@RigidBody2D@165643" to="Bricks/Brick4/@RigidBody2D@165643" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick5/@RigidBody2D@175560" to="Bricks/Brick5/@RigidBody2D@175560" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick5/@RigidBody2D@175560" to="Bricks/Brick5/@RigidBody2D@175560" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick5/@RigidBody2D@175561" to="Bricks/Brick5/@RigidBody2D@175561" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick5/@RigidBody2D@175561" to="Bricks/Brick5/@RigidBody2D@175561" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick5/@RigidBody2D@175562" to="Bricks/Brick5/@RigidBody2D@175562" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick5/@RigidBody2D@175562" to="Bricks/Brick5/@RigidBody2D@175562" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick5/@RigidBody2D@175563" to="Bricks/Brick5/@RigidBody2D@175563" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick5/@RigidBody2D@175563" to="Bricks/Brick5/@RigidBody2D@175563" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick8/@RigidBody2D@175572" to="Bricks/Brick8/@RigidBody2D@175572" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick8/@RigidBody2D@175572" to="Bricks/Brick8/@RigidBody2D@175572" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick8/@RigidBody2D@175573" to="Bricks/Brick8/@RigidBody2D@175573" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick8/@RigidBody2D@175573" to="Bricks/Brick8/@RigidBody2D@175573" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick8/@RigidBody2D@175574" to="Bricks/Brick8/@RigidBody2D@175574" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick8/@RigidBody2D@175574" to="Bricks/Brick8/@RigidBody2D@175574" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick8/@RigidBody2D@175575" to="Bricks/Brick8/@RigidBody2D@175575" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick8/@RigidBody2D@175575" to="Bricks/Brick8/@RigidBody2D@175575" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick6/@RigidBody2D@175556" to="Bricks/Brick6/@RigidBody2D@175556" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick6/@RigidBody2D@175556" to="Bricks/Brick6/@RigidBody2D@175556" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick6/@RigidBody2D@175557" to="Bricks/Brick6/@RigidBody2D@175557" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick6/@RigidBody2D@175557" to="Bricks/Brick6/@RigidBody2D@175557" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick6/@RigidBody2D@175558" to="Bricks/Brick6/@RigidBody2D@175558" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick6/@RigidBody2D@175558" to="Bricks/Brick6/@RigidBody2D@175558" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick6/@RigidBody2D@175559" to="Bricks/Brick6/@RigidBody2D@175559" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick6/@RigidBody2D@175559" to="Bricks/Brick6/@RigidBody2D@175559" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick7/@RigidBody2D@175552" to="Bricks/Brick7/@RigidBody2D@175552" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick7/@RigidBody2D@175552" to="Bricks/Brick7/@RigidBody2D@175552" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick7/@RigidBody2D@175553" to="Bricks/Brick7/@RigidBody2D@175553" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick7/@RigidBody2D@175553" to="Bricks/Brick7/@RigidBody2D@175553" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick7/@RigidBody2D@175554" to="Bricks/Brick7/@RigidBody2D@175554" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick7/@RigidBody2D@175554" to="Bricks/Brick7/@RigidBody2D@175554" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick7/@RigidBody2D@175555" to="Bricks/Brick7/@RigidBody2D@175555" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick7/@RigidBody2D@175555" to="Bricks/Brick7/@RigidBody2D@175555" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick9/@RigidBody2D@175568" to="Bricks/Brick9/@RigidBody2D@175568" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick9/@RigidBody2D@175568" to="Bricks/Brick9/@RigidBody2D@175568" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick9/@RigidBody2D@175569" to="Bricks/Brick9/@RigidBody2D@175569" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick9/@RigidBody2D@175569" to="Bricks/Brick9/@RigidBody2D@175569" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick9/@RigidBody2D@175570" to="Bricks/Brick9/@RigidBody2D@175570" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick9/@RigidBody2D@175570" to="Bricks/Brick9/@RigidBody2D@175570" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick9/@RigidBody2D@175571" to="Bricks/Brick9/@RigidBody2D@175571" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick9/@RigidBody2D@175571" to="Bricks/Brick9/@RigidBody2D@175571" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick10/@RigidBody2D@175564" to="Bricks/Brick10/@RigidBody2D@175564" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick10/@RigidBody2D@175564" to="Bricks/Brick10/@RigidBody2D@175564" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick10/@RigidBody2D@175565" to="Bricks/Brick10/@RigidBody2D@175565" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick10/@RigidBody2D@175565" to="Bricks/Brick10/@RigidBody2D@175565" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick10/@RigidBody2D@175566" to="Bricks/Brick10/@RigidBody2D@175566" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick10/@RigidBody2D@175566" to="Bricks/Brick10/@RigidBody2D@175566" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick10/@RigidBody2D@175567" to="Bricks/Brick10/@RigidBody2D@175567" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick10/@RigidBody2D@175567" to="Bricks/Brick10/@RigidBody2D@175567" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick11/@RigidBody2D@170408" to="Bricks/Brick11/@RigidBody2D@170408" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick11/@RigidBody2D@170408" to="Bricks/Brick11/@RigidBody2D@170408" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick11/@RigidBody2D@170409" to="Bricks/Brick11/@RigidBody2D@170409" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick11/@RigidBody2D@170409" to="Bricks/Brick11/@RigidBody2D@170409" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick11/@RigidBody2D@170410" to="Bricks/Brick11/@RigidBody2D@170410" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick11/@RigidBody2D@170410" to="Bricks/Brick11/@RigidBody2D@170410" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick11/@RigidBody2D@170411" to="Bricks/Brick11/@RigidBody2D@170411" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick11/@RigidBody2D@170411" to="Bricks/Brick11/@RigidBody2D@170411" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick12/@RigidBody2D@170412" to="Bricks/Brick12/@RigidBody2D@170412" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick12/@RigidBody2D@170412" to="Bricks/Brick12/@RigidBody2D@170412" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick12/@RigidBody2D@170413" to="Bricks/Brick12/@RigidBody2D@170413" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick12/@RigidBody2D@170413" to="Bricks/Brick12/@RigidBody2D@170413" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick12/@RigidBody2D@170414" to="Bricks/Brick12/@RigidBody2D@170414" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick12/@RigidBody2D@170414" to="Bricks/Brick12/@RigidBody2D@170414" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick12/@RigidBody2D@170415" to="Bricks/Brick12/@RigidBody2D@170415" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick12/@RigidBody2D@170415" to="Bricks/Brick12/@RigidBody2D@170415" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick13/@RigidBody2D@183656" to="Bricks/Brick13/@RigidBody2D@183656" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick13/@RigidBody2D@183656" to="Bricks/Brick13/@RigidBody2D@183656" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick13/@RigidBody2D@183657" to="Bricks/Brick13/@RigidBody2D@183657" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick13/@RigidBody2D@183657" to="Bricks/Brick13/@RigidBody2D@183657" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick13/@RigidBody2D@183658" to="Bricks/Brick13/@RigidBody2D@183658" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick13/@RigidBody2D@183658" to="Bricks/Brick13/@RigidBody2D@183658" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick13/@RigidBody2D@183659" to="Bricks/Brick13/@RigidBody2D@183659" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick13/@RigidBody2D@183659" to="Bricks/Brick13/@RigidBody2D@183659" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick14/@RigidBody2D@183676" to="Bricks/Brick14/@RigidBody2D@183676" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick14/@RigidBody2D@183676" to="Bricks/Brick14/@RigidBody2D@183676" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick14/@RigidBody2D@183677" to="Bricks/Brick14/@RigidBody2D@183677" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick14/@RigidBody2D@183677" to="Bricks/Brick14/@RigidBody2D@183677" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick14/@RigidBody2D@183678" to="Bricks/Brick14/@RigidBody2D@183678" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick14/@RigidBody2D@183678" to="Bricks/Brick14/@RigidBody2D@183678" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick14/@RigidBody2D@183679" to="Bricks/Brick14/@RigidBody2D@183679" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick14/@RigidBody2D@183679" to="Bricks/Brick14/@RigidBody2D@183679" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick15/@RigidBody2D@183688" to="Bricks/Brick15/@RigidBody2D@183688" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick15/@RigidBody2D@183688" to="Bricks/Brick15/@RigidBody2D@183688" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick15/@RigidBody2D@183689" to="Bricks/Brick15/@RigidBody2D@183689" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick15/@RigidBody2D@183689" to="Bricks/Brick15/@RigidBody2D@183689" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick15/@RigidBody2D@183690" to="Bricks/Brick15/@RigidBody2D@183690" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick15/@RigidBody2D@183690" to="Bricks/Brick15/@RigidBody2D@183690" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick15/@RigidBody2D@183691" to="Bricks/Brick15/@RigidBody2D@183691" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick15/@RigidBody2D@183691" to="Bricks/Brick15/@RigidBody2D@183691" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick16/@RigidBody2D@175576" to="Bricks/Brick16/@RigidBody2D@175576" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick16/@RigidBody2D@175576" to="Bricks/Brick16/@RigidBody2D@175576" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick16/@RigidBody2D@175577" to="Bricks/Brick16/@RigidBody2D@175577" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick16/@RigidBody2D@175577" to="Bricks/Brick16/@RigidBody2D@175577" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick16/@RigidBody2D@175578" to="Bricks/Brick16/@RigidBody2D@175578" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick16/@RigidBody2D@175578" to="Bricks/Brick16/@RigidBody2D@175578" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick16/@RigidBody2D@175579" to="Bricks/Brick16/@RigidBody2D@175579" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick16/@RigidBody2D@175579" to="Bricks/Brick16/@RigidBody2D@175579" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick17/@RigidBody2D@175580" to="Bricks/Brick17/@RigidBody2D@175580" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick17/@RigidBody2D@175580" to="Bricks/Brick17/@RigidBody2D@175580" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick17/@RigidBody2D@175581" to="Bricks/Brick17/@RigidBody2D@175581" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick17/@RigidBody2D@175581" to="Bricks/Brick17/@RigidBody2D@175581" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick17/@RigidBody2D@175582" to="Bricks/Brick17/@RigidBody2D@175582" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick17/@RigidBody2D@175582" to="Bricks/Brick17/@RigidBody2D@175582" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick17/@RigidBody2D@175583" to="Bricks/Brick17/@RigidBody2D@175583" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick17/@RigidBody2D@175583" to="Bricks/Brick17/@RigidBody2D@175583" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick18/@RigidBody2D@183660" to="Bricks/Brick18/@RigidBody2D@183660" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick18/@RigidBody2D@183660" to="Bricks/Brick18/@RigidBody2D@183660" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick18/@RigidBody2D@183661" to="Bricks/Brick18/@RigidBody2D@183661" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick18/@RigidBody2D@183661" to="Bricks/Brick18/@RigidBody2D@183661" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick18/@RigidBody2D@183662" to="Bricks/Brick18/@RigidBody2D@183662" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick18/@RigidBody2D@183662" to="Bricks/Brick18/@RigidBody2D@183662" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick18/@RigidBody2D@183663" to="Bricks/Brick18/@RigidBody2D@183663" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick18/@RigidBody2D@183663" to="Bricks/Brick18/@RigidBody2D@183663" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick19/@RigidBody2D@183692" to="Bricks/Brick19/@RigidBody2D@183692" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick19/@RigidBody2D@183692" to="Bricks/Brick19/@RigidBody2D@183692" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick19/@RigidBody2D@183693" to="Bricks/Brick19/@RigidBody2D@183693" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick19/@RigidBody2D@183693" to="Bricks/Brick19/@RigidBody2D@183693" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick19/@RigidBody2D@183694" to="Bricks/Brick19/@RigidBody2D@183694" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick19/@RigidBody2D@183694" to="Bricks/Brick19/@RigidBody2D@183694" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick19/@RigidBody2D@183695" to="Bricks/Brick19/@RigidBody2D@183695" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick19/@RigidBody2D@183695" to="Bricks/Brick19/@RigidBody2D@183695" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick20/@RigidBody2D@183696" to="Bricks/Brick20/@RigidBody2D@183696" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick20/@RigidBody2D@183696" to="Bricks/Brick20/@RigidBody2D@183696" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick20/@RigidBody2D@183697" to="Bricks/Brick20/@RigidBody2D@183697" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick20/@RigidBody2D@183697" to="Bricks/Brick20/@RigidBody2D@183697" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick20/@RigidBody2D@183698" to="Bricks/Brick20/@RigidBody2D@183698" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick20/@RigidBody2D@183698" to="Bricks/Brick20/@RigidBody2D@183698" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick20/@RigidBody2D@183699" to="Bricks/Brick20/@RigidBody2D@183699" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick20/@RigidBody2D@183699" to="Bricks/Brick20/@RigidBody2D@183699" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick21/@RigidBody2D@183664" to="Bricks/Brick21/@RigidBody2D@183664" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick21/@RigidBody2D@183664" to="Bricks/Brick21/@RigidBody2D@183664" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick21/@RigidBody2D@183665" to="Bricks/Brick21/@RigidBody2D@183665" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick21/@RigidBody2D@183665" to="Bricks/Brick21/@RigidBody2D@183665" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick21/@RigidBody2D@183666" to="Bricks/Brick21/@RigidBody2D@183666" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick21/@RigidBody2D@183666" to="Bricks/Brick21/@RigidBody2D@183666" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick21/@RigidBody2D@183667" to="Bricks/Brick21/@RigidBody2D@183667" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick21/@RigidBody2D@183667" to="Bricks/Brick21/@RigidBody2D@183667" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick22/@RigidBody2D@183668" to="Bricks/Brick22/@RigidBody2D@183668" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick22/@RigidBody2D@183668" to="Bricks/Brick22/@RigidBody2D@183668" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick22/@RigidBody2D@183669" to="Bricks/Brick22/@RigidBody2D@183669" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick22/@RigidBody2D@183669" to="Bricks/Brick22/@RigidBody2D@183669" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick22/@RigidBody2D@183670" to="Bricks/Brick22/@RigidBody2D@183670" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick22/@RigidBody2D@183670" to="Bricks/Brick22/@RigidBody2D@183670" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick22/@RigidBody2D@183671" to="Bricks/Brick22/@RigidBody2D@183671" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick22/@RigidBody2D@183671" to="Bricks/Brick22/@RigidBody2D@183671" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick23/@RigidBody2D@183684" to="Bricks/Brick23/@RigidBody2D@183684" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick23/@RigidBody2D@183684" to="Bricks/Brick23/@RigidBody2D@183684" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick23/@RigidBody2D@183685" to="Bricks/Brick23/@RigidBody2D@183685" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick23/@RigidBody2D@183685" to="Bricks/Brick23/@RigidBody2D@183685" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick23/@RigidBody2D@183686" to="Bricks/Brick23/@RigidBody2D@183686" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick23/@RigidBody2D@183686" to="Bricks/Brick23/@RigidBody2D@183686" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick23/@RigidBody2D@183687" to="Bricks/Brick23/@RigidBody2D@183687" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick23/@RigidBody2D@183687" to="Bricks/Brick23/@RigidBody2D@183687" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick24/@RigidBody2D@183680" to="Bricks/Brick24/@RigidBody2D@183680" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick24/@RigidBody2D@183680" to="Bricks/Brick24/@RigidBody2D@183680" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick24/@RigidBody2D@183681" to="Bricks/Brick24/@RigidBody2D@183681" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick24/@RigidBody2D@183681" to="Bricks/Brick24/@RigidBody2D@183681" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick24/@RigidBody2D@183682" to="Bricks/Brick24/@RigidBody2D@183682" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick24/@RigidBody2D@183682" to="Bricks/Brick24/@RigidBody2D@183682" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick24/@RigidBody2D@183683" to="Bricks/Brick24/@RigidBody2D@183683" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick24/@RigidBody2D@183683" to="Bricks/Brick24/@RigidBody2D@183683" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick25/@RigidBody2D@183672" to="Bricks/Brick25/@RigidBody2D@183672" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick25/@RigidBody2D@183672" to="Bricks/Brick25/@RigidBody2D@183672" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick25/@RigidBody2D@183673" to="Bricks/Brick25/@RigidBody2D@183673" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick25/@RigidBody2D@183673" to="Bricks/Brick25/@RigidBody2D@183673" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick25/@RigidBody2D@183674" to="Bricks/Brick25/@RigidBody2D@183674" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick25/@RigidBody2D@183674" to="Bricks/Brick25/@RigidBody2D@183674" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick25/@RigidBody2D@183675" to="Bricks/Brick25/@RigidBody2D@183675" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick25/@RigidBody2D@183675" to="Bricks/Brick25/@RigidBody2D@183675" method="_on_body_shape_exited"]
