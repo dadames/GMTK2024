@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OneUpModifier" load_steps=3 format=3 uid="uid://drxhieb25f4ux"]
+
+[ext_resource type="Texture2D" uid="uid://66461e48qydv" path="res://Game/Modifiers/ExtraBall/one_up.png" id="1_k0pv1"]
+[ext_resource type="Script" path="res://Game/Modifiers/ExtraBall/extra_ball_modifier.gd" id="1_n34k0"]
+
+[resource]
+script = ExtResource("1_n34k0")
+extraLives = 2
+icon = ExtResource("1_k0pv1")
