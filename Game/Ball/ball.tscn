@@ -1,12 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://cik3us1ca1grp"]
+[gd_scene load_steps=11 format=3 uid="uid://cik3us1ca1grp"]
 
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_gvk1q"]
 [ext_resource type="Script" path="res://Game/Ball/ball.gd" id="1_jjx47"]
 [ext_resource type="AudioStream" uid="uid://ctexas3yu6ucm" path="res://Game/Ball/Audio/spike_1.mp3" id="2_dmoyv"]
 [ext_resource type="PackedScene" uid="uid://bnemjmd8p24wi" path="res://Game/VFX/collision_vfx.tscn" id="2_inoy3"]
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="3_acwtm"]
+[ext_resource type="Shader" path="res://Game/GUI/Menus/highlight_outline.gdshader" id="4_tm48u"]
 [ext_resource type="AudioStream" uid="uid://d1cdjsoefp5d4" path="res://Game/Ball/Audio/wonder_1.mp3" id="5_0jpbr"]
 [ext_resource type="AudioStream" uid="uid://bmq5ev2sak0vp" path="res://Game/Ball/Audio/quiet_bounce.mp3" id="6_0vjle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0xfc"]
+shader = ExtResource("4_tm48u")
+shader_parameter/speed = 0.5
+shader_parameter/intensity = 1.0
+shader_parameter/color = Color(0, 1, 1, 0.533333)
+shader_parameter/thickness = 0.04
+shader_parameter/tex = ExtResource("1_gvk1q")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1yh17"]
 radius = 16.0
@@ -25,15 +34,24 @@ z_index = 10
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_gvk1q")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+material = SubResource("ShaderMaterial_p0xfc")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_gvk1q")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_1yh17")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_1yh17")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 2
