@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ModifierBallSize" load_steps=3 format=3 uid="uid://bjvb0k3ahhej1"]
+
+[ext_resource type="Script" path="res://Game/Modifiers/BallSize/ball_size.gd" id="1_mp46t"]
+[ext_resource type="Texture2D" uid="uid://csqdts1s76wod" path="res://Game/Modifiers/BallSize/ball_size_up.svg" id="1_ovhvc"]
+
+[resource]
+script = ExtResource("1_mp46t")
+factor = 2.0
+icon = ExtResource("1_ovhvc")

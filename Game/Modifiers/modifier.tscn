@@ -1,18 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://ca4ii2uujd1r5"]
 
 [ext_resource type="Script" path="res://Game/Modifiers/modifier_object.gd" id="1_xy31g"]
-[ext_resource type="Texture2D" uid="uid://oh8juaya4485" path="res://Game/Modifiers/capsule.png" id="2_w7vaq"]
+[ext_resource type="Texture2D" uid="uid://byegsco1nrrxq" path="res://Game/Modifiers/capsule.svg" id="2_cq0xp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs1sb"]
-size = Vector2(32, 12)
+size = Vector2(88, 38)
 
 [node name="Modifier" type="Area2D"]
+scale = Vector2(0.48, 0.48)
 collision_layer = 256
 collision_mask = 4
 script = ExtResource("1_xy31g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_w7vaq")
+texture = ExtResource("2_cq0xp")
 
 [node name="Icon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
