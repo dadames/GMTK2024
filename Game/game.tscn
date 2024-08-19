@@ -25,7 +25,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sb8yh"]
 shader = ExtResource("4_yp74y")
-shader_parameter/strength = 1
+shader_parameter/strength = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
 
