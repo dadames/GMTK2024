@@ -7,3 +7,4 @@
 script = ExtResource("1_n34k0")
 extraLives = 1
 icon = ExtResource("1_k0pv1")
+flyingText = "+1 Life"

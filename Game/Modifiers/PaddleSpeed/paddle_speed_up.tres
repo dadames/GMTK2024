@@ -7,3 +7,4 @@
 script = ExtResource("1_7iy5g")
 factor = 2.0
 icon = ExtResource("1_44tgo")
+flyingText = "Paddle Speed Increase"

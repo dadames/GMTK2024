@@ -7,3 +7,4 @@
 script = ExtResource("2_ox5kt")
 factor = 0.75
 icon = ExtResource("1_ckisw")
+flyingText = "Ball Speed Decrease"

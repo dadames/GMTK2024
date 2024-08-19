@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="PaddleSpeedModifier" load_steps=2 format=3 uid="uid://dgcoaugmfv2iv"]
+[gd_resource type="Resource" script_class="PaddleSpeedModifier" load_steps=3 format=3 uid="uid://dgcoaugmfv2iv"]
 
 [ext_resource type="Script" path="res://Game/Modifiers/PaddleSpeed/paddle_speed.gd" id="1_77n82"]
+[ext_resource type="Texture2D" uid="uid://reslkybtafbm" path="res://Game/Modifiers/PaddleSpeed/paddle_speed_down.svg" id="1_g0m7p"]
 
 [resource]
 script = ExtResource("1_77n82")
 factor = 0.75
+icon = ExtResource("1_g0m7p")
+flyingText = "Paddle Speed Decrease"

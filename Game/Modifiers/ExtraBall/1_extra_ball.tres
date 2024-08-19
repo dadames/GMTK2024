@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="ExtraBallModifier" load_steps=3 format=3 uid="uid://b0aiqsqbpkhfk"]
 
-[ext_resource type="Texture2D" uid="uid://dwr4ohn7ev3s7" path="res://Game/Modifiers/BallSize/ball_size_down.svg" id="1_l0rcl"]
+[ext_resource type="Texture2D" uid="uid://b4vs6waph82b0" path="res://Game/Modifiers/ExtraBall/extra_ball.svg" id="1_6wdqy"]
 [ext_resource type="Script" path="res://Game/Modifiers/OneUp/one_up_modifier.gd" id="1_nhhd8"]
 
 [resource]
 script = ExtResource("1_nhhd8")
 extraBalls = 1
-icon = ExtResource("1_l0rcl")
+icon = ExtResource("1_6wdqy")
 flyingText = "Extra Ball"
