@@ -6,7 +6,7 @@ var zoomPeriod := 2.0
 var zoomSpeed: float
 
 var shakeStrength: float = 0
-var shakeMultiplier: float = 2
+var shakeMultiplier: float = 1.5
 var baseShakeFade: float = 1
 
 

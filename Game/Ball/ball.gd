@@ -5,9 +5,9 @@ extends CharacterBody2D
 @export var min_speeds := Vector2(25, 100)
 var collide_safe_margin: float = 1.0
 var speed: float
-@onready var blockBounceAudio: AudioStreamPlayer2D = %BlockBounceAudio
-@onready var paddleBounceAudio: AudioStreamPlayer2D = %PaddleBounceAudio
-@onready var wallBounceAudio: AudioStreamPlayer2D = %WallBounceAudio
+@onready var blockBounceAudio: AudioStreamPlayer = %BlockBounceAudio
+@onready var paddleBounceAudio: AudioStreamPlayer = %PaddleBounceAudio
+@onready var wallBounceAudio: AudioStreamPlayer = %WallBounceAudio
 @export var collisionVFXPrefab: PackedScene
 
 var _modifiers: Array[Resource] = []
@@ -52,11 +52,11 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.bounce(collisionInfo.get_normal())
 		if collider.has_method("collided"):
 			if collider.activeState == SemiBrick.State.Static:
-				blockBounceAudio.play()
 				EventBus.ball_collided.emit()
 				var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
 				get_tree().root.add_child(vfx)
 				vfx.global_position = collisionInfo.get_position()
+				collider.collided()
 			else:
 				wallBounceAudio.play()
 			collider.collided()
