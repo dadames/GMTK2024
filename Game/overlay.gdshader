@@ -1,43 +1,35 @@
 shader_type canvas_item;
 
-uniform int strength: hint_range(1, 10) = 1;
-const float STD = 1.5;
+uniform int strength: hint_range(1, 512) = 2;
 
+vec4 blur_size(sampler2D tex,vec2 fragCoord, vec2 pixelSize) {
+    
+    vec4 color = vec4(0.,0.,0.,0.);
+    float strengthFloat = float(strength);	
 
-float gauss(int x, int y){
-	return exp(-float(x * x + y * y) / (2. * STD * STD)) / (2. * PI * STD * STD);
+    vec2 pixel = fragCoord/pixelSize;
+    int x_min = max(int(pixel.x-strengthFloat), 0);
+    int x_max = min(int(pixel.x+strengthFloat), int(1./pixelSize.x));
+    int y_min = max(int(pixel.y-strengthFloat), 0);
+    int y_max = min(int(pixel.y+strengthFloat), int(1./pixelSize.y));
+
+    int count =0;
+
+    // Sum the pixels colors
+    for(int x=x_min; x <= x_max; x++) {
+        for(int y = y_min; y <= y_max; y++) {           
+            color += texture(tex, vec2(float(x), float(y)) * pixelSize);
+            count++;
+        }
+    }
+    
+    // Divide the color by the number of colors you summed up
+    color /= float(count);
+    
+    return color;
 }
 
-
 void fragment() {
-	int x = int(UV.x / TEXTURE_PIXEL_SIZE.x);
-	int y = int(UV.y / TEXTURE_PIXEL_SIZE.y);
-	int i_min = max(x - strength, 0);
-	int i_max = min(x + strength + 1, int(1./TEXTURE_PIXEL_SIZE.x));
-	int i_diff = i_max - i_min;
-	int j_min = max(y - strength, 0);
-	int j_max = min(y + strength + 1, int(1./TEXTURE_PIXEL_SIZE.y));
-	int j_diff = j_max - j_min;
-	// Should be equal to (strength * 2 + 1)^2
-	vec4 weights[9];
-	vec4 total = vec4(0., 0., 0., 0.);
-	for(int i = i_min; i < i_max; i++){
-		for(int j = j_min; j < j_max; j++){
-			vec4 weight = vec4(
-				gauss(i-x, y-j),
-				gauss(i-x, y-j),
-				gauss(i-x, y-j),
-				gauss(i-x, y-j)
-			);
-			weights[j-j_min + (i-i_min) * (j_max-j_min)] = weight;
-			total += weight;
-		}
-	}
-	vec4 color_total = vec4(0., 0., 0., 0.);
-	for(int k = 0; k < weights.length(); k++){
-		weights[k] /= total;
-		weights[k] *= texture(TEXTURE, (UV / TEXTURE_PIXEL_SIZE + vec2(float(k / i_diff), float(k % i_diff))) * TEXTURE_PIXEL_SIZE);
-		color_total += weights[k];
-	}
-	COLOR = color_total;
+    COLOR = blur_size(TEXTURE,UV,TEXTURE_PIXEL_SIZE) * 0.2;
+	COLOR.a = 0.5;
 }
