@@ -34,6 +34,7 @@ func _ready() -> void:
 	EventBus.removed_active_ball.connect(on_removed_active_ball)
 	EventBus.added_available_ball.connect(on_added_available_ball)
 	EventBus.modifier_collected.connect(on_modifier_event)
+	EventBus.spawn_extra_ball.connect(on_spawn_extra_ball)
 	start_game.call_deferred()
 	%BallLabel.text = str(availableBalls)
 	%ScoreLabel.text = str(score)
@@ -145,7 +146,7 @@ func show_ball_spawnable() -> void:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_ball") && ballSpawnable:
-		spawn_ball()
+		call_deferred("spawn_ball")
 
 func on_modifier_event(modifier: Modifier) -> void:
 	if modifier.applies_to(self):
@@ -153,3 +154,7 @@ func on_modifier_event(modifier: Modifier) -> void:
 
 func add_modifier(modifier: Modifier) -> void:
 	modifier.apply(self)
+
+func on_spawn_extra_ball() -> void:
+	availableBalls += 1
+	call_deferred("spawn_ball")

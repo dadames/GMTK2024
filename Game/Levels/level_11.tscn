@@ -1,11 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bems64qvvqjge"]
+[gd_scene load_steps=10 format=3 uid="uid://bems64qvvqjge"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_n825i"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_ir3fm"]
 [ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_hgy5c"]
 [ext_resource type="Resource" uid="uid://caqnwjdggugyp" path="res://Game/Modifiers/BallSpeed/ball_double_speed.tres" id="4_1u226"]
-[ext_resource type="Resource" uid="uid://4ow0asjwvaya" path="res://Game/Modifiers/OneUp/three_up.tres" id="5_0ljso"]
+[ext_resource type="Texture2D" uid="uid://dyra3aptm7vfs" path="res://Game/Modifiers/OneUp/one_up.svg" id="5_qsudn"]
 [ext_resource type="Script" path="res://Game/Modifiers/PaddleSpeed/paddle_speed.gd" id="6_8ctpu"]
+[ext_resource type="Script" path="res://Game/Modifiers/OneUp/one_up_modifier.gd" id="6_digof"]
+
+[sub_resource type="Resource" id="Resource_ddcfy"]
+script = ExtResource("6_digof")
+extraBalls = 1
+icon = ExtResource("5_qsudn")
 
 [sub_resource type="Resource" id="Resource_ti5pl"]
 script = ExtResource("6_8ctpu")
@@ -41,7 +47,7 @@ scale = Vector2(-1, 1)
 color = Color(0.941176, 0.25098, 0, 1)
 shapeType = 2
 mirrored = true
-modifiers = Array[ExtResource("3_hgy5c")]([ExtResource("5_0ljso")])
+modifiers = Array[ExtResource("3_hgy5c")]([SubResource("Resource_ddcfy")])
 
 [node name="Brick5" parent="Bricks" instance=ExtResource("2_ir3fm")]
 position = Vector2(112, -208)

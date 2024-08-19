@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="OneUpModifier" load_steps=3 format=3 uid="uid://brkrfou4ae18e"]
-
-[ext_resource type="Texture2D" uid="uid://dyra3aptm7vfs" path="res://Game/Modifiers/OneUp/one_up.svg" id="1_3ef6h"]
-[ext_resource type="Script" path="res://Game/Modifiers/OneUp/one_up_modifier.gd" id="2_06t60"]
-
-[resource]
-script = ExtResource("2_06t60")
-extraLives = 1
-icon = ExtResource("1_3ef6h")
