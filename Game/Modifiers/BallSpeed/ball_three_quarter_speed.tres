@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BallSpeedModifier" load_steps=3 format=3 uid="uid://ct12fp21wo0yp"]
+
+[ext_resource type="Texture2D" uid="uid://b100bspvh2ubo" path="res://Game/Modifiers/BallSpeed/ball_slow_down.svg" id="1_ckisw"]
+[ext_resource type="Script" path="res://Game/Modifiers/BallSpeed/ball_speed.gd" id="2_ox5kt"]
+
+[resource]
+script = ExtResource("2_ox5kt")
+factor = 0.75
+icon = ExtResource("1_ckisw")

@@ -1,6 +1,7 @@
+class_name ModifierBallSize
 extends Modifier
 
-var factor := 2.0
+@export var factor := 1.0
 
 func applies_to(ball: Node) -> bool:
 	return ball is Ball

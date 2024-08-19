@@ -104,6 +104,7 @@ func start_falling() -> void:
 	for modifier in modifiers:
 		var instance := modifier_prefab.instantiate()
 		instance.modifier = modifier
+		instance.position = global_position * get_parent().global_transform
 		get_parent().add_child(instance)
 	
 	falling.emit()
