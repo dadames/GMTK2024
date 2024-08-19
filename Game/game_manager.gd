@@ -19,7 +19,7 @@ var distance := 0
 var score:float = 0
 @export var scoreHit:float = 1
 #@export var scoreCatch:int = 100
-var availableBalls: int = 3
+@export var availableBalls: int = 3
 var activeBalls: int = 0
 var ballSpawnable := true
 
@@ -87,6 +87,7 @@ func set_boundaries() -> void:
 	leftBoundary.global_position.x = leftBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
 	rightBoundary.global_position.x = rightBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
 	bottomBoundary.global_position.y = bottomBoundaryPosition * cameraScaling * 2 ** (Globals.level_scale - 1)
+	print("new height: ", bottomBoundary.global_position. y - topBoundary.global_position.y)
 	topBoundary.set_collision_layer_value(2, true)
 	leftBoundary.set_collision_layer_value(2, true)
 	rightBoundary.set_collision_layer_value(2, true)
@@ -112,6 +113,8 @@ func _on_bottom_boundary_body_entered(body: Node2D) -> void:
 
 func spawn_ball() -> void:
 	var newBall := ballPrefab.instantiate()
+	newBall.global_position = Vector2(0,(64 * 2 ** (Globals.level_scale -1)))
+	print("ball spawning at: ", newBall.global_position)
 	add_child(newBall)
 	ballSpawnable = false
 	%BallLabel.text = str(availableBalls)
