@@ -13,7 +13,7 @@ float sample(in vec2 st){
 
 void fragment(){
 	float t = TIME*speed;
-	vec2 px = vec2(1.0) / vec2(textureSize(tex, 0));
+	vec2 px = vec2(500.0) / vec2(textureSize(tex, 0)) * vec2(thickness);
 	float neighbor = 
 		sample(UV+px*vec2( 1.,  0.))+
 		sample(UV+px*vec2( 0.,  1.))+
