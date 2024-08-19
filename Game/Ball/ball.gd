@@ -25,6 +25,7 @@ func _ready() -> void:
 	var angle: float = deg_to_rad(randf_range(240,300))
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 	EventBus.added_active_ball.emit()
+	%SpawnAudio.play()
 
 func _on_modifier_event(modifier: Modifier) -> void:
 	if modifier.applies_to(self):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cik3us1ca1grp"]
+[gd_scene load_steps=13 format=3 uid="uid://cik3us1ca1grp"]
 
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_gvk1q"]
 [ext_resource type="Script" path="res://Game/Ball/ball.gd" id="1_jjx47"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d1cdjsoefp5d4" path="res://Game/Ball/Audio/wonder_1.mp3" id="5_0jpbr"]
 [ext_resource type="AudioStream" uid="uid://bmq5ev2sak0vp" path="res://Game/Ball/Audio/quiet_bounce.mp3" id="6_0vjle"]
 [ext_resource type="Texture2D" uid="uid://b8gv827aod5cq" path="res://Game/VFX/collision_particle.png" id="6_betrl"]
+[ext_resource type="AudioStream" uid="uid://cnv343w7xjk03" path="res://Game/Ball/Audio/tests/341227__jeremysykes__powerup.wav" id="10_u654l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p0xfc"]
 shader = ExtResource("4_tm48u")
@@ -86,5 +87,5 @@ bus = &"SFX"
 
 [node name="SpawnAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("6_0vjle")
+stream = ExtResource("10_u654l")
 bus = &"SFX"

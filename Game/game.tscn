@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=30 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="22_nblwm"]
 [ext_resource type="AudioStream" uid="uid://wpkcl5fb15ub" path="res://Game/Ball/Audio/611798__metalfortress__error.wav" id="23_lpoqu"]
+[ext_resource type="AudioStream" uid="uid://bnrcee858nnc0" path="res://Game/Ball/Audio/tests/717770__1bob__level-passedpowerup.wav" id="24_bre8v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkyta"]
 shader = ExtResource("4_yp74y")
@@ -275,6 +276,12 @@ texture = ExtResource("22_nblwm")
 [node name="BallLostAudio" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("23_lpoqu")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="LevelPassed" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("24_bre8v")
 volume_db = 1.0
 bus = &"SFX"
 
