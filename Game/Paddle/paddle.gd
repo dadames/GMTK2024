@@ -21,6 +21,7 @@ var initialHeight: float = 300
 var _consumed_bricks_this_frame: Array[Brick] = []
 var initialized := false
 var canMove := true
+var gameOver := false
 
 var _modifiers: Array[Resource] = []
 
@@ -32,7 +33,7 @@ func _ready() -> void:
 	#EventBus.level_completed.connect(on_level_completed)
 	#EventBus.zoom_finished.connect(on_zoom_finished)
 	EventBus.modifier_collected.connect(_on_modifier_event)
-	EventBus.game_over.connect(on_game_over)	
+	EventBus.game_over.connect(on_game_over)
 
 func _process(delta: float) -> void:
 	if !initialized:
@@ -47,6 +48,8 @@ func _process(delta: float) -> void:
 		var camera := get_viewport().get_camera_2d()
 		var cameraScaling: float = camera.targetZoom / camera.zoom.x 
 		position.y = initialHeight * cameraScaling * 2 ** (Globals.level_scale - 1)
+		if gameOver:
+			position.x = 0
 
 func _physics_process(delta: float) -> void:
 	if !initialized || Engine.is_editor_hint():
@@ -150,7 +153,6 @@ func clear_modifiers() -> void:
 		modifier.unapply(self)
 	_modifiers.clear()
 
-
-func on_game_over() -> void:
+func on_game_over(score: int) -> void:
 	canMove = false
-	pass
+	gameOver = true
