@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr8erptudlybr"]
+[gd_scene load_steps=6 format=3 uid="uid://dr8erptudlybr"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_8oec2"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_texhw"]
 [ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_jmof7"]
+[ext_resource type="Resource" uid="uid://caqnwjdggugyp" path="res://Game/Modifiers/BallSpeed/ball_double_speed.tres" id="4_u47wq"]
+[ext_resource type="Resource" uid="uid://cip8amnqlfgb2" path="res://Game/Modifiers/OneUp/three_up.tres" id="5_w6ljt"]
 
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_8oec2")
@@ -41,11 +43,13 @@ shapeType = 0
 position = Vector2(32, -144)
 color = Color(0.971053, 0, 0.469222, 1)
 shapeType = 0
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("4_u47wq")])
 
 [node name="Brick7" parent="Bricks" instance=ExtResource("2_texhw")]
 position = Vector2(64, 16)
 color = Color(0.971053, 0, 0.469222, 1)
 shapeType = 0
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("4_u47wq")])
 
 [node name="Brick8" parent="Bricks" instance=ExtResource("2_texhw")]
 position = Vector2(160, -16)
@@ -71,27 +75,32 @@ shapeType = 0
 position = Vector2(-448, -144)
 color = Color(0.971053, 0, 0.469222, 1)
 shapeType = 0
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("4_u47wq")])
 
 [node name="Brick13" parent="Bricks" instance=ExtResource("2_texhw")]
 position = Vector2(-352, -176)
 color = Color(0.971053, 0, 0.469222, 1)
 shapeType = 0
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("4_u47wq")])
 
 [node name="Brick14" parent="Bricks" instance=ExtResource("2_texhw")]
 position = Vector2(-256, -208)
 color = Color(0.971053, 0, 0.469222, 1)
 shapeType = 0
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("4_u47wq")])
 
 [node name="Brick15" parent="Bricks" instance=ExtResource("2_texhw")]
 position = Vector2(-480, -320)
 color = Color(0.971053, 0, 0.469222, 1)
-modifiers = Array[ExtResource("3_jmof7")]([null])
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("5_w6ljt")])
 
 [node name="Brick16" parent="Bricks" instance=ExtResource("2_texhw")]
 position = Vector2(488, -320)
 color = Color(0.971053, 0, 0.469222, 1)
+modifiers = Array[ExtResource("3_jmof7")]([ExtResource("5_w6ljt")])
 
 [node name="CameraSizeGuide(Hide)" type="Panel" parent="."]
+visible = false
 offset_left = -512.0
 offset_top = -384.0
 offset_right = 512.0
