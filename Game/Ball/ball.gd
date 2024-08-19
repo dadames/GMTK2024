@@ -20,7 +20,9 @@ func _ready() -> void:
 	speed = baseSpeed * Globals.level_factor
 	var targetSize := Globals.level_scale
 	self.scale = Vector2(targetSize, targetSize)
-	%CPUParticles2D.emission_sphere_radius = 128
+	%CPUParticles2D.emission_sphere_radius *= 1.7 ** (Globals.level_scale - 1)
+	%CPUParticles2D.scale_amount_min *= 1.7 ** (Globals.level_scale - 1)
+	%CPUParticles2D.scale_amount_min *= 1.7 ** (Globals.level_scale - 1)
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 	EventBus.added_active_ball.emit()

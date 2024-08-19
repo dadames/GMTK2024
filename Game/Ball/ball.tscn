@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cik3us1ca1grp"]
+[gd_scene load_steps=12 format=3 uid="uid://cik3us1ca1grp"]
 
 [ext_resource type="Texture2D" uid="uid://c2h77dlj5bo0u" path="res://Game/Ball/ball.png" id="1_gvk1q"]
 [ext_resource type="Script" path="res://Game/Ball/ball.gd" id="1_jjx47"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" path="res://Game/GUI/Menus/highlight_outline.gdshader" id="4_tm48u"]
 [ext_resource type="AudioStream" uid="uid://d1cdjsoefp5d4" path="res://Game/Ball/Audio/wonder_1.mp3" id="5_0jpbr"]
 [ext_resource type="AudioStream" uid="uid://bmq5ev2sak0vp" path="res://Game/Ball/Audio/quiet_bounce.mp3" id="6_0vjle"]
+[ext_resource type="Texture2D" uid="uid://b8gv827aod5cq" path="res://Game/VFX/collision_particle.png" id="6_betrl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p0xfc"]
 shader = ExtResource("4_tm48u")
@@ -35,6 +36,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_gvk1q")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(2, 2, 2, 1)
 material = SubResource("ShaderMaterial_p0xfc")
 scale = Vector2(0.1, 0.1)
@@ -56,15 +58,15 @@ texture = ExtResource("3_acwtm")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 unique_name_in_owner = true
-visible = false
-amount = 50000
+amount = 500
 lifetime = 0.3
-lifetime_randomness = 1.0
+lifetime_randomness = 0.5
+texture = ExtResource("6_betrl")
 emission_shape = 1
-emission_sphere_radius = 128.0
+emission_sphere_radius = 0.8
 gravity = Vector2(0, 0)
-scale_amount_min = 0.0
-scale_amount_max = 14.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
 color = Color(0, 1, 1, 0.0196078)
 
 [node name="BrickBounceAudio" type="AudioStreamPlayer" parent="."]
