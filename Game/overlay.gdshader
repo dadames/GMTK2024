@@ -1,46 +1,43 @@
-// Godot 4.3
-shader_type spatial;
-render_mode unshaded, fog_disabled;
+shader_type canvas_item;
 
-uniform sampler2D screen_texture : source_color, hint_screen_texture;
-uniform sampler2D depth_texture : source_color, hint_depth_texture;
-uniform sampler2D normal_rough_texture : source_color, hint_normal_roughness_texture;
+uniform int strength: hint_range(1, 10) = 1;
+const float STD = 1.5;
 
-void vertex() {
-	POSITION = vec4(VERTEX.xy, 1.0, 1.0);
+
+float gauss(int x, int y){
+	return exp(-float(x * x + y * y) / (2. * STD * STD)) / (2. * PI * STD * STD);
 }
 
+
 void fragment() {
-	vec4 screen = texture(screen_texture, SCREEN_UV);
-	
-	float depth_raw = texture(depth_texture, SCREEN_UV).x;
-	vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth_raw);
-	vec4 position_view = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
-	position_view.xyz /= position_view.w;
-	float linear_depth = -position_view.z;
-	
-	vec4 world = INV_VIEW_MATRIX * INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
-	vec3 position_world = world.xyz / world.w;
-	
-	vec4 normal_rough = texture(normal_rough_texture, SCREEN_UV);
-	vec3 normals_view_raw = normal_rough.xyz; // Normals in view space, in [0.0,1.0] range
-	vec3 normals_view_remapped = normals_view_raw.xyz * 2.0 - 1.0;  // Normals in view space, in [-1.0,1.0] range
-	vec3 normals_world = (INV_VIEW_MATRIX * vec4(normals_view_remapped, 0.0)).xyz;
-	float roughness = normal_rough.w;
-	
-	// Visualize the outputs
-	// Screen texture
-	ALBEDO.rgb = screen.rgb;
-	// Raw depth
-	//ALBEDO.rgb = vec3(depth_raw);
-	// Linear depth
-	//ALBEDO.rgb = vec3(fract(linear_depth));
-	// World position
-	//ALBEDO.rgb = fract(position_world);	
-	// Normals from the normal buffer, in view space
-	//ALBEDO.rgb = normals_view_raw;
-	// Normals in world space, [-1.0,1.0] range
-	//ALBEDO.rgb = normals_world;
-	// Roughness
-	//ALBEDO.rgb = vec3(roughness);
+	int x = int(UV.x / TEXTURE_PIXEL_SIZE.x);
+	int y = int(UV.y / TEXTURE_PIXEL_SIZE.y);
+	int i_min = max(x - strength, 0);
+	int i_max = min(x + strength + 1, int(1./TEXTURE_PIXEL_SIZE.x));
+	int i_diff = i_max - i_min;
+	int j_min = max(y - strength, 0);
+	int j_max = min(y + strength + 1, int(1./TEXTURE_PIXEL_SIZE.y));
+	int j_diff = j_max - j_min;
+	// Should be equal to (strength * 2 + 1)^2
+	vec4 weights[9];
+	vec4 total = vec4(0., 0., 0., 0.);
+	for(int i = i_min; i < i_max; i++){
+		for(int j = j_min; j < j_max; j++){
+			vec4 weight = vec4(
+				gauss(i-x, y-j),
+				gauss(i-x, y-j),
+				gauss(i-x, y-j),
+				gauss(i-x, y-j)
+			);
+			weights[j-j_min + (i-i_min) * (j_max-j_min)] = weight;
+			total += weight;
+		}
+	}
+	vec4 color_total = vec4(0., 0., 0., 0.);
+	for(int k = 0; k < weights.length(); k++){
+		weights[k] /= total;
+		weights[k] *= texture(TEXTURE, (UV / TEXTURE_PIXEL_SIZE + vec2(float(k / i_diff), float(k % i_diff))) * TEXTURE_PIXEL_SIZE);
+		color_total += weights[k];
+	}
+	COLOR = color_total;
 }
