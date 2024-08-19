@@ -1,8 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvqohvlr6nu66"]
+[gd_scene load_steps=8 format=3 uid="uid://cvqohvlr6nu66"]
 
 [ext_resource type="Script" path="res://Game/GUI/game_over_menu.gd" id="1_w5k58"]
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="2_0avu0"]
+[ext_resource type="Shader" path="res://Game/GUI/Menus/highlight_outline.gdshader" id="2_b7q5r"]
 [ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="2_yt45o"]
+[ext_resource type="Texture2D" uid="uid://cpwk2pg4p8eh2" path="res://Game/GUI/Menus/panel2.png" id="3_td5cm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pnl04"]
+shader = ExtResource("2_b7q5r")
+shader_parameter/speed = 0.5
+shader_parameter/intensity = 3.0
+shader_parameter/color = Color(0, 1, 1, 1)
+shader_parameter/thickness = 0.01
+shader_parameter/tex = ExtResource("3_td5cm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j6p50"]
 shader = ExtResource("2_yt45o")
@@ -21,6 +31,10 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w5k58")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_pnl04")
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
