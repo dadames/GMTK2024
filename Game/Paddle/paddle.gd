@@ -75,12 +75,12 @@ func consume_brick(brick: Brick, paddle_rect: Rect2, semi_rect: Rect2) -> bool:
 	#print_debug(brick, shift)
 	
 	# snap to the size of what we're touching
-	var grid_size: float = Globals.BLOCK_PIXELS * 2 ** roundi(log(paddle_rect.size.y / Globals.BLOCK_PIXELS) / log(2))
+	var grid := Vector2(semi_rect.size.x, Globals.BLOCK_PIXELS * 2 ** roundi(log(paddle_rect.size.y / Globals.BLOCK_PIXELS) / log(2)))
 
 	# offset is based on both the size difference, and the offset of the thing we're connecting to
-	var offset := Vector2.UP * ((semi_rect.size.y - grid_size) / 2 - paddle_rect.get_center().y + snappedf(paddle_rect.get_center().y, grid_size))
+	var offset := Vector2.UP * ((semi_rect.size.y - grid.y) / 2 - paddle_rect.get_center().y + snappedf(paddle_rect.get_center().y, grid.y))
 
-	print_debug(grid_size, " ", semi_rect.size.y, " ", offset)
+	print_debug(grid.y, " ", semi_rect.size.y, " ", offset)
 
 	#var grid_size: float = Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 	
@@ -99,13 +99,14 @@ func consume_brick(brick: Brick, paddle_rect: Rect2, semi_rect: Rect2) -> bool:
 	#	brick.position.x += grid_size * 0.5
 	#if posmod(brick_parity.y, 2) != 0:
 	#	brick.position.y += grid_size * 0.5
+
 	var space_state := get_world_2d().direct_space_state
 	# check if the spot is actually free
 	# if not we return early
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			var parameters := PhysicsPointQueryParameters2D.new()
-			parameters.position = self.global_transform * (self.global_transform.affine_inverse() * child.global_position - offset).snappedf(grid_size)
+			parameters.position = self.global_transform * (self.global_transform.affine_inverse() * child.global_position - offset).snapped(grid)
 			parameters.collision_mask = 0x4
 			if !space_state.intersect_point(parameters, 1).is_empty():
 				return false
@@ -118,14 +119,14 @@ func consume_brick(brick: Brick, paddle_rect: Rect2, semi_rect: Rect2) -> bool:
 			EventBus.score_change.emit("Catch")
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				brick_sprite.reparent(self)
-				brick_sprite.position = (brick_sprite.position - offset).snappedf(grid_size) + offset
+				brick_sprite.position = (brick_sprite.position - offset).snapped(grid) + offset
 			for brick_collider: CollisionShape2D in child.find_children("CollisionShape2D"):
 				for body in bodies:
 					var dup := brick_collider.duplicate()
 					body.add_child(dup)
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
-					dup.position = (dup.position - offset).snappedf(grid_size) + offset
+					dup.position = (dup.position - offset).snapped(grid) + offset
 	brick.queue_free()
 
 	return true
