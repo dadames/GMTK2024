@@ -12,7 +12,7 @@
 
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_0a56v")
-levelScale = 15.0
+levelScale = 16.0
 
 [node name="Bricks" type="Node2D" parent="."]
 modulate = Color(2, 2, 2, 1)
