@@ -198,7 +198,7 @@ stretch_mode = 4
 [node name="BallLabel" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -208,17 +208,17 @@ layout_mode = 2
 
 [node name="ScoreName" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 text = "Score: "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "10"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+text = "0000"
 vertical_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
