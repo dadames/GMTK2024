@@ -21,6 +21,8 @@ var initialHeight: float = 300
 var _consumed_bricks_this_frame: Array[Brick] = []
 var initialized := false
 
+var _modifiers: Array[Resource] = []
+
 func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 	initialized = true
