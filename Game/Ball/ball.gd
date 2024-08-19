@@ -20,9 +20,9 @@ func _ready() -> void:
 	speed = baseSpeed * Globals.level_factor
 	var targetSize := Globals.level_scale
 	self.scale = Vector2(targetSize, targetSize)
-	%CPUParticles2D.emission_sphere_radius *= 1.7 ** (Globals.level_scale - 1)
-	%CPUParticles2D.scale_amount_min *= 1.7 ** (Globals.level_scale - 1)
-	%CPUParticles2D.scale_amount_min *= 1.7 ** (Globals.level_scale - 1)
+	%CPUParticles2D.emission_sphere_radius *= Globals.level_scale
+	%CPUParticles2D.scale_amount_min *= Globals.level_scale
+	%CPUParticles2D.scale_amount_min *= Globals.level_scale
 	var angle: float = deg_to_rad(randf_range(60,120))
 	velocity = Vector2(cos(angle), sin(angle)) * speed
 	EventBus.added_active_ball.emit()
@@ -58,11 +58,11 @@ func _physics_process(delta: float) -> void:
 				var vfx: CPUParticles2D = collisionVFXPrefab.instantiate()
 				get_tree().root.add_child(vfx)
 				vfx.global_position = collisionInfo.get_position()
+				vfx.initialize(collider.brick.color)
 				collider.collided()
 				brickBounceAudio.play()
 			else:
 				wallBounceAudio.play()
-			collider.collided()
 		elif collider.is_class("CharacterBody2D"):
 			print("Paddle")
 			var paddle := collider as CharacterBody2D

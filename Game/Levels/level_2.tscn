@@ -10,6 +10,7 @@ levelScale = 2.0
 nextLevel = ExtResource("2_a8rrd")
 
 [node name="Bricks" type="Node2D" parent="."]
+modulate = Color(2, 2, 2, 1)
 
 [node name="Brick" parent="Bricks" instance=ExtResource("2_0eg7v")]
 position = Vector2(-480, -160)

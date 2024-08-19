@@ -14,7 +14,7 @@
 shader = ExtResource("4_tm48u")
 shader_parameter/speed = 0.5
 shader_parameter/intensity = 1.0
-shader_parameter/color = Color(0, 1, 1, 0.533333)
+shader_parameter/color = Color(1, 1, 1, 0.533)
 shader_parameter/thickness = 0.04
 shader_parameter/tex = ExtResource("1_gvk1q")
 
@@ -63,7 +63,7 @@ lifetime = 0.3
 lifetime_randomness = 0.5
 texture = ExtResource("6_betrl")
 emission_shape = 1
-emission_sphere_radius = 0.8
+emission_sphere_radius = 11.0
 gravity = Vector2(0, 0)
 scale_amount_min = 0.25
 scale_amount_max = 0.25
