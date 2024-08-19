@@ -283,6 +283,7 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("24_bre8v")
 volume_db = 1.0
+pitch_scale = 0.7
 bus = &"SFX"
 
 [connection signal="body_entered" from="BottomBoundary" to="." method="_on_bottom_boundary_body_entered"]
