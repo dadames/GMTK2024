@@ -20,6 +20,7 @@ var initialHeight: float = 300
 
 var _consumed_bricks_this_frame: Array[Brick] = []
 var initialized := false
+var canMove := true
 
 var _modifiers: Array[Resource] = []
 
@@ -27,11 +28,13 @@ func _ready() -> void:
 	scale = Vector2(Globals.SCALE_MODIFIER, Globals.SCALE_MODIFIER)
 	initialized = true
 	EventBus.level_started.connect(on_level_started)
+	EventBus.zoom_finished.connect(on_zoom_finished)
 	#EventBus.level_completed.connect(on_level_completed)
 	#EventBus.zoom_finished.connect(on_zoom_finished)
 	EventBus.modifier_collected.connect(_on_modifier_event)
+	EventBus.game_over.connect(on_game_over)	
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if !initialized:
 		return
 	_consumed_bricks_this_frame = []
@@ -45,17 +48,16 @@ func _process(_delta: float) -> void:
 		var cameraScaling: float = camera.targetZoom / camera.zoom.x 
 		position.y = initialHeight * cameraScaling * 2 ** (Globals.level_scale - 1)
 
-#Movement
 func _physics_process(delta: float) -> void:
 	if !initialized || Engine.is_editor_hint():
 		return
-	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * delta * speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, delta * speed)
+	if canMove:
+		var direction := Input.get_axis("move_left", "move_right")
+		if direction:
+			velocity.x = direction * delta * speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, delta * speed)
 	move_and_collide(velocity * delta)
-
 
 func consume_brick(brick: Brick, shift: Vector2) -> void:
 	if brick in _consumed_bricks_this_frame:
@@ -109,14 +111,16 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
 					dup.position = dup.position.snappedf(grid_size)
-	
 	brick.queue_free()
 
 
 
 func on_level_started() -> void:
 	speed = 2 ** Globals.level_scale * initial_speed
+	canMove = false
 
+func on_zoom_finished() -> void:
+	canMove = true
 
 # Detect when a falling block hits and "catch" it if its hitting us from above
 func _on_collision_detection_body_shape_entered(_body_rid:RID, body:Node2D, body_shape_index:int, local_shape_index:int) -> void:
@@ -145,3 +149,8 @@ func clear_modifiers() -> void:
 	for modifier in _modifiers:
 		modifier.unapply(self)
 	_modifiers.clear()
+
+
+func on_game_over() -> void:
+	canMove = false
+	pass

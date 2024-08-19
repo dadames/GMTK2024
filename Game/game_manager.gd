@@ -32,12 +32,15 @@ func _ready() -> void:
 	EventBus.added_active_ball.connect(on_added_active_ball)
 	EventBus.removed_active_ball.connect(on_removed_active_ball)
 	EventBus.added_available_ball.connect(on_added_available_ball)
-	start_level.call_deferred(startingLevel)
-	set_boundaries.call_deferred()
+	start_game.call_deferred()
 	%BallLabel.text = str(availableBalls)
 	%ScoreLabel.text = str(score)
 	SaveData.load()
-	
+
+func start_game() -> void:
+	start_level(startingLevel)
+	set_boundaries()
+	EventBus.zoom_finished.emit()
 
 func score_change(HitType:String) -> void:
 	if HitType == "Catch":
