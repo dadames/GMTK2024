@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlfxjm48r7wcv"]
+
+[ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_uyygg"]
+[ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_lh5er"]
+[ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_k54lr"]
+[ext_resource type="Resource" uid="uid://cip8amnqlfgb2" path="res://Game/Modifiers/OneUp/three_up.tres" id="4_10f4x"]
+
+[node name="Level" type="Node" groups=["Level"]]
+script = ExtResource("1_uyygg")
+levelScale = 14.0
+
+[node name="Bricks" type="Node2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+position = Vector2(0, -32)
+
+[node name="Brick" parent="Bricks" instance=ExtResource("2_lh5er")]
+position = Vector2(0, -192)
+color = Color(0, 0.401083, 0.774493, 1)
+modifiers = Array[ExtResource("3_k54lr")]([ExtResource("4_10f4x")])
+
+[node name="CameraSizeGuide(Hide)" type="Panel" parent="."]
+offset_left = -512.0
+offset_top = -384.0
+offset_right = 512.0
+offset_bottom = 384.0
+
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@330948" to="Bricks/Brick/@RigidBody2D@330948" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@330948" to="Bricks/Brick/@RigidBody2D@330948" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@330949" to="Bricks/Brick/@RigidBody2D@330949" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@330949" to="Bricks/Brick/@RigidBody2D@330949" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@330950" to="Bricks/Brick/@RigidBody2D@330950" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@330950" to="Bricks/Brick/@RigidBody2D@330950" method="_on_body_shape_exited"]
+[connection signal="body_shape_entered" from="Bricks/Brick/@RigidBody2D@330951" to="Bricks/Brick/@RigidBody2D@330951" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="Bricks/Brick/@RigidBody2D@330951" to="Bricks/Brick/@RigidBody2D@330951" method="_on_body_shape_exited"]

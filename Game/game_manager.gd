@@ -149,8 +149,8 @@ func on_added_available_ball() -> void:
 
 func show_ball_spawnable() -> void:
 	ballSpawnable = true
-	%BallSpawnVisualizer.global_position = Vector2(0,(64 * 2 ** (Globals.level_scale -1)))
-	%BallSpawnVisualizer.scale = Vector2(0.1, 0.1) * Vector2(Globals.level_scale, Globals.level_scale)
+	%BallSpawnVisualizer.global_position = Vector2(0,(64 * 2 ** (Globals.level_scale-1)))
+	%BallSpawnVisualizer.scale = Vector2(0.1, 0.1) * Vector2(Globals.level_factor, Globals.level_factor)
 	%BallSpawnVisualizer.show()
 	EventBus.ball_spawnable.emit()
 
