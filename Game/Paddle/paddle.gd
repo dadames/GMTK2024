@@ -86,9 +86,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 	#	brick.position.x += grid_size * 0.5
 	#if posmod(brick_parity.y, 2) != 0:
 	#	brick.position.y += grid_size * 0.5
-	
 	var space_state := get_world_2d().direct_space_state
-	
 	# check if the spot is actually free
 	# if not we return early
 	for child: Node2D in brick.get_children():
@@ -98,9 +96,7 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 			parameters.collision_mask = 0x4
 			if !space_state.intersect_point(parameters, 1).is_empty():
 				return
-	
 	brick.reparent(self)
-	
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			EventBus.score_change.emit("Catch")
@@ -115,8 +111,6 @@ func consume_brick(brick: Brick, shift: Vector2) -> void:
 					dup.global_scale = brick_collider.global_scale
 					dup.position = dup.position.snappedf(grid_size)
 	brick.queue_free()
-
-
 
 func on_level_started() -> void:
 	speed = 2 ** Globals.level_scale * initial_speed

@@ -1,3 +1,4 @@
+class_name GameManager
 extends Node2D
 
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 	EventBus.added_active_ball.connect(on_added_active_ball)
 	EventBus.removed_active_ball.connect(on_removed_active_ball)
 	EventBus.added_available_ball.connect(on_added_available_ball)
+	EventBus.modifier_collected.connect(on_modifier_event)
 	start_game.call_deferred()
 	%BallLabel.text = str(availableBalls)
 	%ScoreLabel.text = str(score)
@@ -141,3 +143,10 @@ func show_ball_spawnable() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("spawn_ball") && ballSpawnable:
 		spawn_ball()
+
+func on_modifier_event(modifier: Modifier) -> void:
+	if modifier.applies_to(self):
+		add_modifier(modifier)
+
+func add_modifier(modifier: Modifier) -> void:
+	modifier.apply(self)
