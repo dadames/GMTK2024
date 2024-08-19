@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=25 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" path="res://Game/mute_music_button.gd" id="16_wo35x"]
 [ext_resource type="Texture2D" uid="uid://dqnxgpf7lmorq" path="res://Game/GUI/Menus/flatDark18.png" id="17_erae7"]
 [ext_resource type="Script" path="res://Game/GUI/Menus/mute_sfx_button.gd" id="19_spq8m"]
-[ext_resource type="Script" path="res://Game/GUI/Menus/destroy_ball_buttonl.gd" id="20_0006a"]
 [ext_resource type="Script" path="res://Game/GUI/restart_button.gd" id="20_7dudw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1uayy"]
@@ -239,7 +238,6 @@ layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"BottomBarButton"
 text = "Destroy Ball"
-script = ExtResource("20_0006a")
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/Control/BottomBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
