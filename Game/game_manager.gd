@@ -62,7 +62,7 @@ func on_level_completed() -> void:
 	print("Level Completed")
 	%Paddle.clear_modifiers()
 	if !level.nextLevel:
-		Globals.level_scale = 1
+		#Globals.level_scale = 1
 		EventBus.game_won.emit(score)
 		level.hide_bricks()
 		disable_boundaries()

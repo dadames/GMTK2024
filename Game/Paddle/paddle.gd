@@ -37,6 +37,7 @@ func _ready() -> void:
 	#EventBus.zoom_finished.connect(on_zoom_finished)
 	EventBus.modifier_collected.connect(_on_modifier_event)
 	EventBus.game_over.connect(on_game_over)
+	EventBus.game_won.connect(on_game_won)
 
 func _process(delta: float) -> void:
 	if !initialized:
@@ -45,9 +46,10 @@ func _process(delta: float) -> void:
 	if !Engine.is_editor_hint():
 		var camera := get_viewport().get_camera_2d()
 		var cameraScaling: float = camera.targetZoom / camera.zoom.x 
-		position.y = initialHeight * cameraScaling * 2 ** (Globals.level_scale - 1)
 		if gameOver:
 			position.x = 0
+		position.y = initialHeight * cameraScaling * 2 ** (Globals.level_scale - 1)
+		
 
 func _physics_process(delta: float) -> void:
 	if !initialized || Engine.is_editor_hint():
@@ -174,5 +176,9 @@ func clear_modifiers() -> void:
 	_modifiers.clear()
 
 func on_game_over(score: int) -> void:
+	canMove = false
+	gameOver = true
+
+func on_game_won(score: int) -> void:
 	canMove = false
 	gameOver = true
