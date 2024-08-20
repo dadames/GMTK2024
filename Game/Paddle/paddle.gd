@@ -42,11 +42,6 @@ func _process(delta: float) -> void:
 	if !initialized:
 		return
 	_consumed_bricks_this_frame = []
-	if OS.is_debug_build() && !Engine.is_editor_hint() && Input.is_key_pressed(KEY_0):
-		for child in get_parent().find_children("Brick"):
-			child.position = position
-			consume_brick(child, Vector2i.UP + Vector2i.RIGHT)
-			break
 	if !Engine.is_editor_hint():
 		var camera := get_viewport().get_camera_2d()
 		var cameraScaling: float = camera.targetZoom / camera.zoom.x 
@@ -72,14 +67,22 @@ func _physics_process(delta: float) -> void:
 
 		move_and_collide(velocity * delta)
 
-
-func consume_brick(brick: Brick, shift: Vector2) -> bool:
+# please provide rects in paddle space, pretty please, if you ignore this you bring woe upon yourself
+func consume_brick(brick: Brick, paddle_rect: Rect2, semi_rect: Rect2) -> bool:
 	if brick in _consumed_bricks_this_frame:
 		return false
 	
 	#print_debug(brick, shift)
 	
-	var grid_size := Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
+	# snap to the size of what we're touching
+	var grid := Vector2(semi_rect.size.x, Globals.BLOCK_PIXELS * 2 ** roundi(log(paddle_rect.size.y / Globals.BLOCK_PIXELS) / log(2)))
+
+	# offset is based on both the size difference, and the offset of the thing we're connecting to
+	var offset := Vector2.UP * ((semi_rect.size.y - grid.y) / 2 - paddle_rect.get_center().y + snappedf(paddle_rect.get_center().y, grid.y))
+
+	print_debug(grid.y, " ", semi_rect.size.y, " ", offset)
+
+	#var grid_size: float = Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 	
 	#var brick_parity := BrickShape.get_parity(brick.shapeType)
 	#brick_parity = abs(((brick_parity as Vector2).rotated(brick.rotation)).snappedf(1.0) as Vector2i)
@@ -96,13 +99,14 @@ func consume_brick(brick: Brick, shift: Vector2) -> bool:
 	#	brick.position.x += grid_size * 0.5
 	#if posmod(brick_parity.y, 2) != 0:
 	#	brick.position.y += grid_size * 0.5
+
 	var space_state := get_world_2d().direct_space_state
 	# check if the spot is actually free
 	# if not we return early
 	for child: Node2D in brick.get_children():
 		if child is SemiBrick:
 			var parameters := PhysicsPointQueryParameters2D.new()
-			parameters.position = self.global_transform * (self.global_transform.affine_inverse() * child.global_position).snappedf(grid_size)
+			parameters.position = self.global_transform * (self.global_transform.affine_inverse() * child.global_position - offset).snapped(grid)
 			parameters.collision_mask = 0x4
 			if !space_state.intersect_point(parameters, 1).is_empty():
 				return false
@@ -115,14 +119,14 @@ func consume_brick(brick: Brick, shift: Vector2) -> bool:
 			EventBus.score_change.emit("Catch")
 			for brick_sprite: Sprite2D in child.find_children("Sprite2D"):
 				brick_sprite.reparent(self)
-				brick_sprite.position = brick_sprite.position.snappedf(grid_size)
+				brick_sprite.position = (brick_sprite.position - offset).snapped(grid) + offset
 			for brick_collider: CollisionShape2D in child.find_children("CollisionShape2D"):
 				for body in bodies:
 					var dup := brick_collider.duplicate()
 					body.add_child(dup)
 					dup.global_position = brick_collider.global_position
 					dup.global_scale = brick_collider.global_scale
-					dup.position = dup.position.snappedf(grid_size)
+					dup.position = (dup.position - offset).snapped(grid) + offset
 	brick.queue_free()
 
 	return true
@@ -147,7 +151,7 @@ func _on_collision_detection_body_shape_entered(_body_rid:RID, body:Node2D, body
 
 		# if we're more through top than side, it's on top
 		if intersection.size.x > intersection.size.y && intersection.get_center().y < local_rect.get_center().y:
-			consume_brick.call_deferred(body.brick, Vector2.ZERO)
+			consume_brick.call_deferred(body.brick, global_transform.affine_inverse() * local_rect, global_transform.affine_inverse() * body_rect)
 
 func _on_modifier_event(modifier: Modifier) -> void:
 	if modifier.applies_to(self):
