@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_btgxq"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="1_rm660"]
-[ext_resource type="PackedScene" uid="uid://cpsi5tdk5j0qo" path="res://Game/Levels/level_7.tscn" id="2_afkuj"]
+[ext_resource type="PackedScene" uid="uid://duq2mfh8frme0" path="res://Game/Levels/level_4.tscn" id="2_53arp"]
 [ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_6qoj6"]
 [ext_resource type="Resource" uid="uid://cdpm6ir2v2st7" path="res://Game/Modifiers/PaddleSpeed/paddle_speed_up.tres" id="4_arm12"]
 [ext_resource type="Resource" uid="uid://drxhieb25f4ux" path="res://Game/Modifiers/OneUp/one_up.tres" id="5_lvbye"]
@@ -10,7 +10,7 @@
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_btgxq")
 levelScale = 3.0
-nextLevel = ExtResource("2_afkuj")
+nextLevel = ExtResource("2_53arp")
 
 [node name="Bricks" type="Node2D" parent="."]
 modulate = Color(2, 2, 2, 1)

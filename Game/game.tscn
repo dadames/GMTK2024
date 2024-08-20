@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
+[ext_resource type="PackedScene" uid="uid://15uxjhcwcff" path="res://Game/Levels/level_1.tscn" id="2_s8ipm"]
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="3_31cgl"]
-[ext_resource type="Texture2D" uid="uid://dyhjaffr03i5p" path="res://Game/53912178488_3ab9e86872_o.jpg" id="3_o420k"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="Shader" path="res://Game/overlay.gdshader" id="4_yp74y"]
+[ext_resource type="Texture2D" uid="uid://c21uufrxtmlec" path="res://52259221868_3d2963c1fe_o (1).png" id="5_76le0"]
 [ext_resource type="Script" path="res://Game/background.gd" id="5_re16v"]
-[ext_resource type="PackedScene" uid="uid://15uxjhcwcff" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
 [ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="9_3vi6x"]
@@ -58,7 +58,7 @@ glow_hdr_scale = 1.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_jkbmv")
-startingLevel = ExtResource("7_5liut")
+startingLevel = ExtResource("2_s8ipm")
 ballPrefab = ExtResource("4_nyhvm")
 metadata/_edit_horizontal_guides_ = [64.0]
 
@@ -69,15 +69,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5541.0
-offset_top = 120000.0
-offset_right = 2069.0
-offset_bottom = 129634.0
+offset_left = -100000.0
+offset_top = 40000.0
+offset_right = -85425.0
+offset_bottom = 49634.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(69.875, 69.875)
+scale = Vector2(50, 50)
 pivot_offset = Vector2(3802.5, 4817)
-texture = ExtResource("3_o420k")
+texture = ExtResource("5_76le0")
 script = ExtResource("5_re16v")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]

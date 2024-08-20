@@ -16,20 +16,8 @@ nextLevel = ExtResource("2_jyj6p")
 modulate = Color(2, 2, 2, 1)
 position = Vector2(0, -32)
 
-[node name="Brick" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(-448, -112)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
 [node name="Brick2" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(-384, -144)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
-[node name="Brick3" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(-320, -112)
 color = Color(1, 0.45098, 0, 1)
 shapeType = 0
 modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
@@ -94,12 +82,6 @@ color = Color(1, 0.45098, 0, 1)
 shapeType = 0
 modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
 
-[node name="Brick5" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(-192, -112)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
 [node name="Brick16" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(496, -288)
 rotation = 1.5708
@@ -114,41 +96,12 @@ color = Color(1, 0.45098, 0, 1)
 shapeType = 0
 modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
 
-[node name="Brick6" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(-192, -112)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
-[node name="Brick7" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(-144, -144)
-rotation = 3.14159
-color = Color(1, 0.45098, 0, 1)
-shapeType = 2
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
 [node name="Brick8" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(-496, -176)
 rotation = 1.5708
 scale = Vector2(-1, 1)
 color = Color(1, 0.45098, 0, 1)
 shapeType = 2
-mirrored = true
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
-[node name="Brick9" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(144, -144)
-scale = Vector2(-1, -1)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 2
-mirrored = true
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
-[node name="Brick10" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(192, -112)
-scale = Vector2(-1, -1)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
 mirrored = true
 modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
 
@@ -160,24 +113,8 @@ shapeType = 0
 mirrored = true
 modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
 
-[node name="Brick12" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(320, -112)
-scale = Vector2(-1, -1)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
-mirrored = true
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
 [node name="Brick13" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(384, -144)
-scale = Vector2(-1, -1)
-color = Color(1, 0.45098, 0, 1)
-shapeType = 0
-mirrored = true
-modifiers = Array[ExtResource("3_oaoeu")]([ExtResource("5_8wrkj"), ExtResource("6_01rmr")])
-
-[node name="Brick14" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(448, -112)
 scale = Vector2(-1, -1)
 color = Color(1, 0.45098, 0, 1)
 shapeType = 0
