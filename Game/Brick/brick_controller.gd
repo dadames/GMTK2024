@@ -104,10 +104,7 @@ func start_falling() -> void:
 	for modifier in modifiers:
 		var instance: Node2D = modifier_prefab.instantiate()
 		instance.modifier = modifier
-		print(global_position)
-		print(instance.global_position)
 		instance.position = position
-		print(instance.global_position)
 		get_parent().add_child(instance)
 	falling.emit()
 
