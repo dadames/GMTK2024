@@ -138,6 +138,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DebugComplete" type="Button" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 offset_left = -1.0
 offset_top = 3.0
