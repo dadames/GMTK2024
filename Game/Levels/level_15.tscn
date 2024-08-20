@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_uyygg"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_fkg5y"]
-[ext_resource type="PackedScene" uid="uid://lygh0kjxdqn7" path="res://Game/Levels/level_4.tscn" id="2_ysl6j"]
+[ext_resource type="PackedScene" uid="uid://lygh0kjxdqn7" path="res://Game/Levels/ulevel_4.tscn" id="2_ysl6j"]
 
 [node name="Level3" type="Node" groups=["Level"]]
 script = ExtResource("1_uyygg")

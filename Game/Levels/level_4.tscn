@@ -1,137 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://lygh0kjxdqn7"]
+[gd_scene load_steps=6 format=3 uid="uid://w20iawrumpya"]
 
-[ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_mno2w"]
-[ext_resource type="PackedScene" uid="uid://rux5cp1yg0uh" path="res://Game/Levels/level_5.tscn" id="2_e0p12"]
-[ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_t7vie"]
+[ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_abhb3"]
+[ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_41hvf"]
+[ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="4_gg2ng"]
+[ext_resource type="Resource" uid="uid://drxhieb25f4ux" path="res://Game/Modifiers/OneUp/one_up.tres" id="5_076gh"]
+[ext_resource type="Resource" uid="uid://l038koov8qdh" path="res://Game/Modifiers/BallSize/ball_size_down.tres" id="6_s2k8j"]
 
 [node name="Level" type="Node" groups=["Level"]]
-script = ExtResource("1_mno2w")
+script = ExtResource("1_abhb3")
 levelScale = 4.0
-nextLevel = ExtResource("2_e0p12")
 
 [node name="Bricks" type="Node2D" parent="."]
 modulate = Color(2, 2, 2, 1)
-
-[node name="Brick" parent="Bricks" instance=ExtResource("2_t7vie")]
 position = Vector2(0, -32)
-color = Color(0.56, 0.336, 0, 1)
-shapeType = 3
 
-[node name="Brick2" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(160, -256)
-rotation = 1.5708
-scale = Vector2(1, -1)
-color = Color(0.776, 0.36, 1, 1)
-shapeType = 3
+[node name="Brick" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(-336, -112)
+color = Color(0.499136, 0.240395, 0.1629, 1)
+shapeType = 2
 
-[node name="Brick3" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(0, -352)
+[node name="Brick2" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(-336, -272)
 rotation = 3.14159
-scale = Vector2(1, -1)
-color = Color(1, 0.847833, 0.17, 1)
-shapeType = 3
-
-[node name="Brick4" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(0, -128)
-rotation = 3.14159
-color = Color(0.69, 0.414, 0, 1)
-shapeType = 3
-
-[node name="Brick5" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-48, -192)
 scale = Vector2(-1, 1)
-color = Color(0.85, 0.51, 0, 1)
-shapeType = 4
+color = Color(0.499136, 0.240395, 0.1629, 1)
+shapeType = 2
 mirrored = true
+modifiers = Array[ExtResource("4_gg2ng")]([ExtResource("5_076gh")])
 
-[node name="Brick6" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(48, -192)
-color = Color(0.85098, 0.509804, 0, 1)
-shapeType = 4
+[node name="Brick3" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(-112, -272)
+rotation = -3.14159
+color = Color(0.499136, 0.240395, 0.1629, 1)
+shapeType = 2
 
-[node name="Brick7" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-160, -256)
-rotation = 1.5708
-color = Color(0.776471, 0.360784, 1, 1)
-shapeType = 3
-
-[node name="Brick8" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(96, -160)
-scale = Vector2(-1, -1)
-color = Color(0.690196, 0.415686, 0, 1)
+[node name="Brick4" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(-112, -112)
+scale = Vector2(-1, 1)
+color = Color(0.499136, 0.240395, 0.1629, 1)
 shapeType = 2
 mirrored = true
 
-[node name="Brick9" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(48, -288)
+[node name="Brick5" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(-224, -192)
+scale = Vector2(-1, 1)
+color = Color(0.624618, 0.0055595, 1.44392e-07, 1)
+mirrored = true
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(112, -112)
+color = Color(0.499136, 0.240395, 0.1629, 1)
+shapeType = 2
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(112, -272)
 rotation = 3.14159
-scale = Vector2(1, -1)
-color = Color(1, 0.717647, 0, 1)
-shapeType = 4
-
-[node name="Brick10" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-48, -288)
-color = Color(1, 0.717647, 0, 1)
-shapeType = 4
-
-[node name="Brick11" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-96, -160)
-scale = Vector2(1, -1)
-color = Color(0.690196, 0.415686, 0, 1)
-shapeType = 2
-
-[node name="Brick12" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-144, -352)
-scale = Vector2(1, -1)
-color = Color(0.486275, 0.360784, 1, 1)
-shapeType = 0
-
-[node name="Brick13" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(144, -352)
-scale = Vector2(1, -1)
-color = Color(0.488, 0.36, 1, 1)
-shapeType = 0
-
-[node name="Brick14" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(128, -48)
-rotation = 1.5708
-scale = Vector2(1, -1)
-color = Color(1, 0.36, 0.36, 1)
-shapeType = 4
-
-[node name="Brick15" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-128, -48)
-rotation = 1.5708
-scale = Vector2(-1, -1)
-color = Color(1, 0.360784, 0.360784, 1)
-shapeType = 4
-mirrored = true
-
-[node name="Brick16" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-464, -368)
-scale = Vector2(1, -1)
-color = Color(0.45, 1, 0.45, 1)
-shapeType = 2
-
-[node name="Brick17" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(464, -368)
-scale = Vector2(-1, -1)
-color = Color(0.45098, 1, 0.45098, 1)
+scale = Vector2(-1, 1)
+color = Color(0.499136, 0.240395, 0.1629, 1)
 shapeType = 2
 mirrored = true
 
-[node name="Brick18" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(480, -48)
-rotation = 3.14159
-scale = Vector2(-1, -1)
-color = Color(0.231373, 0.639216, 0.231373, 1)
-shapeType = 4
-mirrored = true
+[node name="Brick8" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(336, -272)
+rotation = -3.14159
+color = Color(0.499136, 0.240395, 0.1629, 1)
+shapeType = 2
 
-[node name="Brick19" parent="Bricks" instance=ExtResource("2_t7vie")]
-position = Vector2(-480, -48)
-color = Color(0.2304, 0.64, 0.2304, 1)
-shapeType = 4
+[node name="Brick9" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(336, -112)
+scale = Vector2(-1, 1)
+color = Color(0.499136, 0.240395, 0.1629, 1)
+shapeType = 2
+mirrored = true
+modifiers = Array[ExtResource("4_gg2ng")]([ExtResource("6_s2k8j")])
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("2_41hvf")]
+position = Vector2(224, -192)
+scale = Vector2(-1, 1)
+color = Color(0.624618, 0.0055595, 1.44392e-07, 1)
+mirrored = true
 
 [node name="CameraSizeGuide(Hide)" type="Panel" parent="."]
 visible = false
