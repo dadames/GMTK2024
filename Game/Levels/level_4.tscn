@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cpsi5tdk5j0qo"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_mno2w"]
-[ext_resource type="PackedScene" uid="uid://rux5cp1yg0uh" path="res://Game/Levels/level_5.tscn" id="2_e0p12"]
+[ext_resource type="PackedScene" uid="uid://ccyxacfokdgf0" path="res://Game/Levels/level_5.tscn" id="2_e0p12"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_t7vie"]
 [ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="3_8rbmj"]
 [ext_resource type="Resource" uid="uid://l038koov8qdh" path="res://Game/Modifiers/BallSize/ball_size_down.tres" id="5_1em2s"]

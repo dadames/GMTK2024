@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://p2w160kheoie"]
+[gd_scene load_steps=6 format=3 uid="uid://p2w160kheoie"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_uyygg"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="2_fkg5y"]
 [ext_resource type="PackedScene" uid="uid://dlfxjm48r7wcv" path="res://Game/Levels/level_9.tscn" id="2_hsyct"]
+[ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="4_qkpi2"]
+[ext_resource type="Resource" uid="uid://b0aiqsqbpkhfk" path="res://Game/Modifiers/ExtraBall/1_extra_ball.tres" id="5_2dcql"]
 
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_uyygg")
@@ -17,6 +19,7 @@ position = Vector2(-176, -192)
 rotation = 1.5708
 color = Color(0, 0.416667, 1, 1)
 shapeType = 0
+modifiers = Array[ExtResource("4_qkpi2")]([ExtResource("5_2dcql")])
 
 [node name="Brick3" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(368, -8)
@@ -47,18 +50,21 @@ position = Vector2(-368, -192)
 rotation = 1.5708
 color = Color(0, 0.416667, 1, 1)
 shapeType = 0
+modifiers = Array[ExtResource("4_qkpi2")]([ExtResource("5_2dcql")])
 
 [node name="Brick12" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(368, -192)
 rotation = 1.5708
 color = Color(0, 0.416667, 1, 1)
 shapeType = 0
+modifiers = Array[ExtResource("4_qkpi2")]([ExtResource("5_2dcql")])
 
 [node name="Brick13" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(176, -192)
 rotation = 1.5708
 color = Color(0, 0.416667, 1, 1)
 shapeType = 0
+modifiers = Array[ExtResource("4_qkpi2")]([ExtResource("5_2dcql")])
 
 [node name="Brick14" parent="Bricks" instance=ExtResource("2_fkg5y")]
 position = Vector2(-464, -96)
@@ -70,18 +76,6 @@ shapeType = 0
 position = Vector2(496, -96)
 rotation = 1.5708
 color = Color(0.129412, 0.607843, 1, 1)
-shapeType = 0
-
-[node name="Brick16" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(-272, 96)
-rotation = 1.5708
-color = Color(0.44, 0.897333, 1, 1)
-shapeType = 0
-
-[node name="Brick17" parent="Bricks" instance=ExtResource("2_fkg5y")]
-position = Vector2(272, 96)
-rotation = 1.5708
-color = Color(0.44, 0.897333, 1, 1)
 shapeType = 0
 
 [node name="CameraSizeGuide(Hide)" type="Panel" parent="."]
