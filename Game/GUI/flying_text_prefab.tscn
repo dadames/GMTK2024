@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://Game/GUI/flying_text.gd" id="1_6guhi"]
 
 [node name="FlyingTextPrefab" type="Label"]
+z_index = 50
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "TEST"
 script = ExtResource("1_6guhi")

@@ -7,6 +7,7 @@ var fading := false
 
 
 func initialize(textIn: String) -> void:
+	scale *= Globals.level_scale
 	text = textIn
 	await get_tree().create_timer(duration).timeout
 	fading = true

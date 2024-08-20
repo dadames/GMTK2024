@@ -1,17 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://15uxjhcwcff"]
+[gd_scene load_steps=6 format=3 uid="uid://15uxjhcwcff"]
 
 [ext_resource type="Script" path="res://Game/Levels/level.gd" id="1_0av25"]
 [ext_resource type="PackedScene" uid="uid://l2cyu1no2u1i" path="res://Game/Brick/brick.tscn" id="1_ut3aw"]
 [ext_resource type="PackedScene" uid="uid://dr8erptudlybr" path="res://Game/Levels/level_2.tscn" id="2_qnm5o"]
 [ext_resource type="Script" path="res://Game/Modifiers/modifier.gd" id="4_b2gi7"]
-[ext_resource type="Texture2D" uid="uid://dyra3aptm7vfs" path="res://Game/Modifiers/OneUp/one_up.svg" id="5_3nnkf"]
-[ext_resource type="Script" path="res://Game/Modifiers/OneUp/one_up_modifier.gd" id="6_djkgx"]
-
-[sub_resource type="Resource" id="Resource_jtx7b"]
-script = ExtResource("6_djkgx")
-extraBalls = 1
-icon = ExtResource("5_3nnkf")
-flyingText = ""
+[ext_resource type="Resource" uid="uid://drxhieb25f4ux" path="res://Game/Modifiers/OneUp/one_up.tres" id="5_d6lww"]
 
 [node name="Level" type="Node" groups=["Level"]]
 script = ExtResource("1_0av25")
@@ -36,13 +29,13 @@ shapeType = 0
 position = Vector2(-64, -48)
 color = Color(0.901961, 0, 0.00784314, 1)
 shapeType = 0
-modifiers = Array[ExtResource("4_b2gi7")]([SubResource("Resource_jtx7b")])
+modifiers = Array[ExtResource("4_b2gi7")]([ExtResource("5_d6lww")])
 
 [node name="Brick4" parent="Bricks" instance=ExtResource("1_ut3aw")]
 position = Vector2(64, -48)
 color = Color(0, 0.219608, 0.654902, 1)
 shapeType = 0
-modifiers = Array[ExtResource("4_b2gi7")]([SubResource("Resource_jtx7b")])
+modifiers = Array[ExtResource("4_b2gi7")]([ExtResource("5_d6lww")])
 
 [node name="Brick5" parent="Bricks" instance=ExtResource("1_ut3aw")]
 position = Vector2(192, -48)
