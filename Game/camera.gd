@@ -15,6 +15,7 @@ func _ready() -> void:
 	EventBus.level_started.connect(on_level_started)
 	EventBus.ball_collided.connect(on_ball_collided)
 	EventBus.game_over.connect(on_game_over)
+	EventBus.level_completed.connect(on_level_completed)
 	targetZoom = zoom.x
 
 func _process(delta: float) -> void:
@@ -22,6 +23,8 @@ func _process(delta: float) -> void:
 		var shakeFade: float = baseShakeFade * 2 ** (Globals.level_scale + 1)
 		shakeStrength = lerpf(shakeStrength, 0, shakeFade * delta)
 		offset = random_offset()
+	if shakeStrength <= 0:
+		offset = Vector2(0, 0)
 	if (!reverseZoom && zoom.x <= targetZoom) || (reverseZoom && zoom.x >= targetZoom):
 		return
 	if reverseZoom:
@@ -45,3 +48,9 @@ func on_ball_collided() -> void:
 func on_game_over(score: int) -> void:
 	targetZoom = 1
 	reverseZoom = true
+	shakeStrength = 0
+	offset = Vector2(0, 0)
+
+func on_level_completed() -> void:
+	shakeStrength = 0
+	offset = Vector2(0, 0)
