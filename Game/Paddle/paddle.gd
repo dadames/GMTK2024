@@ -61,9 +61,19 @@ func _physics_process(delta: float) -> void:
 
 		# test move (doesn't move) to push bricks away
 		var collision_info := static_body.move_and_collide(velocity * delta, true)
-
 		if collision_info and collision_info.get_collider() is SemiBrick:
 			collision_info.get_collider().brick.global_position += collision_info.get_remainder()
+
+		# test move (doesn't move) to explode bricks (if we're in one)
+		var collision_info_1 := move_and_collide(velocity * delta, true)
+		var collision_info_2 := move_and_collide(-velocity * delta, true)
+		if collision_info_1 and collision_info_2:
+			var semi_1 := collision_info_1.get_collider() as SemiBrick
+			var semi_2 := collision_info_2.get_collider() as SemiBrick
+
+			if semi_1 and semi_2 and semi_1.activeState == SemiBrick.State.Static and semi_2.activeState == SemiBrick.State.Static:
+				print_debug("Explode! Explode!")
+				semi_1.brick.explode()
 
 		move_and_collide(velocity * delta)
 
@@ -72,15 +82,11 @@ func consume_brick(brick: Brick, paddle_rect: Rect2, semi_rect: Rect2) -> bool:
 	if brick in _consumed_bricks_this_frame:
 		return false
 	
-	#print_debug(brick, shift)
-	
 	# snap to the size of what we're touching
 	var grid := Vector2(semi_rect.size.x, Globals.BLOCK_PIXELS * 2 ** roundi(log(paddle_rect.size.y / Globals.BLOCK_PIXELS) / log(2)))
 
 	# offset is based on both the size difference, and the offset of the thing we're connecting to
 	var offset := Vector2.UP * ((semi_rect.size.y - grid.y) / 2 - paddle_rect.get_center().y + snappedf(paddle_rect.get_center().y, grid.y))
-
-	print_debug(grid.y, " ", semi_rect.size.y, " ", offset)
 
 	#var grid_size: float = Globals.BLOCK_PIXELS * snappedf(brick.global_scale.x, 1.0)
 	

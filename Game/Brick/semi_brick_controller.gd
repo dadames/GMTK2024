@@ -4,7 +4,7 @@ extends RigidBody2D
 
 
 var brick: Brick
-enum State {Static, Falling, Merged}
+enum State {Static, Falling, Explode}
 var activeState: State = State.Static
 var pushed: bool = false
 
@@ -43,3 +43,10 @@ func on_falling() -> void:
 	set_collision_layer_value(5, true)
 	set_collision_mask_value(6, false)
 	set_collision_mask_value(7, false)
+
+func explode() -> void:
+	collision_layer = 0x0
+	collision_mask = 0x0
+	linear_velocity = Vector2.from_angle(randf() * TAU) * 1000 * Globals.level_factor
+	angular_velocity = randf() * TAU
+	gravity_scale = Globals.level_factor

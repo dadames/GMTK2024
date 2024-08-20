@@ -73,6 +73,14 @@ func initialize() -> void:
 	if !Engine.is_editor_hint():
 		EventBus.brick_initialized_in_level.emit(self)
 
+func explode() -> void:
+	for child in get_children():
+		if child is SemiBrick:
+			child.explode()
+
+	await get_tree().create_timer(3.0).timeout
+
+	queue_free()
 
 func set_shape(shape: BrickShape) -> void:
 	Utilities.clear_children(self)
