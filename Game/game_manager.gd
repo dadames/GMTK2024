@@ -20,7 +20,7 @@ var distance := 0
 var score:float = 0
 @export var scoreHit:float = 1
 #@export var scoreCatch:int = 100
-@export var availableBalls: int = 3
+@export var availableBalls: int = 5
 var activeBalls: int = 0
 var ballSpawnable := true
 var isLevelTransition := false
@@ -64,6 +64,9 @@ func on_level_completed() -> void:
 	if !level.nextLevel:
 		Globals.level_scale = 1
 		EventBus.game_won.emit(score)
+		level.hide_bricks()
+		disable_boundaries()
+		%BallSpawnVisualizer.hide()
 		return
 	start_level(level.nextLevel)
 
@@ -140,6 +143,9 @@ func on_removed_active_ball() -> void:
 			if !isLevelTransition:
 				show_ball_spawnable()
 		else:
+			level.hide_bricks()
+			disable_boundaries()
+			%BallSpawnVisualizer.hide()
 			Globals.level_scale = 1
 			EventBus.game_over.emit(score)
 

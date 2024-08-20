@@ -7,6 +7,7 @@ extends Node
 var bricks: Array[Brick]
 @onready var bricks_container: Node2D = $Bricks
 
+
 func _ready() -> void:
 	EventBus.brick_initialized_in_level.connect(on_brick_initialized_in_level)
 	EventBus.brick_removed_from_level.connect(on_brick_removed_from_level)
@@ -23,3 +24,7 @@ func on_brick_removed_from_level(brick: Brick) -> void:
 	bricks.erase(brick)
 	if bricks.is_empty():
 		EventBus.level_completed.emit()
+
+func hide_bricks() -> void:
+	for child in get_children():
+		child.hide()

@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 			var s: velocity.x = s * min_speeds.x
 	if abs(velocity.y) < min_speeds.y:
 		match sign(velocity.y):
-			0: velocity.y = -min_speeds.y
+			0: velocity.y = min_speeds.y
 			var s: velocity.y = s * min_speeds.y
 
 	# set always to speed

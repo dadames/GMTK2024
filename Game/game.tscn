@@ -60,7 +60,6 @@ glow_hdr_scale = 1.0
 script = ExtResource("1_jkbmv")
 startingLevel = ExtResource("7_5liut")
 ballPrefab = ExtResource("4_nyhvm")
-availableBalls = 10
 metadata/_edit_horizontal_guides_ = [64.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
