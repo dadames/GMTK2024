@@ -2,7 +2,7 @@ class_name Ball
 extends CharacterBody2D
 
 @export var baseSpeed: float = 250
-@export var min_speeds := Vector2(25 * Globals.level_scale, 150 * Globals.level_scale )
+@export var min_speeds := Vector2(25, 150)
 var collide_safe_margin: float = 1.0
 var speed: float
 @onready var brickBounceAudio: AudioStreamPlayer = %BrickBounceAudio
@@ -76,14 +76,14 @@ func _physics_process(delta: float) -> void:
 			paddleBounceAudio.play()
 		else:
 			wallBounceAudio.play()
-	if abs(velocity.x) < min_speeds.x:
+	if abs(velocity.x) < min_speeds.x * Globals.level_factor:
 		match sign(velocity.x):
-			0: velocity.x = ((randi() % 2) * 2 - 1) * min_speeds.x
-			var s: velocity.x = s * min_speeds.x
-	if abs(velocity.y) < min_speeds.y:
+			0: velocity.x = ((randi() % 2) * 2 - 1) * min_speeds.x * Globals.level_factor
+			var s: velocity.x = s * min_speeds.x * Globals.level_factor
+	if abs(velocity.y) < min_speeds.y * Globals.level_factor:
 		match sign(velocity.y):
-			0: velocity.y = min_speeds.y
-			var s: velocity.y = s * min_speeds.y
+			0: velocity.y = ((randi() % 2) * 2 - 1) * min_speeds.y * Globals.level_factor
+			var s: velocity.y = s * min_speeds.y * Globals.level_factor
 
 	# set always to speed
 	velocity = velocity.normalized() * speed
