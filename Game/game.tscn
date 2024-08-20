@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjx5beibty7lr" path="res://Game/Paddle/paddle.tscn" id="3_31cgl"]
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="Shader" path="res://Game/overlay.gdshader" id="4_yp74y"]
-[ext_resource type="Texture2D" uid="uid://c21uufrxtmlec" path="res://52259221868_3d2963c1fe_o (1).png" id="5_76le0"]
+[ext_resource type="Texture2D" uid="uid://i5noy4n467sc" path="res://52259221868_3d2963c1fe_o.png" id="5_eyvu8"]
 [ext_resource type="Script" path="res://Game/background.gd" id="5_re16v"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
@@ -77,7 +77,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(50, 50)
 pivot_offset = Vector2(3802.5, 4817)
-texture = ExtResource("5_76le0")
+texture = ExtResource("5_eyvu8")
 script = ExtResource("5_re16v")
 
 [node name="TopBoundary" type="StaticBody2D" parent="."]
