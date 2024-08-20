@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dapf23v7r06pk"]
+[gd_scene load_steps=32 format=3 uid="uid://dapf23v7r06pk"]
 
 [ext_resource type="Script" path="res://Game/game_manager.gd" id="1_jkbmv"]
 [ext_resource type="PackedScene" uid="uid://ckvkv3plb4arj" path="res://Game/camera_2d.tscn" id="1_mqw14"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cik3us1ca1grp" path="res://Game/Ball/ball.tscn" id="4_nyhvm"]
 [ext_resource type="Shader" path="res://Game/overlay.gdshader" id="4_yp74y"]
 [ext_resource type="Script" path="res://Game/background.gd" id="5_re16v"]
-[ext_resource type="PackedScene" uid="uid://bjxmpt84gkaov" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
+[ext_resource type="PackedScene" uid="uid://15uxjhcwcff" path="res://Game/Levels/level_1.tscn" id="7_5liut"]
 [ext_resource type="Script" path="res://Game/Ball/ball_spawnable_label.gd" id="8_23gjy"]
 [ext_resource type="Script" path="res://Game/debug_complete_level.gd" id="8_j18m4"]
 [ext_resource type="Shader" path="res://Game/GUI/glow_and_fade.gdshader" id="9_3vi6x"]
@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://don7gtq4ilsr6" path="res://Game/Ball/spotlight_1.png" id="22_nblwm"]
 [ext_resource type="AudioStream" uid="uid://wpkcl5fb15ub" path="res://Game/Ball/Audio/611798__metalfortress__error.wav" id="23_lpoqu"]
 [ext_resource type="PackedScene" uid="uid://baigi8431vl47" path="res://Game/GUI/flying_text_prefab.tscn" id="25_etm0e"]
-[ext_resource type="Script" path="res://Game/GUI/flying_text.gd" id="26_rxd8t"]
 [ext_resource type="Script" path="res://Game/GUI/flying_text_manager.gd" id="27_ug28f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mkyta"]
@@ -77,7 +76,7 @@ offset_right = -7.25981e+06
 offset_bottom = 5.58728e+06
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(4500, 4500)
+scale = Vector2(5000, 5000)
 pivot_offset = Vector2(3802.5, 4817)
 texture = ExtResource("3_o420k")
 script = ExtResource("5_re16v")
@@ -288,7 +287,6 @@ offset_left = 367.0
 offset_top = 612.0
 offset_right = 539.0
 offset_bottom = 629.0
-script = ExtResource("26_rxd8t")
 
 [node name="FlyingTextManager" type="Node" parent="."]
 script = ExtResource("27_ug28f")

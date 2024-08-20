@@ -102,9 +102,12 @@ func spawn_semibrick(quadrantPosition: Vector2) -> void:
 func start_falling() -> void:
 	isFalling = true
 	for modifier in modifiers:
-		var instance := modifier_prefab.instantiate()
+		var instance: Node2D = modifier_prefab.instantiate()
 		instance.modifier = modifier
-		instance.position = global_position * get_parent().global_transform
+		print(global_position)
+		print(instance.global_position)
+		instance.position = position
+		print(instance.global_position)
 		get_parent().add_child(instance)
 	falling.emit()
 

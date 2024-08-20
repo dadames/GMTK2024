@@ -13,7 +13,8 @@ var speed: float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	icon.texture = modifier.icon
-	speed = lerp(downward_speed_min, downward_speed_max, randf())
+	speed = lerp(downward_speed_min, downward_speed_max, randf())# * Globals.level_factor
+	#scale *= Globals.level_factor
 
 func _physics_process(delta: float) -> void:
 	position.y += speed * delta
