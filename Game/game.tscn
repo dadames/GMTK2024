@@ -282,12 +282,6 @@ stream = ExtResource("23_lpoqu")
 volume_db = 1.0
 bus = &"SFX"
 
-[node name="FlyingTextPrefab" parent="." instance=ExtResource("25_etm0e")]
-offset_left = 367.0
-offset_top = 612.0
-offset_right = 539.0
-offset_bottom = 629.0
-
 [node name="FlyingTextManager" type="Node" parent="."]
 script = ExtResource("27_ug28f")
 flyingTextPrefab = ExtResource("25_etm0e")
