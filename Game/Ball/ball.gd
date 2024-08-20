@@ -2,7 +2,7 @@ class_name Ball
 extends CharacterBody2D
 
 @export var baseSpeed: float = 250
-@export var min_speeds := Vector2(25, 100)
+@export var min_speeds := Vector2(25 * Globals.level_scale, 150 * Globals.level_scale )
 var collide_safe_margin: float = 1.0
 var speed: float
 @onready var brickBounceAudio: AudioStreamPlayer = %BrickBounceAudio
